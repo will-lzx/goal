@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 
 # Create your views here.
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from wechatpy import parse_message, create_reply
 from wechatpy.events import SubscribeEvent
@@ -48,3 +49,27 @@ def wx(request):
         return response
     else:
         print('error')
+
+
+def create(request):
+    template_name = 'weixin/create.html'
+    response = render(request, template_name)
+    return response
+
+
+def history(request):
+    template_name = 'weixin/history.html'
+    response = render(request, template_name)
+    return response
+
+
+def others(request):
+    template_name = 'weixin/others.html'
+    response = render(request, template_name)
+    return response
+
+
+def ranking(request):
+    template_name = 'weixin/ranking.html'
+    response = render(request, template_name)
+    return response

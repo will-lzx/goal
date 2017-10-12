@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr">
+
+<html>
+    <head>
+
+    <title>{% block title %}{% endblock %}-我的微目标</title>
+
+     <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css"/>
+
+
+</head>
+
+<body >
+
+{% block content %}
+{% endblock %}
+<div class="con_gray">
+  <div class="foot_con">
+    <div class="foot_con_imgbox"><img class="foot_con_img" src="{% static 'images/ewm.jpg' %}" alt="微信公众号"/>微信公众号</div>
+    <div class="foot_con_imgbox"><img class="foot_con_img" src="{% static 'images/shenghuohao.png' %}" alt="支付宝生活号"/>支付宝生活号</div>
+</div>
+</div>
+  <div class="foot_cont_bq">
+      杭州轻拍科技有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright@2017 浙ICP备17029716号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;沟通邮箱：<a href="mailto:kf@relalive.com">kf@relalive.com</a>
+</div>
+
+</body>

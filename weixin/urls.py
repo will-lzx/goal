@@ -19,4 +19,8 @@ from weixin.views import *
 
 urlpatterns = [
     url(r'^wx/$', wx, name='wx'),
+    url(r'^create/$', create, name='create'),
+    url(r'^history/$', history, name='history'),
+    url(r'^others/$', others, name='others'),
+    url(r'^ranking/$', ranking, name='ranking'),
 ]

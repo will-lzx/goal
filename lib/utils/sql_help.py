@@ -7,7 +7,7 @@ class MySQL:
     conn = ''
     cursor = ''
 
-    def __init__(self, host='106.14.151.3', usr='root', pwd='Password01?', db='light'):
+    def __init__(self, host='106.14.151.3', usr='root', pwd='Password01?', db='goal'):
         try:
             self.conn = pymysql.connect(host, usr, pwd, db, charset='utf8')
         except Exception as e:
