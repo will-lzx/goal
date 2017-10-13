@@ -2,7 +2,7 @@ from goal.settings import *
 import urllib.request
 import urllib.parse
 import json
-from lib.utils.sql_help import *
+from sql_help import *
 
 
 class UrlRequest:

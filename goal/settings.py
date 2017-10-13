@@ -133,3 +133,5 @@ WECHAT_TOKEN = "goal"
 WEIXIN_APPID = 'wx1e0129928b50b3e7'
 WEIXIN_APPSECRET = 'e10762d25f47ce25b55b90a676aa5861'
 
+frequent = {'0': '天', '1': '周', '2': '月'}
+
