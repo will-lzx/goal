@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load own_tag %}
 {% block title %}历史目标{% endblock %}
 {% block head %}
 
@@ -12,7 +13,7 @@
         {% if goals %}
             {% for goal in goals %}
                 <span>{{ goal.3 }}</span><br>
-                <span>创建于：{{ goal.7 }}</span>
+                <span>创建于：{{ goal.7 | convert_time }}</span><br>
             {% endfor %}
         {% else %}
             <span>暂时还没有目标，快去创建一个目标吧</span><a href="#" id="create" class="create-btn">创建目标</a>
