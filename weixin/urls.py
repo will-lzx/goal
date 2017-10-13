@@ -23,4 +23,7 @@ urlpatterns = [
     url(r'^history/$', history, name='history'),
     url(r'^others/$', others, name='others'),
     url(r'^ranking/$', ranking, name='ranking'),
+
+    url(r'^save_goal/$', save_goal, name='save_goal'),
+
 ]

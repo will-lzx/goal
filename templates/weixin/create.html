@@ -12,14 +12,17 @@
     </div>
     <div>
         <span>我的小目标</span><br>
-        <select>
+        <select id="goal_id">
+            <option value="目标类型">目标类型</option>
             <option value="学习">学习</option>
             <option value="运动">运动</option>
             <option value="健康">健康</option>
             <option value="脱单">脱单</option>
             <option value="理财">理财</option>
         </select>
-        <select>
+        <br>
+        <select id="penalty">
+            <option value="自罚方式">自罚方式</option>
             <option value="直播吃翔">直播吃翔</option>
             <option value="广场裸奔">广场裸奔</option>
             <option value="自曝真心话">自曝真心话</option>
@@ -28,16 +31,83 @@
             <option value="连续骑自行车30公里">连续骑自行车30公里</option>
             <option value="到小区捡1公斤垃圾">到小区捡1公斤垃圾</option>
         </select>
-        <select>
+        <br>
+        <select id="period">
+            <option value="执行周期">执行周期</option>
             <option value="天">天</option>
             <option value="周">周</option>
             <option value="月">月</option>
         </select>
-        <input type="text" id="goal" value="写下目标，就迈出最艰难的一步">
+        <br>
+        <input type="text" id="goal_content" value="写下目标，就迈出最艰难的一步">
+        <br>
     </div>
     <div>
-        <a href="#" id="save" class="save-btn">立即定下小目标</a>
-        <a href="#" id="share" class="share-btn">分享到朋友圈</a>
+        <a href="#" id="save" class="save-btn" onclick="save_goal()">立即定下小目标</a>
+        <a href="#" id="share" class="share-btn" onclick="share_goal()">分享到朋友圈</a>
     </div>
+
+    <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
+
+    <script>
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+
+        function save_goal() {
+            var goal_type = $("#select_id").find("option:selected").text();
+            if(goal_type === '目标类型')
+            {
+                alert('请选择一个目标类型');
+                return;
+            }
+
+            var penalty = $("#penalty").find("option:selected").text();
+            if(penalty === '自罚方式')
+            {
+                alert('请选择一个自罚方式');
+                return;
+            }
+
+            var period = $("#period").find("option:selected").text();
+            if(period === '执行周期')
+            {
+                alert('请选择一个执行周期');
+                return;
+            }
+
+            var goal_content = $("#goal_content").val();
+            if(goal_content === '写下目标，就迈出最艰难的一步')
+            {
+                alert('请输入目标的内容');
+                return;
+            }
+
+            $.ajax({
+                type:"post",
+                url:"/weixin/save_goal/",//自己填写请求地址
+                data:{goal_type:goal_type, penalty: penalty, period: period, goal_content: goal_content},
+                success:function(result){
+                    if(result === 'True')
+                    {
+
+                    }
+                    else
+                    {
+                        alert('Something wrong! Please contact administrator！');
+                    }
+                }
+            });
+
+        }
+
+        function share_goal() {
+
+        }
+
+
+    </script>
+
+
 
 {% endblock %}

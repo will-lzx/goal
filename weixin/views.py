@@ -9,7 +9,7 @@ from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 
 from lib.utils.common import create_timestamp
-from lib.weixin.weixin_sql import subcribe_save_openid
+from lib.weixin.weixin_sql import subcribe_save_openid, savegoal
 from goal.settings import *
 
 
@@ -55,6 +55,21 @@ def create(request):
     template_name = 'weixin/create.html'
     response = render(request, template_name)
     return response
+
+
+@csrf_exempt
+def save_goal(request):
+    goal_type = request.POST.get('goal_type')
+    penalty = request.POST.get('penalty')
+    period = request.POST.get('period')
+    goal_content = request.POST.get('goal_content')
+
+    author = 'temple'
+    audience = ''
+    savegoal(author, goal_type, penalty, audience, period, goal_content)
+    resp_status = 'True'
+
+    return HttpResponse(resp_status)
 
 
 def history(request):
