@@ -36,3 +36,11 @@ def savegoal(author, goal_type, penalty, audience, period, goal_content):
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     mysql.exec_none_query(
         'insert into goal_list (author, goal_type, content, penalty, audience, frequent, create_time) values("{0}", "{1}", "{2}", "{3}", "{4}", "{5}", "{6}")'.format(author, goal_type, goal_content, penalty, audience, period, create_time))
+
+
+def get_goals(openid):
+    mysql = MySQL(db='goal')
+
+    results = mysql.exec_query('select * from goal_list where author="{0}"'.format(openid))
+
+    return results

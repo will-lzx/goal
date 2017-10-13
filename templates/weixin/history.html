@@ -9,9 +9,10 @@
 {% block content %}
 
     <div id="own">
-        {% if histories %}
-            {% for history in histories %}
-
+        {% if goals %}
+            {% for goal in goals %}
+                <span>{{ goal.3 }}</span><br>
+                <span>创建于：{{ goal.7 }}</span>
             {% endfor %}
         {% else %}
             <span>暂时还没有目标，快去创建一个目标吧</span><a href="#" id="create" class="create-btn">创建目标</a>

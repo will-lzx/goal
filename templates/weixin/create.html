@@ -55,7 +55,7 @@
         }});
 
         function save_goal() {
-            var goal_type = $("#select_id").find("option:selected").text();
+            var goal_type = $("#goal_id").find("option:selected").text();
             if(goal_type === '目标类型')
             {
                 alert('请选择一个目标类型');
@@ -76,6 +76,24 @@
                 return;
             }
 
+            if(period === '天')
+            {
+                period = 0;
+            }
+            else if(period === '周')
+            {
+                period = 1;
+            }
+            else if(period === '月')
+            {
+                period = 2;
+            }
+            else
+            {
+                alert('period is invalid, please check!');
+                return;
+            }
+
             var goal_content = $("#goal_content").val();
             if(goal_content === '写下目标，就迈出最艰难的一步')
             {
@@ -90,7 +108,8 @@
                 success:function(result){
                     if(result === 'True')
                     {
-
+                        alert('我的小目标创建完成，请到目标历史页面查看吧');
+                        location.href = '/weixin/history/';
                     }
                     else
                     {

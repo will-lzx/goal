@@ -9,7 +9,7 @@ from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 
 from lib.utils.common import create_timestamp
-from lib.weixin.weixin_sql import subcribe_save_openid, savegoal
+from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals
 from goal.settings import *
 
 
@@ -74,7 +74,12 @@ def save_goal(request):
 
 def history(request):
     template_name = 'weixin/history.html'
-    response = render(request, template_name)
+    author = 'temple'
+    goals = get_goals(author)
+    context = {
+        'goals': goals
+    }
+    response = render(request, template_name, context)
     return response
 
 
