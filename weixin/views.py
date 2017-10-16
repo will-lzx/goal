@@ -21,7 +21,6 @@ def wx(request):
         nonce = request.GET.get('nonce', '')
         echostr = request.GET.get('echostr', '')
         try:
-            print('request method', request.body)
             check_signature(WECHAT_TOKEN, signature, timestamp, nonce)
         except InvalidSignatureException:
             echostr = 'error'

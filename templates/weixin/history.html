@@ -12,7 +12,7 @@
     <div id="own">
         {% if goals %}
             {% for goal in goals %}
-                <a href="/weixin/goaldetail/{{ goal.0 }}">
+                <a href="/weixin/goaldetail/{{ goal.0 }}/">
                     <span>{{ goal.3 }}</span><br>
                     <span>创建于：{{ goal.7 | convert_time }}</span>
                 </a>
