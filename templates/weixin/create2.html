@@ -1,38 +1,61 @@
 {% extends "base.html" %}
 
 {% load static %}
-{% block title %}目标基本信息{% endblock %}
+{% block title %}小目标内容{% endblock %}
 {% block head %}
 
 {% endblock %}
 
 {% block content %}
-    <div>
-        <span>我的小目标内容</span><br>
-        <input type="text" id="goal_content" value="写下目标，就迈出最艰难的一步">
-        <select id="penalty">
-            <option value="自罚方式">自罚方式</option>
-            <option value="直播吃翔">直播吃翔</option>
-            <option value="广场裸奔">广场裸奔</option>
-            <option value="自曝真心话">自曝真心话</option>
-            <option value="录段性感动作发朋友圈">录段性感动作发朋友圈</option>
-            <option value="给围观群众发100元红包">给围观群众发100元红包</option>
-            <option value="连续骑自行车30公里">连续骑自行车30公里</option>
-            <option value="到小区捡1公斤垃圾">到小区捡1公斤垃圾</option>
-        </select>
-        <br>
-        <select id="period">
-            <option value="执行周期">执行周期</option>
-            <option value="天">天</option>
-            <option value="周">周</option>
-            <option value="月">月</option>
-        </select>
-        <br>
+    <h2>我的小目标</h2>
+    <div class="tip">写下目标，已迈出最艰难的一步</div>
+    <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="目标描述" rows="2"></textarea>
+                </div>
+            </div>
+        </div>
+    <div class="weui-cells">
+            <div class="weui-cell weui-cell_select">
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="select1" id="penalty">
+                        <option selected="" value="自罚方式" style="color: #C8C8CD">自罚方式</option>
+                        <option value="直播吃翔">直播吃翔</option>
+                        <option value="广场裸奔">广场裸奔</option>
+                        <option value="自曝真心话">自曝真心话</option>
+                        <option value="录段性感动作发朋友圈">录段性感动作发朋友圈</option>
+                        <option value="给围观群众发100元红包">给围观群众发100元红包</option>
+                        <option value="连续骑自行车30公里">连续骑自行车30公里</option>
+                        <option value="到小区捡1公斤垃圾">到小区捡1公斤垃圾</option>
+                    </select>
+                </div>
+            </div>
     </div>
-    <div>
-        <a href="#" id="save" class="save-btn" onclick="save_goal()">立即定下小目标</a>
-        <a href="#" id="share" class="share-btn" onclick="share_goal()">邀请好友来监督</a>
+    <div class="weui-cells">
+            <div class="weui-cell weui-cell_select">
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="select1" id="period">
+                        <option selected="" value="目标时间" style="color: #C8C8CD">目标时间</option>
+                        <option value="每天">每天</option>
+                        <option value="每周">每周</option>
+                        <option value="3天内">3天内</option>
+                        <option value="7天内">7天内</option>
+                        <option value="10天内">10天内</option>
+                        <option value="30天内">30天内</option>
+                        <option value="60天内">60天内</option>
+                        <option value="90天内">90天内</option>
+                        <option value="1年内">1年内</option>
+                    </select>
+                </div>
+            </div>
     </div>
+
+
+    <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" href="#" id="save" onclick="save_goal()">定下目标</a>
+    </div>
+
 
     <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
 
@@ -42,7 +65,12 @@
         }});
 
         function save_goal() {
-            var goal_type = '{{ goal_type }}';
+            var goal_type = $("#select_id").find("option:selected").text();
+            if(goal_type === '目标类型')
+            {
+                alert('请选择一个目标类型');
+                return;
+            }
 
             var penalty = $("#penalty").find("option:selected").text();
             if(penalty === '自罚方式')
@@ -55,24 +83,6 @@
             if(period === '执行周期')
             {
                 alert('请选择一个执行周期');
-                return;
-            }
-
-            if(period === '天')
-            {
-                period = 0;
-            }
-            else if(period === '周')
-            {
-                period = 1;
-            }
-            else if(period === '月')
-            {
-                period = 2;
-            }
-            else
-            {
-                alert('period is invalid, please check!');
                 return;
             }
 
@@ -90,8 +100,7 @@
                 success:function(result){
                     if(result === 'True')
                     {
-                        alert('我的小目标创建完成，请到目标历史页面查看吧');
-                        location.href = '/weixin/history/';
+
                     }
                     else
                     {
