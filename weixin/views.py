@@ -51,9 +51,28 @@ def wx(request):
         print('error')
 
 
-def create(request):
-    template_name = 'weixin/create.html'
+def create1(request):
+    template_name = 'weixin/create1.html'
     response = render(request, template_name)
+    return response
+
+
+def create2(request, goal_type):
+    template_name = 'weixin/create2.html'
+    context = {
+        'goal_type': goal_type
+    }
+    response = render(request, template_name, context)
+    return response
+
+
+def create3(request, goal_id):
+    template_name = 'weixin/create3.html'
+    goal = get_goal_by_id(goal_id)
+    context = {
+        'goal': goal
+    }
+    response = render(request, template_name, context)
     return response
 
 

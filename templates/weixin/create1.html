@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}发起目标{% endblock %}
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+    <div>
+        <span>世界会向那些有目标和远见的人让路</span>
+    </div>
+    <div>
+        <span>我的小目标方向</span><br>
+        <input type="radio" name="goal_type" title="学习"><span>学习</span>
+        <input type="radio" name="goal_type" title="运动"><span>运动</span>
+        <input type="radio" name="goal_type" title="健康"><span>健康</span>
+        <input type="radio" name="goal_type" title="脱单"><span>脱单</span>
+        <input type="radio" name="goal_type" title="理财"><span>理财</span>
+
+    </div>
+    <div>
+        <a href="#" id="next" class="next-btn" onclick="goto_next()">下一步</a>
+    </div>
+
+    <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
+
+    <script>
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+
+        function goto_next() {
+            var goal_type = $("#goal_id").find("option:selected").text();
+            if(goal_type === '目标类型')
+            {
+                alert('请选择一个目标类型');
+                return;
+            }
+
+            location.href = '/weixin/' + goal_type + '/';
+
+        }
+
+    </script>
+
+
+
+{% endblock %}

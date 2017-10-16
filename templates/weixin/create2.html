@@ -1,26 +1,15 @@
 {% extends "base.html" %}
 
 {% load static %}
-{% block title %}发起目标{% endblock %}
+{% block title %}目标基本信息{% endblock %}
 {% block head %}
 
 {% endblock %}
 
 {% block content %}
     <div>
-        <span>世界会向那些有目标和远见的人让路</span>
-    </div>
-    <div>
-        <span>我的小目标</span><br>
-        <select id="goal_id">
-            <option value="目标类型">目标类型</option>
-            <option value="学习">学习</option>
-            <option value="运动">运动</option>
-            <option value="健康">健康</option>
-            <option value="脱单">脱单</option>
-            <option value="理财">理财</option>
-        </select>
-        <br>
+        <span>我的小目标内容</span><br>
+        <input type="text" id="goal_content" value="写下目标，就迈出最艰难的一步">
         <select id="penalty">
             <option value="自罚方式">自罚方式</option>
             <option value="直播吃翔">直播吃翔</option>
@@ -39,12 +28,10 @@
             <option value="月">月</option>
         </select>
         <br>
-        <input type="text" id="goal_content" value="写下目标，就迈出最艰难的一步">
-        <br>
     </div>
     <div>
         <a href="#" id="save" class="save-btn" onclick="save_goal()">立即定下小目标</a>
-        <a href="#" id="share" class="share-btn" onclick="share_goal()">分享到朋友圈</a>
+        <a href="#" id="share" class="share-btn" onclick="share_goal()">邀请好友来监督</a>
     </div>
 
     <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
@@ -55,12 +42,7 @@
         }});
 
         function save_goal() {
-            var goal_type = $("#goal_id").find("option:selected").text();
-            if(goal_type === '目标类型')
-            {
-                alert('请选择一个目标类型');
-                return;
-            }
+            var goal_type = '{{ goal_type }}';
 
             var penalty = $("#penalty").find("option:selected").text();
             if(penalty === '自罚方式')
