@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^ranking/$', ranking, name='ranking'),
 
     url(r'^save_goal/$', save_goal, name='save_goal'),
+    url(r'^goaldetail/(?P<goal_id>.+)/$', goaldetail, name='goaldetail'),
 
 ]

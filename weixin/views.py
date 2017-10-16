@@ -9,7 +9,7 @@ from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 
 from lib.utils.common import create_timestamp
-from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals
+from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id
 from goal.settings import *
 
 
@@ -21,6 +21,7 @@ def wx(request):
         nonce = request.GET.get('nonce', '')
         echostr = request.GET.get('echostr', '')
         try:
+            print('request method', request.body)
             check_signature(WECHAT_TOKEN, signature, timestamp, nonce)
         except InvalidSignatureException:
             echostr = 'error'
@@ -66,7 +67,8 @@ def save_goal(request):
 
     author = 'temple'
     audience = ''
-    savegoal(author, goal_type, penalty, audience, period, goal_content)
+    status = 0
+    savegoal(author, goal_type, penalty, audience, period, goal_content, status)
     resp_status = 'True'
 
     return HttpResponse(resp_status)
@@ -78,6 +80,19 @@ def history(request):
     goals = get_goals(author)
     context = {
         'goals': goals
+    }
+    response = render(request, template_name, context)
+    return response
+
+
+def goaldetail(request, goal_id):
+    template_name = 'weixin/goaldetail.html'
+
+    goal = get_goal_by_id(goal_id)
+    if len(goal) > 0:
+        goal = goal[0]
+    context = {
+        'goal': goal
     }
     response = render(request, template_name, context)
     return response

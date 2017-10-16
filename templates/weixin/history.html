@@ -12,12 +12,24 @@
     <div id="own">
         {% if goals %}
             {% for goal in goals %}
-                <span>{{ goal.3 }}</span><br>
-                <span>创建于：{{ goal.7 | convert_time }}</span><br>
+                <a href="/weixin/goaldetail/{{ goal.0 }}">
+                    <span>{{ goal.3 }}</span><br>
+                    <span>创建于：{{ goal.7 | convert_time }}</span>
+                </a>
+                <br>
             {% endfor %}
         {% else %}
             <span>暂时还没有目标，快去创建一个目标吧</span><a href="#" id="create" class="create-btn">创建目标</a>
         {% endif %}
     </div>
+
+    <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
+
+    <script>
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+
+    </script>
 
 {% endblock %}

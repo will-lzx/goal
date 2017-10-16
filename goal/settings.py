@@ -136,3 +136,5 @@ WEIXIN_APPSECRET = 'e10762d25f47ce25b55b90a676aa5861'
 
 frequent = {'0': '天', '1': '周', '2': '月'}
 
+goal_status = {0: '进行中', 1: '完成', 2: '放弃'}
+
