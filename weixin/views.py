@@ -65,9 +65,8 @@ def save_goal(request):
     goal_content = request.POST.get('goal_content')
 
     author = 'temple'
-    audience = ''
     status = 0
-    savegoal(author, goal_type, penalty, audience, period, goal_content, status)
+    savegoal(author, goal_type, penalty, period, goal_content, status)
     resp_status = 'True'
 
     return HttpResponse(resp_status)

@@ -31,11 +31,11 @@ def get_user_info(openid):
     return user
 
 
-def savegoal(author, goal_type, penalty, audience, period, goal_content, status):
+def savegoal(author, goal_type, penalty, period, goal_content, status):
     mysql = MySQL(db='goal')
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     mysql.exec_none_query(
-        'insert into goal_list (author, goal_type, content, penalty, audience, frequent, status, create_time) values("{0}", "{1}", "{2}", "{3}", "{4}", "{5}", {6}, "{7}")'.format(author, goal_type, goal_content, penalty, audience, period, status, create_time))
+        'insert into goal_list (author, goal_type, content, penalty, frequent, status, create_time) values("{0}", "{1}", "{2}", "{3}", "{4}", {5}, "{6}")'.format(author, goal_type, goal_content, penalty, period, status, create_time))
 
 
 def get_goals(openid):
