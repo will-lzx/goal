@@ -319,3 +319,19 @@ h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-alig
 .weui-icon-success-no-circle:before{
   content:"\EA08";
 }
+.weui-icon-success{
+  font-size:23px;
+  color:#09BB07;
+}
+.weui-icon-waiting{
+  font-size:23px;
+  color:#10AEFF;
+}
+.weui-icon-warn{
+  font-size:23px;
+  color:#F43530;
+}
+.weui-icon-info{
+  font-size:23px;
+  color:#10AEFF;
+}
