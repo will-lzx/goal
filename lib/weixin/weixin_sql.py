@@ -38,6 +38,8 @@ def savegoal(author, goal_type, penalty, period, goal_content, status):
         'insert into goal_list (author, goal_type, content, penalty, frequent, status, create_time) values("{0}", "{1}", "{2}", "{3}", "{4}", {5}, "{6}")'.format(author, goal_type, goal_content, penalty, period, status, create_time))
 
     sql = 'select id from goal_list where author = "{0}" and create_time="{1}"'.format(author, create_time)
+
+    mysql = MySQL(db='goal')
     goal_id = mysql.exec_query(sql)[0][0]
     return goal_id
 

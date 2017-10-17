@@ -10,6 +10,7 @@ from wechatpy.utils import check_signature
 
 from lib.utils.common import create_timestamp
 from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id
+from lib.weixin.draw_pic import *
 from goal.settings import *
 
 
@@ -74,9 +75,30 @@ def create2(request, goal_type):
 
 def create3(request, goal_id):
     template_name = 'weixin/create3.html'
-    goal = get_goal_by_id(goal_id)
+    goal = get_goal_by_id(goal_id)[0]
+    images_dir = os.path.join(STATIC_ROOT, 'images')
+    if goal[2] == 'study':
+        low_img = os.path.join(images_dir, 'kanshu.jpg')
+    elif goal[2] == 'activity':
+        low_img = os.path.join(images_dir, 'yundong.jpg')
+    elif goal[2] == 'health':
+        low_img = os.path.join(images_dir, 'jiankang.jpg')
+    elif goal[2] == 'tuodan':
+        low_img = os.path.join(images_dir, 'tuodan.jpg')
+    elif goal[2] == 'money':
+        low_img = os.path.join(images_dir, 'zanqian.jpg')
+    elif goal[2] == 'other':
+        low_img = os.path.join(images_dir, 'qita.jpg')
+
+    author_name = 'test'
+    headimg = os.path.join(images_dir, 'timg.jpg')
+    two_dimension = ''
+    random_str = str(time.time())
+    save_img = os.path.join(STATIC_ROOT, 'save_images', random_str)
+    draw(low_img, headimg, author_name, goal[3], goal[4], two_dimension, save_img)
     context = {
-        'goal': goal
+        'goal': goal,
+        'img_url': '/static/save_images/' + random_str
     }
     response = render(request, template_name, context)
     return response
