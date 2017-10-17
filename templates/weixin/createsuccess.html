@@ -8,23 +8,12 @@
 
 {% block content %}
 
-    <div class="icon-box">
-            <i class="weui-icon-success weui-icon_msg"></i>
-            <div class="icon-box__ctn">
-                <h3 class="icon-box__title">成功</h3>
-                <p class="icon-box__desc">用于表示操作顺利达成</p>
-            </div>
-        </div>
+    <div class="cre_succ"><img class="icon_succ" src="{% static '/images/succ.png' %}" alt="二维码"></div>
+    <h3>成功定下了小目标</h3>
+    <div class="tip">告诉你使我达到目标的奥秘吧，我惟一的力量就是我的坚持精神。——巴斯德</div>
 
-
-
-
-    <div>
-
-        <span>目标创建成功</span>
-    </div>
-    <div>
-
+    <div class="weui-btn-area">
+         <a class="weui-btn2 weui-btn_default" href="#" id="save" onclick="save_goal()">看看历史目标</a>
     </div>
 
 {% endblock %}
