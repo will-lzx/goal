@@ -94,7 +94,7 @@ def create3(request, goal_id):
     headimg = os.path.join(images_dir, 'shengji.png')
     two_dimension = ''
     random_str = str(time.time())
-    save_img = os.path.join(STATIC_ROOT, 'save_images', random_str)
+    save_img = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
     draw(low_img, headimg, author_name, goal[3], goal[4], two_dimension, save_img)
     context = {
         'goal': goal,
