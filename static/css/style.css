@@ -272,10 +272,9 @@ h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-alig
 
 /*-------目标分享朋友圈------------*/
 
-/*-------看书--------*/
-.ksbg{width:100%;height:auto;background: url("/static/images/kanshu.jpg") no-repeat;position: absolute;overflow: hidden;background-size:100% auto; }
+
+.lxbg{width:100%;height:auto;position: absolute;overflow: hidden;background-size:100% auto; }
 .tx{width:90px;height:90px;border-radius:90px;border: none;}
-.tx_ks{border: 5px solid #0099ff;}
 .tx_con{padding: 10px auto;text-align: center;margin-top: 80px;}
 .nc{margin: 10px 15px;text-align: center;font-size: 16px;line-height: 30px;}
 .mb{margin: 10px 35px;text-align: center;font-size: 32px;font-weight: 600;padding-top: 10px;padding-bottom: 10px;line-height: 42px;}
@@ -287,3 +286,36 @@ h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-alig
 .red_z{color: red;}
 .bold_z{font-weight: 400;}
 .fxtip{z-index: 100;width: 100%;height: 30px;background-color: beige;text-align: center;position: fixed;bottom:0;line-height: 30px;}
+/*-------看书--------*/
+.ksbg{background: url("/static/images/kanshu.jpg") no-repeat;}
+.tx_ks{border: 5px solid #0099ff;}
+/*-------运动--------*/
+.ydbg{background: url("/static/images/yundong.jpg") no-repeat;}
+.tx_yd{border: 5px solid #009966;}
+/*-------健康--------*/
+.jkbg{background: url("/static/images/jiankang.jpg") no-repeat;}
+.tx_jk{border: 5px solid #ff9900;}
+/*-------脱单--------*/
+.tdbg{background: url("/static/images/tuodan.jpg") no-repeat;}
+.tx_td{border: 5px solid #990066;}
+/*-------攒钱--------*/
+.zqbg{background: url("/static/images/zanqian.jpg") no-repeat;}
+.tx_zqs{border: 5px solid #33cccc;}
+/*-------其他--------*/
+.qtbg{background: url("/static/images/qita.jpg") no-repeat;}
+.tx_qt{border: 5px solid #ff66cc;}
+
+
+
+
+
+
+.weui-icon-success:before{
+  content:"\EA06";
+}
+.weui-icon-success-circle:before{
+  content:"\EA07";
+}
+.weui-icon-success-no-circle:before{
+  content:"\EA08";
+}
