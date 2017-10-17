@@ -98,7 +98,7 @@ def create3(request, goal_id):
     draw(low_img, headimg, author_name, goal[3], goal[4], two_dimension, save_img)
     context = {
         'goal': goal,
-        'img_url': '/static/save_images/' + random_str
+        'img_url': '/static/save_images/' + random_str + '.jpg'
     }
     response = render(request, template_name, context)
     return response
