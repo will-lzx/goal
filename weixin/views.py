@@ -75,7 +75,7 @@ def create2(request, goal_type):
 
 def create3(request, goal_id):
     template_name = 'weixin/create3.html'
-    goal = get_goal_by_id(goal_id)
+    goal = get_goal_by_id(goal_id)[0]
     images_dir = os.path.join(STATIC_ROOT, 'images')
     if goal[2] == 'study':
         low_img = os.path.join(images_dir, 'kanshu.jpg')
