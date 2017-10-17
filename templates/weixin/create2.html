@@ -12,7 +12,7 @@
     <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="目标描述" rows="2" id="goal_content"></textarea>
+                    <textarea class="weui-textarea" placeholder="目标描述" rows="2"></textarea>
                 </div>
             </div>
         </div>
@@ -37,9 +37,15 @@
                 <div class="weui-cell__bd">
                     <select class="weui-select" name="select1" id="period">
                         <option selected="" value="目标时间" style="color: #C8C8CD">目标时间</option>
-                        {% for k, v in frequent.items %}
-                            <option value="{{ k }}">{{ v }}</option>
-                        {% endfor %}
+                        <option value="每天">每天</option>
+                        <option value="每周">每周</option>
+                        <option value="3天内">3天内</option>
+                        <option value="7天内">7天内</option>
+                        <option value="10天内">10天内</option>
+                        <option value="30天内">30天内</option>
+                        <option value="60天内">60天内</option>
+                        <option value="90天内">90天内</option>
+                        <option value="1年内">1年内</option>
                     </select>
                 </div>
             </div>
@@ -47,8 +53,8 @@
 
 
     <div class="weui-btn-area">
-        <a class="weui-btn weui-btn_primary" href="#" id="save" onclick="save_goal('save')">定下目标</a>
-        <a class="weui-btn weui-btn_primary" href="#" id="share" onclick="save_goal('share')">邀请好友来监督</a>
+            <a class="weui-btn weui-btn_primary" href="#" id="save" onclick="save_goal()">定下目标，邀好友监督</a>
+            <a class="weui-btn2 weui-btn_default" href="#" id="save" onclick="save_goal()">定下目标，自己加油</a>
     </div>
 
 
@@ -59,9 +65,14 @@
             csrfmiddlewaretoken: '{{ csrf_token }}'
         }});
 
-        function save_goal(save_type) {
+        function save_goal() {
+            var goal_type = $("#select_id").find("option:selected").text();
+            if(goal_type === '目标类型')
+            {
+                alert('请选择一个目标类型');
+                return;
+            }
 
-            var goal_type = '{{ goal_type }}';
             var penalty = $("#penalty").find("option:selected").text();
             if(penalty === '自罚方式')
             {
@@ -69,16 +80,15 @@
                 return;
             }
 
-            var period = $("#period").find("option:selected").val();
-            if(period === '目标时间')
+            var period = $("#period").find("option:selected").text();
+            if(period === '执行周期')
             {
-                alert('请选择一个目标时间');
+                alert('请选择一个执行周期');
                 return;
             }
 
             var goal_content = $("#goal_content").val();
-
-            if(goal_content === '')
+            if(goal_content === '写下目标，就迈出最艰难的一步')
             {
                 alert('请输入目标的内容');
                 return;
@@ -87,20 +97,10 @@
             $.ajax({
                 type:"post",
                 url:"/weixin/save_goal/",//自己填写请求地址
-                data:{goal_type: goal_type, penalty: penalty, period: period, goal_content: goal_content},
+                data:{goal_type:goal_type, penalty: penalty, period: period, goal_content: goal_content},
                 success:function(result){
-                    var res = result.split('&')[0];
-                    if(res === 'True')
+                    if(result === 'True')
                     {
-                        if(save_type === 'save')
-                        {
-                            location.href = '/weixin/createsuccess/';
-                        }
-                        else if(save_type === 'share')
-                        {
-                            var goal_id = parseInt(result.split('&')[1]);
-                            location.href = '/weixin/create3/' + goal_id + '/';
-                        }
 
                     }
                     else
@@ -109,8 +109,12 @@
                     }
                 }
             });
+
         }
 
+        function share_goal() {
+
+        }
 
 
     </script>
