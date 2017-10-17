@@ -37,6 +37,10 @@ def savegoal(author, goal_type, penalty, period, goal_content, status):
     mysql.exec_none_query(
         'insert into goal_list (author, goal_type, content, penalty, frequent, status, create_time) values("{0}", "{1}", "{2}", "{3}", "{4}", {5}, "{6}")'.format(author, goal_type, goal_content, penalty, period, status, create_time))
 
+    sql = 'select id from goal_list where author = "{0}" and create_time="{1}"'.format(author, create_time)
+    goal_id = mysql.exec_query(sql)[0][0]
+    return goal_id
+
 
 def get_goals(openid):
     mysql = MySQL(db='goal')
@@ -46,8 +50,21 @@ def get_goals(openid):
     return results
 
 
+def get_goal_id():
+    mysql = MySQL(db='goal')
+
+    goal_id = mysql.exec_query('select LAST_INSERT_ID()')[0][0]
+
+    return goal_id
+
+
 def get_goal_by_id(goal_id):
     mysql = MySQL(db='goal')
 
     goal = mysql.exec_query('select * from goal_list where id={0}'.format(goal_id))
     return goal
+
+
+if __name__ == '__main__':
+    goal = get_goal_id()
+    print(goal)

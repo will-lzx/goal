@@ -23,6 +23,9 @@ urlpatterns = [
     url(r'^create2/(?P<goal_type>.+)/$', create2, name='create2'),
     url(r'^create3/(?P<goal_id>.+)/$', create3, name='create3'),
 
+    url(r'^createsuccess/$', createsuccess, name='createsuccess'),
+
+
     url(r'^history/$', history, name='history'),
     url(r'^others/$', others, name='others'),
     url(r'^ranking/$', ranking, name='ranking'),
