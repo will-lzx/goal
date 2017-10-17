@@ -76,27 +76,6 @@
                 return;
             }
 
-
-            if(goal_type === '目标类型')
-            {
-                alert('请选择一个目标类型');
-                return;
-            }
-
-            var penalty = $("#penalty").find("option:selected").text();
-            if(penalty === '自罚方式')
-            {
-                alert('请选择一个自罚方式');
-                return;
-            }
-
-            var period = $("#period").find("option:selected").text();
-            if(period === '执行周期')
-            {
-                alert('请选择一个执行周期');
-                return;
-            }
-
             var goal_content = $("#goal_content").val();
             if(goal_content === '')
             {
