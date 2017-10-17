@@ -276,11 +276,11 @@ h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-alig
 .ksbg{width:100%;height:auto;background: url("/static/images/kanshu.jpg") no-repeat;position: absolute;overflow: hidden;background-size:100% auto; }
 .tx{width:90px;height:90px;border-radius:90px;border: none;}
 .tx_ks{border: 5px solid #0099ff;}
-.tx_con{padding: 10px auto;text-align: center;margin-top: 90px;}
+.tx_con{padding: 10px auto;text-align: center;margin-top: 80px;}
 .nc{margin: 10px 15px;text-align: center;font-size: 16px;line-height: 20px;}
 .mb{margin: 10px 35px;text-align: center;font-size: 32px;font-weight: 600;padding-top: 10px;padding-bottom: 10px;line-height: 42px;}
 .cf{color: #ff3333}
-.ewm_con{margin: 60px 15px;border: 1px solid #eeeeee;border-radius:10px;padding: 10px;width: 85%;height: 60px;color: #666666;}
+.ewm_con{margin: 60px 15px;border: 1px solid #eeeeee;border-radius:10px;padding: 10px;width: 85%;height: 60px;color: #666666;position: absolute;margin-bottom: 30px;}
 .erm_left{float: left;width: 15%;height: 100px;margin-right: 10%;}
 .img_ewm{width: 60px;height: auto;border: none;}
 .sm_right{width: 75%;float: left;text-align: left;line-height: 30px;}
