@@ -17,6 +17,7 @@ body{
 
 h1{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-align: center;}
 h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-align: center;margin-top: 50px;}
+h3{font-size: 18px;color: #333333;font-weight: 400;line-height: 30px;text-align: center;}
 .tip{padding: 0 15px;color: #666666;text-align: center;}
 /*-------创建部分的样式------------*/
 .cre_jj{margin: 100px 15px;color:#666666;text-align: center;}
@@ -306,32 +307,9 @@ h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-alig
 .tx_qt{border: 5px solid #ff66cc;}
 
 
+.cre_succ{margin: 60px 15px;text-align: center;}
+.icon_succ{width: 80px;height: auto;border: none;}
 
 
 
 
-.weui-icon-success:before{
-  content:"\EA06";
-}
-.weui-icon-success-circle:before{
-  content:"\EA07";
-}
-.weui-icon-success-no-circle:before{
-  content:"\EA08";
-}
-.weui-icon-success{
-  font-size:23px;
-  color:#09BB07;
-}
-.weui-icon-waiting{
-  font-size:23px;
-  color:#10AEFF;
-}
-.weui-icon-warn{
-  font-size:23px;
-  color:#F43530;
-}
-.weui-icon-info{
-  font-size:23px;
-  color:#10AEFF;
-}
