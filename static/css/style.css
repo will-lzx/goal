@@ -286,4 +286,4 @@ h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-alig
 .sm_right{width: 75%;float: left;text-align: left;line-height: 30px;}
 .red_z{color: red;}
 .bold_z{font-weight: 400;}
-.fxtip{z-index: 100;width: 100%;height: 20px;background-color: beige;text-align: center;position: fixed;bottom:0;}
+.fxtip{z-index: 100;width: 100%;height: 30px;background-color: beige;text-align: center;position: fixed;bottom:0;line-height: 30px;}
