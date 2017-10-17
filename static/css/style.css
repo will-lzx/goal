@@ -41,7 +41,6 @@ h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-alig
   -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
   overflow:hidden;
   margin-top: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .weui-btn2:after{
   content:" ";
@@ -50,6 +49,7 @@ h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-alig
   position:absolute;
   top:0;
   left:0;
+  border:1px solid rgba(0, 0, 0, 0.2);
   -webkit-transform:scale(0.5);
           transform:scale(0.5);
   -webkit-transform-origin:0 0;
@@ -247,6 +247,7 @@ h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-alig
   position:absolute;
   top:0;
   left:0;
+  border:1px solid rgba(0, 0, 0, 0.2);
   -webkit-transform:scale(0.5);
           transform:scale(0.5);
   -webkit-transform-origin:0 0;
