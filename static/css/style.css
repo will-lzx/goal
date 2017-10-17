@@ -317,7 +317,7 @@ h4{font-size: 14px;color: #333333;font-weight: 400;line-height: 24px;text-align:
 .mb_con{width: 100%;background-color: #ff6666;text-align: center;color: #FFFFFF;}
 .mb_nr{padding: 30px 15px;font-size: 24px;font-weight: 600;line-height: 32px;}
 .fz_nr{font-size: 14px;font-weight: normal;}
-.mb_zt{margin: 20px 15px;font-size: 14px;font-weight: 600;color:#179B16;text-align: center;}
+.mb_zt{margin: 20px 15px 15px 15px;font-size: 14px;font-weight: 600;color:#179B16;text-align: center;}
 
 .weui-progress__bar{
   background-color:#EBEBEB;
