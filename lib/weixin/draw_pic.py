@@ -12,7 +12,7 @@ def draw(low_img, headimg, author_name, goal_content, penalty, tow_dimension, sa
 
     im2 = Image.open(headimg)
 
-    im3 = Image.open(tow_dimension)
+    #im3 = Image.open(tow_dimension)
 
     # 在图片上添加文字 1
     draw_handle = ImageDraw.Draw(im1)
