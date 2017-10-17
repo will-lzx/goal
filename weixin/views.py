@@ -91,7 +91,7 @@ def create3(request, goal_id):
         low_img = os.path.join(images_dir, 'qita.jpg')
 
     author_name = 'test'
-    headimg = os.path.join(images_dir, 'time.jpg')
+    headimg = os.path.join(images_dir, 'timg.jpg')
     two_dimension = ''
     random_str = str(time.time())
     save_img = os.path.join(STATIC_ROOT, 'save_images', random_str)
