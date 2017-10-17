@@ -43,7 +43,17 @@ h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-alig
   margin-top: 30px;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
-
+.weui-btn_default{
+  color:#333333;
+  background-color: #FFFFFF;
+}
+.weui-btn_default:not(.weui-btn_disabled):visited{
+  color:#000000;
+}
+.weui-btn_default:not(.weui-btn_disabled):active{
+  color:rgba(0, 0, 0, 0.6);
+  background-color:#DEDEDE;
+}
 .weui-cells{
   margin-top:30px;
   background-color:#FFFFFF;
