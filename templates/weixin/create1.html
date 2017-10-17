@@ -12,16 +12,11 @@
     </div>
     <h1>我的目标方向</h1>
     <div class="cre_sty_con">
-        <a href="#" id="next" onclick="goto_next()"  class="cry_sty" onmouseover="this.style.backgroundColor='#ff3333'" onmouseout="this.style.backgroundColor='#f8f8f8'">学习</a>
-        <a href="#" id="next" onclick="goto_next()" class="cry_sty" onmouseover="this.style.backgroundColor='#ff3333'" onmouseout="this.style.backgroundColor='#f8f8f8'">运动</a>
-        <a href="#" id="next" onclick="goto_next()" class="cry_sty" onmouseover="this.style.backgroundColor='#ff3333'" onmouseout="this.style.backgroundColor='#f8f8f8'">健康</a>
-        <a href="#" id="next" onclick="goto_next()" class="cry_sty" onmouseover="this.style.backgroundColor='#ff3333'" onmouseout="this.style.backgroundColor='#f8f8f8'">脱单</a>
-        <a href="#" id="next" onclick="goto_next()" class="cry_sty" onmouseover="this.style.backgroundColor='#ff3333'" onmouseout="this.style.backgroundColor='#f8f8f8'">存钱</a>
-        <a href="#" id="next" onclick="goto_next()" class="cry_sty" onmouseover="this.style.backgroundColor='#ff3333'" onmouseout="this.style.backgroundColor='#f8f8f8'">其他</a>
+        {% for k, v in goal_type.items %}
+            <a href="#" id="next" onclick="goto_next('{{ k }}')"  class="cry_sty" onmouseover="this.style.backgroundColor='#ff3333'" onmouseout="this.style.backgroundColor='#f8f8f8'">{{ v }}</a>
+        {% endfor %}
+
     </div>
-
-{% endblock %}
-
 
     <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
 
@@ -30,16 +25,14 @@
             csrfmiddlewaretoken: '{{ csrf_token }}'
         }});
 
-        function goto_next() {
-            var goal_type = $("#goal_id").find("option:selected").text();
-            if(goal_type === '目标类型')
-            {
-                alert('请选择一个目标类型');
-                return;
-            }
 
-            location.href = '/weixin/' + goal_type + '/';
-
+        function goto_next(goal_type) {
+            location.href = '/weixin/create2/' + goal_type + '/';
         }
 
     </script>
+
+{% endblock %}
+
+
+

@@ -53,14 +53,20 @@ def wx(request):
 
 def create1(request):
     template_name = 'weixin/create1.html'
-    response = render(request, template_name)
+    context = {
+        'goal_type': goal_type
+    }
+
+    response = render(request, template_name, context)
     return response
 
 
 def create2(request, goal_type):
     template_name = 'weixin/create2.html'
+
     context = {
-        'goal_type': goal_type
+        'goal_type': goal_type,
+        'frequent': frequent
     }
     response = render(request, template_name, context)
     return response
@@ -78,17 +84,28 @@ def create3(request, goal_id):
 
 @csrf_exempt
 def save_goal(request):
-    goal_type = request.POST.get('goal_type')
+    goaltype = request.POST.get('goal_type')
     penalty = request.POST.get('penalty')
     period = request.POST.get('period')
     goal_content = request.POST.get('goal_content')
 
     author = 'temple'
     status = 0
-    savegoal(author, goal_type, penalty, period, goal_content, status)
-    resp_status = 'True'
+    goal_id = savegoal(author, goaltype, penalty, int(period), goal_content, status)
+    result = 'True&' + str(goal_id)
 
-    return HttpResponse(resp_status)
+    return HttpResponse(result)
+
+
+def createsuccess(request):
+    template_name = 'weixin/createsuccess.html'
+    author = 'temple'
+    goals = get_goals(author)
+    context = {
+        'goals': goals
+    }
+    response = render(request, template_name, context)
+    return response
 
 
 def history(request):
