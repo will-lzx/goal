@@ -316,9 +316,9 @@ h4{font-size: 14px;color: #333333;font-weight: 400;line-height: 24px;text-align:
 
 /*-------目标详情------------*/
 .mb_con{width: 100%;background-color: #ff6666;text-align: center;color: #FFFFFF;}
+.mb_cre{margin: 5px 15px;text-align: center;font-size: 14px;color: #f8f8f8;}
 .mb_nr{padding: 30px 15px;font-size: 24px;font-weight: 600;line-height: 32px;}
 .fz_nr{font-size: 14px;font-weight: normal;}
-.mb_zt{margin: 20px 15px 10px 15px;font-size: 14px;font-weight: 600;color:#179B16;text-align: center;}
 .mb_zt_con{width: 100%;}
 .mb_zt_li{width: 25%;height: 100%;text-align: center;line-height: 20px;font-weight: 200;float: left;padding:20px 0;}
 .jd_con{margin: 10px 10px;text-align: left;}
