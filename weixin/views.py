@@ -53,7 +53,11 @@ def wx(request):
 
 def create1(request):
     template_name = 'weixin/create1.html'
-    response = render(request, template_name)
+    context = {
+        'goal_type': goal_type
+    }
+
+    response = render(request, template_name, context)
     return response
 
 
