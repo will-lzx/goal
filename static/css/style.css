@@ -276,7 +276,7 @@ h2{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-alig
 .ksbg{width:100%;height:auto;background: url("/static/images/kanshu.jpg") no-repeat;position: absolute;overflow: hidden;background-size:100% auto; }
 .tx{width:80px;height:80px;border-radius:80px;border: none;}
 .tx_ks{border: 5px solid #0099ff;}
-.tx_con{margin: 90px auto;text-align: center;}
+.tx_con{padding: 90px auto;text-align: center;}
 .nc{margin: 10px 15px;text-align: center;font-size: 16px;line-height: 30px;}
 .mb{margin: 20px 50px;text-align: center;font-size: 36px;font-weight: 400;padding-top: 10px;padding-bottom: 10px;}
 .cf{color: #ff3333}
