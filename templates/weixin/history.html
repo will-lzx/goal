@@ -12,21 +12,21 @@
         {% if goals %}
             {% for goal in goals %}
                 {% ifequal goal.6 0 %}
-                    <div class="li_con li_zxz">
+                    <a href="/weixin/goaldetail/{{ goal.0 }}/"><div class="li_con li_zxz">
                         <div class="li_con_l"><div class="img_l ks">{{ goal.2 | get_goal_type }}</div></div>
                         <div class="li_con_r">
                              <div class="r_til">
-                                 <a href="/weixin/goaldetail/{{ goal.0 }}/">[{{ goal.6|get_goal_status }}]{{ goal.3 }}</a>
+                                 [<span class="col_zxz">{{ goal.6|get_goal_status }}</span>]{{ goal.3 }}
                              </div>
                             <div class="r_sm">8月9日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观：68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督：19</div>
                         </div>
-                    </div>
+                    </div></a>
                 {% endifequal %}
                 {% ifequal goal.6 1 %}
                     <div class="li_con li_wc">
                         <div class="li_con_l"><div class="img_l yd">{{ goal.2 }}</div></div>
                         <div class="li_con_r">
-                            <div class="r_til"><a href="/weixin/goaldetail/{{ goal.0 }}/">[{{ goal.6 |get_goal_status}}]{{ goal.3 }}</a></div>
+                            <div class="r_til"><a href="/weixin/goaldetail/{{ goal.0 }}/">[<span class="col_wc">{{ goal.6 |get_goal_status}}</span>]{{ goal.3 }}</a></div>
                             <div class="r_sm">8月6日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观：68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督：19</div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="li_con li_fq">
                         <div class="li_con_l"><div class="img_l jk">{{ goal.2 }}</div></div>
                         <div class="li_con_r">
-                            <div class="r_til"><a href="/weixin/goaldetail/{{ goal.0 }}/">[{{ goal.6|get_goal_status }}]{{ goal.3 }}</a></div>
+                            <div class="r_til"><a href="/weixin/goaldetail/{{ goal.0 }}/">[<span class="col_fq">{{ goal.6|get_goal_status }}</span>]{{ goal.3 }}</a></div>
                             <div class="r_sm">8月6日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观：68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督：19</div>
                         </div>
                     </div>
