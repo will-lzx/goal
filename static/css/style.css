@@ -504,3 +504,4 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
   -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
 }
 .sc_t{width: 79px;height: 79px;border: none;overflow: hidden;}
+.sc_top{margin-top: -1px;}
