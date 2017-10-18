@@ -79,7 +79,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 }
 .weui-btn3:after{
   content:" ";
-  width:190%;
+  width:200%;
   height:200%;
   position:absolute;
   top:0;
