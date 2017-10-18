@@ -13,7 +13,7 @@
             {% for goal in goals %}
                 {% ifequal goal.6 0 %}
                     <div class="li_con li_zxz">
-                        <div class="li_con_l"><div class="img_l ks">{{ goal.2 | get_goal_status }}</div></div>
+                        <div class="li_con_l"><div class="img_l ks">{{ goal.2 | get_goal_type }}</div></div>
                         <div class="li_con_r">
                              <div class="r_til">
                                  <a href="/weixin/goaldetail/{{ goal.0 }}/">[{{ goal.6 }}]{{ goal.3 }}</a>

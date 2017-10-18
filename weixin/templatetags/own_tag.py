@@ -15,6 +15,11 @@ def get_goal_status(key):
     return goal_status[key]
 
 
+def get_goal_type(key):
+    return goal_status[key]
+
+
 register.filter('convert_time', convert_time)
 register.filter('get_goal_status', get_goal_status)
+register.filter('get_goal_type', get_goal_type)
 
