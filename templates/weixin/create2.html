@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+    <div class="pg_bg">
     <h2>我的小目标</h2>
     <div class="tip">写下目标，已迈出最艰难的一步</div>
     <div class="weui-cells weui-cells_form">
@@ -50,7 +51,7 @@
             <a class="weui-btn weui-btn_primary" href="#" id="save" onclick="save_goal('share')">定下目标，邀好友监督</a>
             <a class="weui-btn2 weui-btn_default" href="#" id="save" onclick="save_goal('save')">定下目标，自己加油</a>
     </div>
-
+    </div>
 
     <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
 
