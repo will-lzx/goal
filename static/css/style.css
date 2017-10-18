@@ -369,4 +369,6 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .mb_cz{height:60px; position:fixed; bottom:0;z-index:200;background-color: #f8f8f8;width: 100%;border-top: 1px solid #eeeeee;font-size: 14px;}
 .mb_cz_left{width: 35%;height: 40px;float: left;padding: 10px;}
 .mb_cz_right{width: 24%;height: 40px;float: left;padding: 10px;}
-.cz_an_s{font-size: 16px; line-height: 46px;font-weight: 400;padding-left: 10px;padding-right: 10px;}
+.cz_an_s_l{font-size: 16px; line-height: 46px;font-weight: 400;padding-left: 15px;padding-right: 5px;}
+.cz_an_s_m{font-size: 16px; line-height: 46px;font-weight: 400;padding-left: 5px;padding-right: 5px;}
+.cz_an_s_r{font-size: 16px; line-height: 46px;font-weight: 400;padding-left: 5px;padding-right: 15px;}
