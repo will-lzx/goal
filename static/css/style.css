@@ -394,7 +394,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .li_fq{border-top: 1px solid #666666;}
 
 /*-------执行力排行------------*/
-.ph_zz{height: 80px;padding: 15px;background-color: #f8f8f8;border-bottom: 1px solid #eeeeee;margin-bottom: 30px;}
+.ph_zz{height: 80px;padding: 15px;background-color: #f8f8f8;border-bottom: 1px solid #eeeeee;margin-bottom: 20px;}
 .ph_zz_l{float: left;width: 70%;text-align: left;}
 .ph_zz_r{float: right;width: 30%;text-align: right;line-height: 40px;font-size: 24px;font-weight: 600;color: #ff6666;}
 .zz_l_tx{width:40px;height: 40px;float: left;}
@@ -404,7 +404,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .zz_sj{width: 100%;font-weight: 200;margin-top: 60px;clear: both;}
 .zz_sj_l{width: 24%;float: left;border-left: 1px solid #eeeeee;text-align: center;line-height: 16px;}
 .zz_sj_b{border: none;}
-.ph_l_con{float: left;padding-bottom: 30px;line-height: 40px;width: 100%;border-bottom: 1px solid #f8f8f8;}
+.ph_l_con{float: left;padding-bottom: 20px;line-height: 40px;width: 100%;border-bottom: 1px solid #f8f8f8;}
 .ph_l_n{width: 30px;float: left;text-align: left;font-size: 14px;font-weight: 400;padding-left: 15px;}
-.ph_l_m{float: left;text-align: left;font-size: 14px;font-weight: 600;margin-left: 15px;}
-.ph_l_f{float: right;text-align: right;font-size: 24px;font-weight: 600;color: #ff6666;padding-right: 15px;}
+.ph_l_m{float: left;text-align: left;font-size: 14px;font-weight: 400;margin-left: 15px;}
+.ph_l_f{float: right;text-align: right;font-size: 24px;font-weight: 400;color: #ff6666;padding-right: 15px;}
