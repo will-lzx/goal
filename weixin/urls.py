@@ -33,4 +33,6 @@ urlpatterns = [
     url(r'^save_goal/$', save_goal, name='save_goal'),
     url(r'^goaldetail/(?P<goal_id>.+)/$', goaldetail, name='goaldetail'),
 
+    url(r'^goinglog/(?P<goal_id>.+)/$', goinglog, name='goinglog'),
+
 ]

@@ -164,3 +164,13 @@ def ranking(request):
     template_name = 'weixin/ranking.html'
     response = render(request, template_name)
     return response
+
+
+def goinglog(request, goal_id):
+    template_name = 'weixin/goinglog.html'
+
+    context = {
+        'goal_id': goal_id
+    }
+    response = render(request, template_name, context)
+    return response
