@@ -1,6 +1,6 @@
 import datetime
 from django import template
-from goal.settings import goal_status
+from goal.settings import goal_status, goal_type
 
 
 register = template.Library()
@@ -16,7 +16,7 @@ def get_goal_status(key):
 
 
 def get_goal_type(key):
-    return goal_status[key]
+    return goal_type[key]
 
 
 register.filter('convert_time', convert_time)
