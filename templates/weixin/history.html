@@ -8,43 +8,37 @@
 {% endblock %}
 
 {% block content %}
-
-   <div class="pg_bg">
-        <div class="li_con li_zxz">
-            <div class="li_con_l"><div class="img_l ks">学习</div></div>
-            <div class="li_con_r">
-                 <div class="r_til"><a href="goaldetail.html">[执行中]每天跑步3公里知道马拉松结束，要不要一起来呢</a></div>
-                <div class="r_sm">8月9日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观：68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督：19</div>
-            </div>
-        </div>
-        <div class="li_con li_wc">
-            <div class="li_con_l"><div class="img_l yd">运动</div></div>
-            <div class="li_con_r">
-                <div class="r_til"><a href="goaldetail.html">[完成]每天跑步3公里知道马拉松结束</a></div>
-                <div class="r_sm">8月6日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观：68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督：19</div>
-            </div>
-        </div>
-        <div class="li_con li_fq">
-            <div class="li_con_l"><div class="img_l jk">健康</div></div>
-            <div class="li_con_r">
-                <div class="r_til"><a href="goaldetail.html">[放弃]每天喝一杯牛奶</a></div>
-                <div class="r_sm">8月6日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观：68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督：19</div>
-            </div>
-        </div>
-
-
-   </div>
-
-
-
-
-    <div id="own">
+    <div class="pg_bg">
         {% if goals %}
             {% for goal in goals %}
-                <a href="/weixin/goaldetail/{{ goal.0 }}/">
-                    <span>{{ goal.3 }}</span><br>
-                    <span>创建于：{{ goal.7 | convert_time }}</span>
-                </a>
+                {% ifequal goal.6 0 %}
+                    <div class="li_con li_zxz">
+                        <div class="li_con_l"><div class="img_l ks">{{ goal.2 }}</div></div>
+                        <div class="li_con_r">
+                             <div class="r_til"><a href="/weixin/goaldetail/{{ goal.0 }}/">[{{ goal.6 }}]{{ goal.3 }}</a></div>
+                            <div class="r_sm">8月9日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观：68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督：19</div>
+                        </div>
+                    </div>
+                {% endifequal %}
+                {% ifequal goal.6 1 %}
+                    <div class="li_con li_wc">
+                        <div class="li_con_l"><div class="img_l yd">{{ goal.2 }}</div></div>
+                        <div class="li_con_r">
+                            <div class="r_til"><a href="/weixin/goaldetail/{{ goal.0 }}/">[{{ goal.6 }}]{{ goal.3 }}</a></div>
+                            <div class="r_sm">8月6日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观：68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督：19</div>
+                        </div>
+                    </div>
+                {% endifequal %}
+                {% ifequal goal.6 2 %}
+                    <div class="li_con li_fq">
+                        <div class="li_con_l"><div class="img_l jk">{{ goal.2 }}</div></div>
+                        <div class="li_con_r">
+                            <div class="r_til"><a href="/weixin/goaldetail/{{ goal.0 }}/">[{{ goal.6 }}]{{ goal.3 }}</a></div>
+                            <div class="r_sm">8月6日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观：68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督：19</div>
+                        </div>
+                    </div>
+                {% endifequal %}
+
                 <br>
             {% endfor %}
         {% else %}
