@@ -335,6 +335,6 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .zx_li_tp{padding: 3px 0;float: left;width: 100%;}
 .img_tp{width: 30%;margin-right: 3%;float: left;border: none;}
 .zx_li_time{padding: 3px 0;color:#888888;font-size: 12px;width: 100%; }
-.mb_cz{height:40px; position:fixed; bottom:0px;z-index:-1;background-color: #FFFFFF;filter:alpha(opacity:30); opacity:0.3;width: 100%; }
+.mb_cz{height:40px; position:fixed; bottom:0px;z-index:-1;background-color: #FFFFFF;width: 100%; }
 .mb_cz_left{width: 40%;height: 40px;float: left;}
 .mb_cz_right{width: 30%;height: 40px;float: left;}
