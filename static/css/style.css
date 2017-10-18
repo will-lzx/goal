@@ -401,6 +401,6 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .img_zz_tx{width: 40px;height: auto;border: none;}
 .zz_l_nc{margin-left: 55px;height: 20px;line-height: 20px;text-align: left;font-size: 18px;font-weight: 400;  }
 .zz_l_ph{margin-left: 55px;height: 20px;color: #666666;}
-.zz_sj{width: 100%;height: 30px;line-height: 30px;margin: 20px 0;font-weight: 200;}
-.zz_sj_l{width: 25%;float: left;border-left: 1px solid #eeeeee;}
+.zz_sj{width: 100%;margin: 20px 0;font-weight: 200;}
+.zz_sj_l{width: 24%;float: left;border-left: 1px solid #eeeeee;text-align: center;line-height: 16px;}
 .zz_sj_b{border: none;}
