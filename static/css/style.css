@@ -396,7 +396,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 /*-------执行力排行------------*/
 .ph_zz{height: 100px;padding: 15px;background-color: #f8f8f8;border-bottom: 1px solid #eeeeee;}
 .ph_zz_l{float: left;width: 70%;text-align: left;}
-.ph_zz_r{float: right;width: 30%;text-align: right;line-height: 40px;font-size: 24px;font-weight: 600;color: #ff6666;}
+.ph_zz_r{float: right;width: 30%;text-align: right;line-height: 40px;font-size: 24px;font-weight: 400;color: #ff6666;}
 .zz_l_tx{width:40px;height: 40px;float: left;}
 .zz_l_tx1{width:60px;height: 60px;float: left;}
 .img_zz_tx1{width: 60px;height: auto;border-radius:60px; border: none;}
