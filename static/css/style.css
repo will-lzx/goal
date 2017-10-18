@@ -392,6 +392,9 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .li_zxz{border-left: 2px solid #1AAD19;}
 .li_wc{border-left: 2px solid #ff6666;}
 .li_fq{border-left: 2px solid #666666;}
+.col_zxz{color: #1AAD19;}
+.col_wc{color: #ff6666;}
+.col_fq{color: #666666;}
 
 /*-------执行力排行------------*/
 .ph_zz{height: 100px;padding: 15px;background-color: #f8f8f8;border-bottom: 1px solid #eeeeee;}
