@@ -417,7 +417,8 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 /*-------执行记录------------*/
 .weui-uploader__bd{
   margin-bottom:-4px;
-  margin-right:-9px;
+  padding-top: 5px;
+  border-top: 1px solid #f8f8f8;
   overflow:hidden;
 }
 .weui-uploader__files{
