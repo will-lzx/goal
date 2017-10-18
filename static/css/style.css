@@ -377,7 +377,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .pg_bg{width: 100%;height: 100%;background-color: #f8f8f8;overflow: hidden;}
 .li_con{background-color: white;margin-bottom: 20px;padding: 15px 15px;overflow: hidden;}
 .li_con_l{width: 60px;height:auto;float: left;}
-.img_l{width: 60px;height: 60px;border: none;font-size: 18px;font-weight: 600;text-align: center;line-height: 60px;color: white;}
+.img_l{width: 60px;height: 60px;border: none;font-size: 24px;font-weight: 600;text-align: center;line-height: 60px;color: white;}
 .li_con_r{float:left;line-height: 30px;margin-left: 80px;margin-top: -60px;}
 .r_til{font-size: 18px;font-weight: 600;line-height: 24px;}
 .r_sm{font-size:14px;color: #666666;}
