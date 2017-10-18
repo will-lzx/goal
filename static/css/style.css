@@ -61,6 +61,37 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
   box-sizing:border-box;
   border-radius:10px;
 }
+.weui-btn3{
+  position:relative;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:15px;
+  padding-right:15px;
+  box-sizing:border-box;
+  font-size:14px;
+  text-align:center;
+  text-decoration:none;
+  line-height:2.55555556;
+  border-radius:5px;
+  -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+  overflow:hidden;
+}
+.weui-btn3:after{
+  content:" ";
+  width:200%;
+  height:200%;
+  position:absolute;
+  top:0;
+  left:0;
+  border:1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform:scale(0.5);
+          transform:scale(0.5);
+  -webkit-transform-origin:0 0;
+          transform-origin:0 0;
+  box-sizing:border-box;
+  border-radius:10px;
+}
 .weui-btn_default{
   color:#333333;
   background-color: #FFFFFF;
