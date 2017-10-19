@@ -49,8 +49,8 @@
                 return false;
             }
 
-            var image_path = sender.value;
-            alert(sender.value);
+            var image_path = sender.files[0].getAsDataURL();
+            alert(sender.files[0].getAsDataURL());
 
             var content = '<ul class="weui-uploader__files" id="uploaderFiles">\n' +
                 '                            <li class="weui-uploader__file "><img class="sc_t" src="' + image_path + '" alt="过程记录图"></li>\n' +
