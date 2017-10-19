@@ -49,8 +49,8 @@
                 return false;
             }
 
-            var image_path = $(':file').val();
-            alert($(':file').val());
+            var image_path =  window.URL.createObjectURL(imgFile.files[0]);
+            alert( window.URL.createObjectURL(imgFile.files[0]););
 
             var content = '<ul class="weui-uploader__files" id="uploaderFiles">\n' +
                 '                            <li class="weui-uploader__file "><img class="sc_t" src="' + image_path + '" alt="过程记录图"></li>\n' +
