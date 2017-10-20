@@ -303,6 +303,9 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .weui-btn-area{
   margin:30px 15px;
 }
+.weui-btn-area2{
+  margin:50px 15px;
+}
 
 
 /*-------目标分享朋友圈------------*/
@@ -341,8 +344,8 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .tx_qt{border: 5px solid #ff66cc;}
 
 
-.cre_succ{margin: 60px 15px;text-align: center;}
-.icon_succ{width: 80px;height: auto;border: none;}
+.cre_succ{margin: 50px 15px;text-align: center;}
+.icon_succ{width: 100px;height: auto;border: none;}
 
 
 
