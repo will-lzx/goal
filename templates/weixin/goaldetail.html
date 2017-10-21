@@ -9,65 +9,52 @@
 
 {% block content %}
 
+    {% if not is_own %}
+        <div>
+            <img src="{{ headimg_url }}"><br>
+            <span>{{ author_name }}的小目标</span>
+        </div>
+    {% endif %}
     <div class="mb_con">
-       <div class="mb_nr">每天跑步3公里直到马拉松结束马拉松结束马拉松结束<br><span class="fz_nr">如不完成则自罚</span> <br>围观群众发100元红包</div>
+       <div class="mb_nr">{{ goal.3 }}<br><span class="fz_nr">如不完成则自罚</span> <br>{{ goal.4 }}</div>
     </div>
     <div class="mb_zt_con">
-        <div class="mb_zt_li mb_zt_left"><b class="mb_zxz">执行中</b><br>创建：9月8日</div>
-        <div class="mb_zt_li"><b>28</b><br>监督</div>
-        <div class="mb_zt_li"><b>68</b><br>围观</div>
+        <div class="mb_zt_li mb_zt_left"><b class="mb_zxz">{{ goal.6 | get_goal_status }}</b><br>创建：{{ goal.7 }}</div>
+        <div class="mb_zt_li"><b>{{ audience_count }}</b><br>监督</div>
+{#        <div class="mb_zt_li"><b>68</b><br>围观</div>#}
     </div>
     <div class="fg_line"></div>
     <div class="mb_xq">
-        <h4>监督好友（18）</h4>
+        <h4>监督好友（{{ audience_count }}）</h4>
         <div class="jd_con">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
-            <img class="img_jd" src="{% static '/images/tx_test.jpg' %}" alt="监督好友">
+            {% for k, v in audience_headimgurl.items %}
+                <img class="img_jd" src="{{ v }}" alt="监督好友">
+            {% endfor %}
+
         </div>
     </div>
     <div class="fg_line"></div>
     <div class="zx_con">
-         <h4>打卡记录（6）</h4>
-         <div class="zx_li">
-             <div class="zx_li_nr">第二天打卡，完成了4公里，不错哦，继续加油啊哈哈哈！明天继续哦，坚持到马拉松前指日可待。目标要不要加大点难度呢？</div>
-             <div class="zx_li_tp"><img class="img_tp" src="{% static '/images/tx_test.jpg' %}" alt="进度打卡"></div>
-             <div class="zx_li_time">2017/8/19 12:30</div>
-         </div>
-         <div class="zx_li">
-             <div class="zx_li_nr">第一天打卡，完成了4公里，不错哦，继续加油啊哈哈哈！</div>
-             <div class="zx_li_tp"><img class="img_tp" src="{% static '/images/tx_test.jpg' %}" alt="进度打卡"><img class="img_tp" src="{% static '/images/tx_test.jpg' %}" alt="进度打卡"><img class="img_tp" src="{% static '/images/tx_test.jpg' %}" alt="进度打卡"></div>
-             <div class="zx_li_time">2017/8/16 12:30</div>
-         </div>
-         <div class="zx_li">
-             <div class="zx_li_nr">第一天指说话，不看图。六个悬念先</div>
-             <div class="zx_li_time">2017/8/16 12:30</div>
-         </div>
+         <h4>打卡记录（{{ history_count }}）</h4>
+        {% for history in goal_histories.items %}
+            <div class="zx_li">
+                 <div class="zx_li_nr">{{ history.2 }}</div>
+                 <div class="zx_li_tp"><img class="img_tp" src="{% static '/images/tx_test.jpg' %}" alt="进度打卡"></div>
+                 <div class="zx_li_time">2017/8/19 12:30</div>
+             </div>
+        {% endfor %}
     </div>
     <div class="mb_cz">
-        <div class="mb_cz_left"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="#" id="save" onclick="save_goal()">邀请好友监督</a></div>
-        <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="save" onclick="save_goal()">目标完结</a></div>
-        <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_r" href="/weixin/goinglog/{{ goal.0 }}/">打卡记录</a></div>
+        {% if is_own %}
+            <div class="mb_cz_left"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="#" id="save" onclick="save_goal()">邀请好友监督</a></div>
+            <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="save" onclick="save_goal()">目标完结</a></div>
+            <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_r" href="/weixin/goinglog/{{ goal.0 }}/">打卡记录</a></div>
+        {% else %}
+            <div class="mb_cz_left"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="#" id="save" onclick="save_goal()">我也定个小目标</a></div>
+            <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="save" onclick="save_goal()">监督</a></div>
+        {% endif %}
+
     </div>
-
-
-
-    <div>
-        <span>{{ goal.6 | get_goal_status }}</span>
-        <span>{{ goal.3 }}</span>
-        <span>{{ goal.4 }}</span>
-        <span>{{ goal.7 | convert_time }}</span>
-    </div>
-
 
 
 {% endblock %}

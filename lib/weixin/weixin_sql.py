@@ -67,6 +67,20 @@ def get_goal_by_id(goal_id):
     return goal
 
 
+def get_audience(goal_id):
+    mysql = MySQL(db='goal')
+
+    goal_audience_list = mysql.exec_query('select audience from goal_audience_relation where goal_id={0}'.format(goal_id))
+    return goal_audience_list
+
+
+def get_goal_history(goal_id):
+    mysql = MySQL(db='goal')
+
+    goal_history = mysql.exec_query('select * from goal_history where goal_id={0}'.format(goal_id))
+    return goal_history
+
+
 if __name__ == '__main__':
     goal = get_goal_id()
     print(goal)

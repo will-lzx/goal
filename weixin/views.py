@@ -9,7 +9,8 @@ from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 
 from lib.utils.common import create_timestamp
-from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id
+from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id, get_audience, \
+    get_goal_history
 from lib.weixin.draw_pic import *
 from goal.settings import *
 
@@ -144,11 +145,29 @@ def history(request):
 def goaldetail(request, goal_id):
     template_name = 'weixin/goaldetail.html'
 
+    is_own = True
+
     goal = get_goal_by_id(goal_id)
+
+    audience_list = get_audience(goal_id)
+
+    audience_headimgurl = {}
+    for audience in audience_list:
+        audience_headimgurl[audience] = ''
+
+    goal_histories = get_goal_history(goal_id)
+
     if len(goal) > 0:
         goal = goal[0]
     context = {
-        'goal': goal
+        'goal': goal,
+        'is_own': is_own,
+        'headimg_url': '',
+        'author_name': '',
+        'audience_headimgurl': audience_headimgurl,
+        'audience_count': len(audience_list),
+        'goal_histories': goal_histories,
+        'history_count': len(goal_histories)
     }
     response = render(request, template_name, context)
     return response
