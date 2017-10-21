@@ -13,13 +13,14 @@
             <div class="weui-cell__bd">
                 <textarea class="weui-textarea" placeholder="写下过程，打卡记录" rows="3"></textarea>
                 <div class="weui-uploader__bd" id="preview_wrapper">
-                    <form action="/weixin/save_history/" method="POST" enctype="multipart/form-data">
+                    <form action="/updateinfo" method="POST" enctype="multipart/form-data">
 
             <div class="updateImg">
             <img src="{{ account.photo.url }}" alt=""/> </div>
 
             <input name="photo" type="file" id="exampleInputFile">
             <button id="photo" class="btn btn-danger" type="submit">上传头像</button>
+                    </form>
 
                 </div>
             </div>
