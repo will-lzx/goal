@@ -19,7 +19,7 @@
        <div class="mb_nr">{{ goal.3 }}<br><span class="fz_nr">如不完成则自罚</span> <br>{{ goal.4 }}</div>
     </div>
     <div class="mb_zt_con">
-        <div class="mb_zt_li mb_zt_left"><b class="mb_zxz">{{ goal.6 | get_goal_status }}</b><br>创建：{{ goal.7 }}</div>
+        <div class="mb_zt_li mb_zt_left"><b class="mb_zxz">{{ goal.6 | get_goal_status }}</b><br>创建：{{ goal.7 | convert_time }}</div>
         <div class="mb_zt_li"><b>{{ audience_count }}</b><br>监督</div>
 {#        <div class="mb_zt_li"><b>68</b><br>围观</div>#}
     </div>

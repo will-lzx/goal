@@ -10,7 +10,7 @@ from wechatpy.utils import check_signature
 
 from lib.utils.common import create_timestamp
 from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id, get_audience, \
-    get_goal_history
+    get_goal_history, save_goal_history
 from lib.weixin.draw_pic import *
 from goal.settings import *
 
@@ -140,6 +140,22 @@ def history(request):
     }
     response = render(request, template_name, context)
     return response
+
+
+@csrf_exempt
+def save_history(request):
+    image_url = request.POST.get('image_url')
+    goal_id = request.POST.get('goal_id')
+    history_content = request.POST.get('history_content')
+
+    try:
+        save_goal_history(goal_id, history_content, image_url)
+    except Exception as ex:
+        return HttpResponse('False&' + str(ex))
+
+    result = 'True&'
+
+    return HttpResponse(result)
 
 
 def goaldetail(request, goal_id):
