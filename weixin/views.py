@@ -144,11 +144,12 @@ def history(request):
 
 @csrf_exempt
 def save_history(request):
-    print('file photo', request.FILES)
     image_url = request.POST.get('image_url')
+    print('imge-url', image_url)
     goal_id = request.POST.get('goal_id')
+    print('goal_id is', goal_id)
     history_content = request.POST.get('history_content')
-
+    print('goal content is', history_content)
 
     try:
         save_goal_history(goal_id, history_content, image_url)
