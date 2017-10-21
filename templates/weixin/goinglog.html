@@ -14,25 +14,12 @@
                 <textarea class="weui-textarea" placeholder="写下过程，打卡记录" rows="3"></textarea>
                 <div class="weui-uploader__bd" id="preview_wrapper">
                     <form action="/weixin/save_history/" method="POST" enctype="multipart/form-data">
-                        <div id="images">
-                            <ul class="weui-uploader__files" id="uploaderFiles">
-    {#                            <li class="weui-uploader__file "><img class="sc_t" src="{% static '/images/tx_test.jpg' %}" alt="过程记录图"></li>#}
-    {#                            <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(/static/images/tx_test.jpg)">#}
-    {#                                  <div class="weui-uploader__file-content">50%</div>#}
-    {#                            </li>#}
-                             </ul>
-                        </div>
 
-                       <div class="weui-uploader__input-box">
-                           <input name="photo" id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple onchange="onUploadImgChange(this)"/>
-                       </div>
+            <div class="updateImg">
+            <img src="{{ account.photo.url }}" alt=""/> </div>
 
-                        <div class="weui-btn-area">
-{#                            <a class="weui-btn weui-btn_primary" href="#" id="publish" onclick="save_history()">发布记录</a>#}
-                            <button id="photo" class="btn btn-danger" type="submit">发布记录</button>
-                        </div>
-
-                    </form>
+            <input name="photo" type="file" id="exampleInputFile">
+            <button id="photo" class="btn btn-danger" type="submit">上传头像</button>
 
                 </div>
             </div>
