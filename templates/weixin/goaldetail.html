@@ -42,13 +42,13 @@
                  <div class="zx_li_tp">
                      {% for k, v in history_image_list.items %}
                          {% ifequal k history.0 %}
-                             {% for image_url in v.items %}
+                             {% for image_url in v %}
                                 <img class="img_tp" src="{{ image_url }}" alt="进度打卡">
                              {% endfor %}
                          {% endifequal %}
                      {% endfor %}
                  </div>
-                 <div class="zx_li_time">2017/8/19 12:30</div>
+                 <div class="zx_li_time">{{ history.3 | convert_time }}</div>
              </div>
         {% endfor %}
     </div>
