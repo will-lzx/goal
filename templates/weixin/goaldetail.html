@@ -65,6 +65,10 @@
 
 
     </div>
+    <div id="goal_close" style="display: none;">
+        <div class="mb_cz_left"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="#" id="create" onclick="goal_operator('{{ goal.0 }}', 1)">目标完成</a></div>
+        <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="audience" onclick="goal_operator('{{ goal.0 }}', 2)">放弃目标</a></div>
+    </div>
 
     <div id="hidden" style="display: none;">
         <input type="checkbox" checked id="audience_hidden">
@@ -90,6 +94,33 @@
                 $('#audience').text = '监督';
             }
         }
+
+        function close_goal()
+        {
+            $('#goal_close').show();
+        }
+
+        function goal_operator(goal_id, action)
+        {
+            $.ajax({
+                type:"post",
+                url:"/weixin/goal_action/",//自己填写请求地址
+                data:{goal_id: goal_id, action: action},
+                success:function(result){
+                    var res = result.split('&')[0];
+                    if(res === 'True')
+                    {
+                        location.href = '/weixin/history/';
+                    }
+                    else
+                    {
+                        alert('服务器故障，请稍后再试');
+                    }
+                }
+            });
+        }
+
+
 
 
 

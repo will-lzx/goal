@@ -111,6 +111,15 @@ def get_history_images(history_id):
     return history_images
 
 
+def update_goal(goal_id, action):
+    mysql = MySQL(db='goal')
+
+    try:
+        mysql.exec_none_query('update goal_list set status={0} where id={1}'.format(action, goal_id))
+        return True
+    except:
+        print('Goal {0} status update fail'.format(goal_id))
+        return False
 
 
 
