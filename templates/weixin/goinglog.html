@@ -92,12 +92,10 @@
                     {
                         show_msg();
                         setTimeout(function(){
-                        $('#errormsg').hide();
+                        clear_msg();
+
                         location.href = '/weixin/goaldetail/' + goal_id + '/';
                         },2000);
-
-
-
                     }
                     else
                     {
@@ -113,7 +111,11 @@
             $("#errormsg").html("执行记录添加成功, 即将跳转到目标详情页面");
             $('#errormsg').show();
         }
-
+        function clear_msg()
+        {
+            $("#errormsg").html('');
+            $('#errormsg').hide();
+        }
 
 
     </script>
