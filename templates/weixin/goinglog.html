@@ -93,10 +93,11 @@
                         show_msg();
                         setTimeout(function(){
                         $('#errormsg').hide();
+                        location.href = '/weixin/goaldetail/' + goal_id + '/';
                         },2000);
 
 
-                        location.href = '/weixin/goaldetail/' + goal_id + '/';
+
                     }
                     else
                     {
