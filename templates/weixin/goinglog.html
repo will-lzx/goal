@@ -90,7 +90,7 @@
                     var res = result.split('&')[0];
                     if(res === 'True')
                     {
-                        $("#errormsg").html("执行记录添加成功, 即将跳转到目标详情页面").show(300).delay(3000).hide(300);
+                        setTimeout("show_msg()", 3000);
 
                         location.href = '/weixin/goaldetail/' + goal_id + '/';
                     }
@@ -101,6 +101,12 @@
                 }
             });
 
+        }
+
+        function show_msg()
+        {
+            $("#errormsg").html("执行记录添加成功, 即将跳转到目标详情页面");
+            $('#errormsg').style.display = 'none';
         }
 
 
