@@ -10,7 +10,7 @@ from wechatpy.utils import check_signature
 
 from lib.utils.common import create_timestamp
 from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id, get_audience, \
-    get_goal_history, save_goal_history
+    get_goal_history, save_goal_history, get_history_images
 from lib.weixin.draw_pic import *
 from goal.settings import *
 
@@ -173,6 +173,16 @@ def goaldetail(request, goal_id):
 
     goal_histories = get_goal_history(goal_id)
 
+    history_image_list = {}
+    for goal_history in goal_histories:
+        history_images = get_history_images(goal_history[0])
+        images_list = []
+        for image in history_images:
+            images_list.append(image[1])
+
+        history_image_list[goal_history[0]] = images_list
+
+
     if len(goal) > 0:
         goal = goal[0]
     context = {
@@ -183,7 +193,8 @@ def goaldetail(request, goal_id):
         'audience_headimgurl': audience_headimgurl,
         'audience_count': len(audience_list),
         'goal_histories': goal_histories,
-        'history_count': len(goal_histories)
+        'history_count': len(goal_histories),
+        'history_image_list': history_image_list
     }
     response = render(request, template_name, context)
     return response

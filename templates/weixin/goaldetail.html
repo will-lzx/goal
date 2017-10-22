@@ -27,7 +27,7 @@
     <div class="mb_xq">
         <h4>监督好友（{{ audience_count }}）</h4>
         <div class="jd_con">
-            {% for k, v in audience_headimgurl.items %}
+            {% for k, v in audience_headimgurl %}
                 <img class="img_jd" src="{{ v }}" alt="监督好友">
             {% endfor %}
 
@@ -37,10 +37,17 @@
     <div class="zx_con">
          <h4>打卡记录（{{ history_count }}）</h4>
         {% for history in goal_histories %}
-            12121212121
             <div class="zx_li">
                  <div class="zx_li_nr">{{ history.2 }}</div>
-                 <div class="zx_li_tp"><img class="img_tp" src="{% static '/images/tx_test.jpg' %}" alt="进度打卡"></div>
+                 <div class="zx_li_tp">
+                     {% for k, v in history_image_list.items %}
+                         {% ifequal k history.0 %}
+                             {% for image_url in v.items %}
+                                <img class="img_tp" src="{{ image_url }}" alt="进度打卡">
+                             {% endfor %}
+                         {% endifequal %}
+                     {% endfor %}
+                 </div>
                  <div class="zx_li_time">2017/8/19 12:30</div>
              </div>
         {% endfor %}

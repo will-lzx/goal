@@ -104,6 +104,16 @@ def get_goal_history(goal_id):
     return goal_history
 
 
+def get_history_images(history_id):
+    mysql = MySQL(db='goal')
+
+    history_images = mysql.exec_query('select * from history_image_url where history_id={0}'.format(history_id))
+    return history_images
+
+
+
+
+
 if __name__ == '__main__':
     goal = get_goal_id()
     print(goal)
