@@ -54,15 +54,46 @@
     </div>
     <div class="mb_cz">
         {% if is_own %}
-            <div class="mb_cz_left"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="#" id="save" onclick="save_goal()">邀请好友监督</a></div>
-            <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="save" onclick="save_goal()">目标完结</a></div>
+            <div class="mb_cz_left"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="/weixin/create3/{{ goal_id }}/" id="share">邀请好友监督</a></div>
+            <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="close_goal" onclick="close_goal()">目标完结</a></div>
             <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_r" href="/weixin/goinglog/{{ goal.0 }}/">打卡记录</a></div>
         {% else %}
-            <div class="mb_cz_left"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="#" id="save" onclick="save_goal()">我也定个小目标</a></div>
-            <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="save" onclick="save_goal()">监督</a></div>
+            <div class="mb_cz_left"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="/weixin/create1/" id="create">我也定个小目标</a></div>
+            <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="audience" onclick="audience()">监督</a></div>
         {% endif %}
 
+
+
     </div>
+
+    <div id="hidden">
+        <input type="checkbox" checked id="audience_hidden">
+    </div>
+
+    <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
+
+    <script>
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+
+        function audience()
+        {
+            if($('#audience_hidden').prop('checked'))
+            {
+                $("#audience_hidden").prop("checked",false);
+                $('#audience').text = '取消监督';
+            }
+            else
+            {
+                $("#audience_hidden").prop("checked",true);
+                $('#audience').text = '监督';
+            }
+        }
+
+
+
+    </script>
 
 
 {% endblock %}
