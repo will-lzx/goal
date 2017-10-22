@@ -182,7 +182,6 @@ def goaldetail(request, goal_id):
 
         history_image_list[goal_history[0]] = images_list
 
-
     if len(goal) > 0:
         goal = goal[0]
     context = {
