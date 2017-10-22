@@ -90,7 +90,7 @@
                     var res = result.split('&')[0];
                     if(res === 'True')
                     {
-                        $("#errormsg").html("执行记录添加成功, 即将跳转到目标详情页面").fadeTo(3000).hide();
+                        $("#errormsg").html("您的信息输入错误，请重试!").show(300).delay(3000).hide(300);
 
                         //location.href = '/weixin/goaldetail/' + goal_id + '/';
                     }
