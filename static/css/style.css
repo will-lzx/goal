@@ -376,7 +376,8 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .cz_an_s_m{font-size: 16px; line-height: 46px;font-weight: 400;padding:0 5px;}
 .cz_an_s_r{font-size: 16px; line-height: 46px;font-weight: 400;padding:0 5px;}
 
-.mb_wj_con{width: 80%;height:auto;overflow:hidden;z-index: 202;background-color: white;border: 1px solid #eeeeee;text-align: center;padding: 15px;margin: 50px auto;position: absolute;}
+.mb_wj_bg{width:100%;  height:100%;  background:rgba(0, 0, 0, 0.5);  position: fixed;  left: 0;  top: 0;  z-index: 300;}
+.mb_wj_con{width: 80%;height:auto;z-index:400;background-color: white;border: 1px solid #eeeeee;text-align: center;padding: 15px;margin: 60px auto;}
 .wj_tip{font-size: 16px;line-height: 28px;text-align: left;}
 .wj_cz{width: 100%;height: 50px;text-align: center;}
 
