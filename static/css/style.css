@@ -25,7 +25,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 /*-------创建部分的样式------------*/
 .cre_jj{margin: 100px 15px;color:#333333;text-align: center;}
 .cre_sty_con{margin: 20px 15px;text-align: center;margin-bottom: 80px;height: 200px;}
-.cry_sty{width: 28%;height: 40px;margin:2%;line-height:40px;border-radius:25px;background-color:#f8f8f8;float: left;text-align: center;border: 1px solid #eeeeee;text-decoration: none;font-weight: 400;color: #333333;}
+.cry_sty{width: 28%;height: 40px;margin:2%;line-height:40px;border-radius:25px;float: left;text-align: center;border: 1px solid #eeeeee;text-decoration: none;font-weight: 400;color: #333333;}
 .cry_sty_left{margin-left: 0;}
 .cry_sty_right{margin-right: 0;}
 
