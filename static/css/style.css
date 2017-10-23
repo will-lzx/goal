@@ -21,7 +21,7 @@ h3{font-size: 18px;color: #333333;font-weight: 400;line-height: 30px;text-align:
 h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 15px 0;}
 .tip{padding: 0 15px;color: #666666;text-align: center;font-size: 14px;}
 .b{font-weight: 400;font-size: 16px;}
-.fk_tip{width: 100%;text-align: center;background-color: rgba(255,255,224,0.9);}
+.fk_tip{width: auto;text-align: center;background-color: rgba(255,255,224,0.9);margin: 0 auto;}
 
 /*-------创建部分的样式------------*/
 .cre_jj{margin: 100px 15px;color:#333333;text-align: center;}
