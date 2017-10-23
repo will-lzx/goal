@@ -380,8 +380,8 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .mb_wj_con{width: 75%;height:auto;z-index:400;background-color: white;border: 1px solid #eeeeee;text-align: center;margin: 240px auto;border-radius:5px; }
 .wj_tip{font-size: 16px;line-height: 28px;text-align: left;padding: 20px;}
 .wj_cz{width: 100%;text-align: center;margin-top: 10px;border-top: 1px solid #eeeeee;overflow: hidden; }
-.wj_cz_l{width: 49%;border-right: 1px solid #eeeeee;float: left;text-decoration: none;line-height: 48px;font-weight: 400;color: #000000;}
-.wj_cz_r{border-right: none;color: #179B16;}
+.wj_cz_l{width: 49%;border-right: 1px solid #eeeeee;float: left;text-decoration: none;line-height: 48px;color: #000000;}
+.wj_cz_r{border-right: none;color: #179B16;font-weight: 400;}
 
 
 /*-------我的历史目标------------*/
