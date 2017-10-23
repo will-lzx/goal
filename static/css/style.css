@@ -376,7 +376,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .cz_an_s_m{font-size: 16px; line-height: 46px;font-weight: 400;padding:0 5px;}
 .cz_an_s_r{font-size: 16px; line-height: 46px;font-weight: 400;padding:0 5px;}
 
-.mb_wj_con{width: 300px;height: 400px;z-index: 202;background-color: white;border: 1px solid #eeeeee;text-align: center;padding: 15px;}
+.mb_wj_con{width: 80%;height: 200px;z-index: 202;background-color: white;border: 1px solid #eeeeee;text-align: center;padding: 15px;margin: 50px auto;}
 .wj_tip{font-size: 16px;line-height: 28px;text-align: left;}
 .wj_cz{width: 100%;height: 50px;text-align: center;}
 
