@@ -5,14 +5,14 @@ from PIL import Image
 from PIL import ImageDraw
 
 
-def draw(low_img, headimg, author_name, goal_content, penalty, tow_dimension, save_img):
+def draw(low_img, headimg, author_name, goal_content, penalty, two_dimension, save_img):
     # 设置字体，如果没有，也可以不设置
     # font = ImageFont.truetype("/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf", 13)
     im1 = Image.open(low_img)
 
     im2 = Image.open(headimg)
 
-    im3 = Image.open(tow_dimension)
+    im3 = Image.open('http://182.61.21.208/' + two_dimension)
 
     # 在图片上添加文字 1
     draw_handle = ImageDraw.Draw(im1)
