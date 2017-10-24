@@ -93,7 +93,8 @@ def create3(request, goal_id):
 
     author_name = 'test'
     headimg = os.path.join(images_dir, 'shengji.png')
-    two_dimension = '/static/images/getqrcode.jpeg'
+    random_str = str(time.time())
+    two_dimension = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
     random_str = str(time.time())
     save_img = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
     draw(low_img, headimg, author_name, goal[3], goal[4], two_dimension, save_img)
