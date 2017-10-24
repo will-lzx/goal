@@ -12,7 +12,7 @@ def draw(low_img, headimg, author_name, goal_content, penalty, two_dimension, sa
 
     im2 = Image.open(headimg)
 
-    im3 = Image.open('http://182.61.21.208' + two_dimension)
+    im3 = Image.open('/var/www/goal/static/images/getqrcode.jpeg')
 
     # 在图片上添加文字 1
     draw_handle = ImageDraw.Draw(im1)
