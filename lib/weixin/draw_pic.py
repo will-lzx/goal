@@ -30,7 +30,7 @@ def draw(low_img, headimg, author_name, goal_content, penalty, two_dimension, sa
     w, h = font.getsize(author_name + '的小目标')
 
     draw_handle.text((width/2-w/2, 300), author_name + '的小目标', (255, 255, 255), font)
-    content_font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 50)
+    content_font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 70)
 
     w, h = content_font.getsize(goal_content)
     draw_handle.text((width/2-w/2, 400), goal_content, (255, 255, 255), content_font)
