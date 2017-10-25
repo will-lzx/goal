@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import PIL
 import time
 from PIL import ImageFont
@@ -5,37 +7,69 @@ from PIL import Image
 from PIL import ImageDraw
 
 
-def draw(low_img, headimg, author_name, goal_content, penalty, tow_dimension, save_img):
-    # 设置字体，如果没有，也可以不设置
-    # font = ImageFont.truetype("/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf", 13)
+def draw(low_img, headimg, author_name, goal_content, penalty, two_dimension, save_img):
+
+    font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 19)
     im1 = Image.open(low_img)
+
+    width, height = im1.size
 
     im2 = Image.open(headimg)
 
-    im3 = Image.open(tow_dimension)
+    im2_width, im2_height = im2.size
+
+    #new_png = transparent('/Users/zhixiangliu/Documents/code/goal/static/images/getqrcode.png', '/Users/zhixiangliu/Documents/code/goal/static/images/getqrcode2.png')
+
+    create_img = two_dimension
+    new_png = create_two_dimension(create_img)
+    im3 = Image.open(new_png)
 
     # 在图片上添加文字 1
     draw_handle = ImageDraw.Draw(im1)
-    draw_handle.bitmap((200, 600), im2, (255, 255, 0))
+    draw_handle.bitmap((width/2-im2_width/2, 100), im2, (255, 255, 255))
 
-    draw_handle.text((600, 800), author_name + "的小目标", (255, 255, 0))
-    draw_handle.text((700, 800), goal_content, (255, 255, 0))
+    w, h = font.getsize(author_name + '的小目标')
 
-    draw_handle.text((800, 800), '如完不成则自罚', (255, 255, 0))
+    draw_handle.text((width/2-w/2, 300), author_name + '的小目标', (255, 255, 255), font)
+    content_font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 40)
 
-    draw_handle.text((900, 800), penalty, (255, 255, 0))
+    w, h = content_font.getsize(goal_content)
+    draw_handle.text((width/2-w/2, 400), goal_content, (255, 255, 255), content_font)
 
-    draw_handle.bitmap((1000, 800), im3, (255, 255, 0))
+    w, h = content_font.getsize(penalty)
+    draw_handle.text((width/2 -w/2, 800), penalty, (255, 255, 255), content_font)
 
-    show_content1 = '长按识别二维码吗围观监督TA的小目标'
-
-    draw_handle.text((1200, 800), show_content1, (255, 255, 0))
-
-    show_content2 = '世界会向那些有目标和远见的人让路'
-
-    draw_handle.text((1400, 800), show_content2, (255, 255, 0))
+    draw_handle.bitmap((100, height-160), im3, (255, 255, 255))
 
     draw_handle = ImageDraw.Draw(im1)
 
     # 保存
     im1.save(save_img)
+
+
+def create_two_dimension(save_img):
+    import qrcode
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=5,
+        border=1,
+    )
+    qr.add_data("http://182.61.21.208/weixin/create1/")
+    qr.make(fit=True)
+
+    img = qr.make_image()
+    img.save(save_img)
+    return save_img
+
+
+if __name__ == '__main__':
+    low_img = '/Users/zhixiangliu/Documents/code/goal/static/images/kanshu2.jpg'
+    headimg = '/Users/zhixiangliu/Documents/code/goal/static/images/shengji.png'
+    author_name = '刘志祥'
+    goal_content = '我的微目标'
+    penalty = '裸奔'
+    two_dim = ''
+    save_img = '/Users/zhixiangliu/Documents/code/goal/static/images/rand.jpg'
+    goal = draw(low_img, headimg, author_name, goal_content, penalty, two_dim, save_img)
+    print('')
