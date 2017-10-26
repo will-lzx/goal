@@ -20,8 +20,7 @@ def draw(low_img, headimg, author_name, goal_content, penalty, two_dimension, sa
 
     #new_png = transparent('/Users/zhixiangliu/Documents/code/goal/static/images/getqrcode.png', '/Users/zhixiangliu/Documents/code/goal/static/images/getqrcode2.png')
 
-    create_img = two_dimension
-    new_png = create_two_dimension(create_img)
+    new_png = create_two_dimension(two_dimension)
     im3 = Image.open(new_png)
 
     # 在图片上添加文字 1
@@ -31,7 +30,7 @@ def draw(low_img, headimg, author_name, goal_content, penalty, two_dimension, sa
     w, h = font.getsize(author_name + '的小目标')
 
     draw_handle.text((width/2-w/2, 300), author_name + '的小目标', (255, 255, 255), font)
-    content_font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 40)
+    content_font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 70)
 
     w, h = content_font.getsize(goal_content)
     draw_handle.text((width/2-w/2, 400), goal_content, (255, 255, 255), content_font)
@@ -39,7 +38,7 @@ def draw(low_img, headimg, author_name, goal_content, penalty, two_dimension, sa
     w, h = content_font.getsize(penalty)
     draw_handle.text((width/2 -w/2, 800), penalty, (255, 255, 255), content_font)
 
-    draw_handle.bitmap((100, height-160), im3, (255, 255, 255))
+    draw_handle.bitmap((82, height-164), im3, (255, 255, 255))
 
     draw_handle = ImageDraw.Draw(im1)
 
@@ -60,16 +59,20 @@ def create_two_dimension(save_img):
 
     img = qr.make_image()
     img.save(save_img)
+    face_image = PIL.Image.open(save_img)
+    face_image = face_image.resize((115, 115), PIL.Image.ANTIALIAS)
+    face_image.save(save_img)
+
     return save_img
 
 
 if __name__ == '__main__':
-    low_img = '/Users/zhixiangliu/Documents/code/goal/static/images/kanshu2.jpg'
+    low_img = '/Users/zhixiangliu/Documents/code/goal/static/images/kanshu.jpg'
     headimg = '/Users/zhixiangliu/Documents/code/goal/static/images/shengji.png'
     author_name = '刘志祥'
     goal_content = '我的微目标'
     penalty = '裸奔'
-    two_dim = ''
+    two_dim = '/Users/zhixiangliu/Documents/code/goal/static/images/qrcode.jpg'
     save_img = '/Users/zhixiangliu/Documents/code/goal/static/images/rand.jpg'
     goal = draw(low_img, headimg, author_name, goal_content, penalty, two_dim, save_img)
     print('')
