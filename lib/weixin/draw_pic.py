@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import datetime
 
 import PIL
 import time
@@ -7,7 +8,7 @@ from PIL import Image
 from PIL import ImageDraw
 
 
-def draw(low_img, headimg, author_name, goal_content, penalty, two_dimension, save_img):
+def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty, two_dimension, save_img):
 
     font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 19)
     im1 = Image.open(low_img)
@@ -15,6 +16,7 @@ def draw(low_img, headimg, author_name, goal_content, penalty, two_dimension, sa
     width, height = im1.size
 
     im2 = Image.open(headimg)
+    im2 = im2.resize((80, 80), PIL.Image.ANTIALIAS)
 
     im2_width, im2_height = im2.size
 
@@ -25,20 +27,21 @@ def draw(low_img, headimg, author_name, goal_content, penalty, two_dimension, sa
 
     # 在图片上添加文字 1
     draw_handle = ImageDraw.Draw(im1)
-    draw_handle.bitmap((width/2-im2_width/2, 100), im2, (255, 255, 255))
+    draw_handle.bitmap((20, 20), im2, (255, 255, 255))
 
-    w, h = font.getsize(author_name + '的小目标')
+    draw_handle.text((130, 40), author_name + '定下小目标', (255, 255, 255), font)
 
-    draw_handle.text((width/2-w/2, 300), author_name + '的小目标', (255, 255, 255), font)
+    draw_handle.text((130, 70),  str(goal_create_time), (255, 255, 255), font)
+
     content_font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 70)
 
     w, h = content_font.getsize(goal_content)
-    draw_handle.text((width/2-w/2, 400), goal_content, (255, 255, 255), content_font)
+    draw_handle.text((width/2-w/2, 200), goal_content, (255, 255, 255), content_font)
 
     w, h = content_font.getsize(penalty)
-    draw_handle.text((width/2 -w/2, 800), penalty, (255, 255, 255), content_font)
+    draw_handle.text((width/2 -w/2, 650), penalty, (255, 255, 255), content_font)
 
-    draw_handle.bitmap((82, height-164), im3, (255, 255, 255))
+    draw_handle.bitmap((52, height-154), im3, (255, 255, 255))
 
     draw_handle = ImageDraw.Draw(im1)
 
@@ -74,5 +77,6 @@ if __name__ == '__main__':
     penalty = '裸奔'
     two_dim = '/Users/zhixiangliu/Documents/code/goal/static/images/qrcode.jpg'
     save_img = '/Users/zhixiangliu/Documents/code/goal/static/images/rand.jpg'
-    goal = draw(low_img, headimg, author_name, goal_content, penalty, two_dim, save_img)
+    goal_create_time = '2016-10-23 10:00:00'
+    goal = draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty, two_dim, save_img)
     print('')

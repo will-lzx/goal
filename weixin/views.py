@@ -97,7 +97,7 @@ def create3(request, goal_id):
     two_dimension = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
     random_str = str(time.time())
     save_img = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
-    draw(low_img, headimg, author_name, goal[3], goal[4], two_dimension, save_img)
+    draw(low_img, headimg, author_name, (goal[7] + datetime.timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S"), goal[3], goal[4], two_dimension, save_img)
     context = {
         'goal': goal,
         'img_url': '/static/save_images/' + random_str + '.jpg'
