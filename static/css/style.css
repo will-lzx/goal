@@ -312,7 +312,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 /*-------目标分享朋友圈------------*/
 
 
-.lxbg{width:100%;height:auto;position: absolute;overflow: hidden;background-size:100% auto; }
+.lxbg{width:100%;position: absolute;overflow: hidden;background-size:100% auto;background-color: black; }
 .tx{width:90px;height:90px;border-radius:90px;border: none;}
 .tx_con{padding: 10px auto;text-align: center;margin-top: 80px;}
 .nc{margin: 10px 15px;text-align: center;font-size: 16px;line-height: 30px;}
