@@ -10,7 +10,7 @@ from PIL import ImageDraw
 
 def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty, two_dimension, save_img):
 
-    font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 19)
+    font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 22)
     im1 = Image.open(low_img)
 
     width, height = im1.size
