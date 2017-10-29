@@ -87,7 +87,8 @@ def save_goal_history(goal_id, content, image_url):
 
     image_urls = image_url.split(';')
     for url in image_urls:
-        save_history_image(history_id, url)
+        if url:
+            save_history_image(history_id, url)
 
 
 def save_history_image(history_id, image_url):
