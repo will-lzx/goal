@@ -49,18 +49,18 @@
         {% for history in goal_histories %}
             <div class="zx_li">
                  <div class="zx_li_nr">{{ history.2 }}</div>
-                {% if history_image_list %}
-                    <div class="zx_li_tp">
-                         {% for k, v in history_image_list.items %}
+                 <div class="zx_li_tp">
+                     {% for k, v in history_image_list.items %}
+                         {% if v %}
                              {% ifequal k history.0 %}
                                  {% for image_url in v %}
                                     <img class="img_tp" src="{{ image_url }}" alt="进度打卡">
                                  {% endfor %}
                              {% endifequal %}
-                         {% endfor %}
-                     </div>
-                {% endif %}
+                         {% endif %}
 
+                     {% endfor %}
+                 </div>
                  <div class="zx_li_time">{{ history.3 | convert_time }}</div>
              </div>
         {% endfor %}
