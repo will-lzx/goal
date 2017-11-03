@@ -57,6 +57,7 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
     else:
         draw_handle.text((width/2-w/2, 200), goal_content, (255, 255, 255), content_font)
 
+    content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 60)
     w, h = content_font.getsize(penalty)
     draw_handle.text((width/2 -w/2, 650), penalty, (255, 255, 255), content_font)
 
