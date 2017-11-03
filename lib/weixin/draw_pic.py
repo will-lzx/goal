@@ -10,7 +10,8 @@ from PIL import ImageDraw
 
 def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty, two_dimension, save_img):
 
-    font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 22)
+    #font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 22)
+    font = ImageFont.truetype('/Users/zhixiangliu/Documents/code/goal/static/images/STHeiti Light.ttc', 22)
     im1 = Image.open(low_img)
 
     width, height = im1.size
@@ -33,10 +34,29 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
 
     draw_handle.text((130, 70),  str(goal_create_time), (255, 255, 255), font)
 
-    content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 70)
+    #content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 70)
+    content_font = ImageFont.truetype('/Users/zhixiangliu/Documents/code/goal/static/images/SourceHanSansCN-Bold.otf', 70)
 
     w, h = content_font.getsize(goal_content)
-    draw_handle.text((width/2-w/2, 200), goal_content, (255, 255, 255), content_font)
+
+    content_length = len(goal_content)
+
+    is_ch = check_contain_chinese(goal_content)
+
+    print('汉字的长度，', content_length)
+
+    print(content_length / 2)
+    if content_length > 7:
+        sub_content1 = goal_content[0:int(content_length / 2)]
+        w1, h1 = content_font.getsize(sub_content1)
+
+        sub_content2 = goal_content[int(content_length / 2):]
+        w2, h2 = content_font.getsize(sub_content2)
+        draw_handle.text((width/2-w1/2, 200), sub_content1, (255, 255, 255), content_font)
+        draw_handle.text((width/2-w2/2, 300), sub_content2, (255, 255, 255), content_font)
+    else:
+        draw_handle.text((width/2-w/2, 200), goal_content, (255, 255, 255), content_font)
+
 
     w, h = content_font.getsize(penalty)
     draw_handle.text((width/2 -w/2, 650), penalty, (255, 255, 255), content_font)
@@ -69,11 +89,18 @@ def create_two_dimension(save_img):
     return save_img
 
 
+def check_contain_chinese(check_str):
+    for c in check_str:
+        if not ('\u4e00' <= c <= '\u9fa5'):
+            return False
+    return True
+
+
 if __name__ == '__main__':
     low_img = '/Users/zhixiangliu/Documents/code/goal/static/images/kanshu.jpg'
     headimg = '/Users/zhixiangliu/Documents/code/goal/static/images/shengji.png'
     author_name = '刘志祥'
-    goal_content = '我的微目标'
+    goal_content = 'test刘志祥, 需要更长的内容, 更长的内容呢？'
     penalty = '裸奔'
     two_dim = '/Users/zhixiangliu/Documents/code/goal/static/images/qrcode.jpg'
     save_img = '/Users/zhixiangliu/Documents/code/goal/static/images/rand.jpg'
