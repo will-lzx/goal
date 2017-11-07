@@ -84,6 +84,12 @@
                 return;
             }
 
+            if(goal_content.length > 15)
+            {
+                alert("输入的目标内容不能超过15个汉字或者30个字母");
+                return;
+            }
+
             $.ajax({
                 type:"post",
                 url:"/weixin/save_goal/",//自己填写请求地址
