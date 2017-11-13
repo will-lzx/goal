@@ -85,7 +85,7 @@ def create3(request, goal_id):
     goal = get_goal_by_id(goal_id)[0]
     images_dir = os.path.join(STATIC_ROOT, 'images')
     if goal[2] == 'study':
-        low_img = os.path.join(images_dir, 'kanshu.jpg')
+        low_img = os.path.join(images_dir, 'dushu.jpg')
     elif goal[2] == 'activity':
         low_img = os.path.join(images_dir, 'yundong.jpg')
     elif goal[2] == 'health':
