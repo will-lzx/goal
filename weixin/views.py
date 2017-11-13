@@ -1,3 +1,6 @@
+import time
+
+import datetime
 from django.http import HttpResponse
 
 # Create your views here.
@@ -18,16 +21,19 @@ from goal.settings import *
 @csrf_exempt
 def wx(request):
     if request.method == 'GET':
+        print('wx get msg')
         signature = request.GET.get('signature', '')
         timestamp = request.GET.get('timestamp', '')
         nonce = request.GET.get('nonce', '')
         echostr = request.GET.get('echostr', '')
+
         try:
             check_signature(WECHAT_TOKEN, signature, timestamp, nonce)
         except InvalidSignatureException:
             echostr = 'error'
         return HttpResponse(echostr, content_type="text/plain")
     if request.method == 'POST':
+        print('')
         msg = parse_message(request.body)
         if msg.type == 'text' or msg.type == 'image' or msg.type == 'voice':
             reply = '<xml><ToUserName><![CDATA[' + msg.source + ']]></ToUserName><FromUserName><![CDATA[' + msg.target + \
