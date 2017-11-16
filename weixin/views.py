@@ -11,7 +11,7 @@ from wechatpy.events import SubscribeEvent
 from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 
-from lib.utils.common import create_timestamp
+from lib.utils.common import create_timestamp, get_openid, get_user_info
 from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id, get_audience, \
     get_goal_history, save_goal_history, get_history_images, update_goal
 from lib.weixin.draw_pic import *
@@ -61,6 +61,9 @@ def wx(request):
 
 def create1(request):
     template_name = 'weixin/create1.html'
+
+    open_id = get_open_id(request)
+
     context = {
         'goal_type': goal_type
     }
@@ -71,6 +74,8 @@ def create1(request):
 
 def create2(request, goal_type):
     template_name = 'weixin/create2.html'
+
+    open_id = get_open_id(request)
 
     context = {
         'goal_type': goal_type,
@@ -97,9 +102,14 @@ def create3(request, goal_id):
     elif goal[2] == 'other':
         low_img = os.path.join(images_dir, 'qita.jpg')
 
-    author_name = 'test'
-    headimg = os.path.join(images_dir, 'shengji.png')
+    open_id = get_open_id(request)
+
+    user = get_user_info(open_id)
+    headimg = user['headimgurl']
+    author_name = user['nickname']
+
     random_str = str(time.time())
+
     two_dimension = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
     random_str = str(time.time())
     save_img = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
@@ -240,3 +250,18 @@ def goal_action(request):
     result = 'True&'
 
     return HttpResponse(result)
+
+
+def get_open_id(request):
+    open_id = request.GET.get('code', None)
+
+    if open_id and not request.session.get('openid', default=None):
+        openid = get_openid(open_id)
+        request.session['openid'] = openid
+    else:
+        openid = request.session.get('openid', default=None)
+
+    return openid
+
+
+
