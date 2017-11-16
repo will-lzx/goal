@@ -3,7 +3,7 @@ from goal.settings import *
 import urllib.request
 import urllib.parse
 import json
-from sql_help import *
+from lib.utils.sql_help import *
 
 
 class UrlRequest:
