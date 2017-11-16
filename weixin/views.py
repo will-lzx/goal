@@ -150,7 +150,12 @@ def createsuccess(request):
 
 def history(request):
     template_name = 'weixin/history.html'
-    author = 'temple'
+
+    open_id = get_open_id(request)
+
+    user = get_user_info(open_id)
+    author = user['nickname']
+
     goals = get_goals(author)
     context = {
         'goals': goals
