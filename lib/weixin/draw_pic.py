@@ -24,21 +24,21 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
 
     # 在图片上添加文字 1
     draw_handle = ImageDraw.Draw(im1)
-    draw_handle.bitmap((20, 20), im2, (255, 255, 255))
+    draw_handle.bitmap((20, 20), im2, (0, 0, 0))
 
-    draw_handle.text((130, 40), author_name + '定下小目标', (255, 255, 255), font)
+    draw_handle.text((130, 40), author_name + '定下小目标', (0, 0, 0), font)
 
-    draw_handle.text((130, 70),  str(goal_create_time), (255, 255, 255), font)
+    draw_handle.text((130, 70),  str(goal_create_time), (0, 0, 0), font)
 
     content_font = ImageFont.truetype('/var/www/goal/static/images/STHeiti Light.ttc', 70)
 
     w, h = content_font.getsize(goal_content)
-    draw_handle.text((width/2 - w/2, 200), goal_content, (255, 255, 255), content_font)
+    draw_handle.text((width/2 - w/2, 200), goal_content, (0, 0, 0), content_font)
 
     w, h = content_font.getsize(penalty)
-    draw_handle.text((width/2 - w/2, 650), penalty, (255, 255, 255), content_font)
+    draw_handle.text((width/2 - w/2, 650), penalty, (0, 0, 0), content_font)
 
-    draw_handle.bitmap((52, height-154), im3, (255, 255, 255))
+    draw_handle.bitmap((52, height-154), im3, (0, 0, 0))
 
     draw_handle = ImageDraw.Draw(im1)
 
