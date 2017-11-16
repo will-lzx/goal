@@ -308,6 +308,14 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
   margin:50px 15px;
 }
 
+.weui-textarea-counter{
+  color:#B2B2B2;
+  text-align:right;
+}
+.weui-cell_warn .weui-textarea-counter{
+  color:#E64340;
+}
+.sel_mr{color: #666666;}
 
 /*-------目标分享朋友圈------------*/
 
