@@ -138,5 +138,5 @@ frequent = {0: '每天', 1: '每周', 2: '3天内', 3: '7天内', 4: '10天内',
 
 goal_status = {0: '进行中', 1: '完成', 2: '放弃'}
 
-goal_type = {'study': '学习', 'activity': '运动', 'health': '健康', 'tuodan': '脱单', 'money': '存钱', 'work': '工作'}
+goal_type = {'study': '学习', 'activity': '运动', 'health': '健康', 'tuodan': '脱单', 'money': '存钱', 'work': '工作', 'other': '其它'}
 
