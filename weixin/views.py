@@ -134,6 +134,7 @@ def save_goal(request):
     open_id = request.POST.get('open_id')
 
     user_base_info = get_user_base_info(open_id)
+    print('save_goal', user_base_info, open_id)
     author = user_base_info['nickname']
 
     status = 0
