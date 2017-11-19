@@ -111,7 +111,9 @@ def create3(request, goal_id):
     print('user base info', user_base_info)
 
     headimg = user_base_info['headimgurl']
+    headimg = 'http://wx.qlogo.cn/mmopen/ajNVdqHZLLCCzGDKibYicjyeVcylKsWQANxnlNxcyZQPFF3ItyUD6iawVcEBXHiadenx57wkqmouqyzIopl4gZVydQ/0'
     author_name = user_base_info['nickname']
+    author_name = '刘志祥'
 
     random_str = str(time.time())
 
