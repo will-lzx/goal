@@ -134,9 +134,9 @@ WECHAT_TOKEN = "goal"
 WEIXIN_APPID = 'wx1e0129928b50b3e7'
 WEIXIN_APPSECRET = 'e10762d25f47ce25b55b90a676aa5861'
 
-frequent = {0: '每天', 1: '每周', 2: '3天内', 3: '7天内', 4: '10天内', 5: '30天内', 6: '60天内', 7: '90天内', 8: '1年内'}
+frequent = {0: '每天', 1: '每周', 2: '3天内', 3: '7天内', 4: '10天内', 5: '30天内',  8: '1年内'}
 
 goal_status = {0: '进行中', 1: '完成', 2: '放弃'}
 
-goal_type = {'study': '学习', 'activity': '运动', 'health': '健康', 'tuodan': '脱单', 'money': '存钱', 'work': '工作', 'other': '其它'}
+goal_type = {'study': '学习', 'activity': '运动', 'health': '健康', 'tuodan': '脱单', 'money': '存钱', 'work': '工作'}
 

@@ -13,7 +13,8 @@
     <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="目标描述：不超过15字" rows="2" id="goal_content"></textarea>
+                    <textarea class="weui-textarea" placeholder="目标描述" rows="2" id="goal_content"></textarea>
+                    <div class="weui-textarea-counter"><span>0</span>/15</div>
                 </div>
             </div>
         </div>
@@ -21,7 +22,7 @@
             <div class="weui-cell weui-cell_select">
                 <div class="weui-cell__bd">
                     <select class="weui-select" name="select1" id="penalty">
-                        <option selected="" value="选择自罚方式" style="color: #C8C8CD">自罚方式</option>
+                        <option selected="" value="选择自罚方式" style="color: #999999" >选择自罚方式...</option>
                         <option value="直播吃翔">直播吃翔</option>
                         <option value="广场裸奔">广场裸奔</option>
                         <option value="自曝真心话">自曝真心话</option>
@@ -37,7 +38,7 @@
             <div class="weui-cell weui-cell_select">
                 <div class="weui-cell__bd">
                     <select class="weui-select" name="select1" id="period">
-                        <option selected="" value="选择目标时间" style="color: #C8C8CD">目标时间</option>
+                        <option selected="" value="选择目标时间" style="color: #999999">选择目标时间...</option>
                         {% for k, v in frequent.items %}
                            <option value="{{ k }}">{{ v }}</option>
                         {% endfor %}
