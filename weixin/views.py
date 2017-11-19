@@ -73,10 +73,11 @@ def create1(request):
     return response
 
 
-def create2(request, goal_type):
+def create2(request, goal_type, open_id):
     template_name = 'weixin/create2.html'
 
     context = {
+        'open_id': open_id,
         'goal_type': goal_type,
         'frequent': frequent
     }
