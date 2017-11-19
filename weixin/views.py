@@ -11,7 +11,7 @@ from wechatpy.events import SubscribeEvent
 from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 
-from lib.utils.common import create_timestamp, get_openid, get_user_info
+from lib.utils.common import create_timestamp, get_openid, get_user_info, get_user_base_info
 from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id, get_audience, \
     get_goal_history, save_goal_history, get_history_images, update_goal
 from lib.weixin.draw_pic import *
@@ -104,9 +104,10 @@ def create3(request, goal_id):
 
     open_id = get_open_id(request)
 
-    user = get_user_info(open_id)
-    headimg = user['headimgurl']
-    author_name = user['nickname']
+    user_base_info = get_user_base_info(open_id)
+
+    headimg = user_base_info['headimgurl']
+    author_name = user_base_info['nickname']
 
     random_str = str(time.time())
 
@@ -153,8 +154,11 @@ def history(request):
 
     open_id = get_open_id(request)
 
-    user = get_user_info(open_id)
-    author = user['nickname']
+    print('open id is, ', open_id)
+
+    user_base_info = get_user_base_info(open_id)
+
+    author = user_base_info['nickname']
 
     goals = get_goals(author)
     context = {
