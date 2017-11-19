@@ -268,10 +268,10 @@ def goal_action(request):
 
 
 def get_open_id(request):
-    open_id = request.GET.get('code', None)
+    code = request.GET.get('code', None)
 
-    if open_id and not request.session.get('openid', default=None):
-        openid = get_openid(open_id)
+    if code and not request.session.get('openid', default=None):
+        openid = get_openid(code)
         request.session['openid'] = openid
         print('save session', openid)
     else:
