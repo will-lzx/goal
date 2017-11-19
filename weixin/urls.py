@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^wx/$', wx, name='wx'),
     url(r'^create1/$', create1, name='create1'),
     url(r'^create2/(?P<goal_type>.+)/$', create2, name='create2'),
-    url(r'^create3/(?P<goal_id>.+)/$', create3, name='create3'),
+    url(r'^create3/(?P<goal_id>.+)/(?P<open_id>.+)/$', create3, name='create3'),
 
     url(r'^createsuccess/$', createsuccess, name='createsuccess'),
 

@@ -91,10 +91,12 @@
                 return;
             }
 
+            var open_id = '{{ open_id }}';
+
             $.ajax({
                 type:"post",
                 url:"/weixin/save_goal/",//自己填写请求地址
-                data:{goal_type: goal_type, penalty: penalty, period: period, goal_content: goal_content},
+                data:{goal_type: goal_type, penalty: penalty, period: period, goal_content: goal_content, open_id: open_id},
                 success:function(result){
                     var res = result.split('&')[0];
                     if(res === 'True')
@@ -106,7 +108,7 @@
                         else if(save_type === 'share')
                         {
                             var goal_id = parseInt(result.split('&')[1]);
-                            location.href = '/weixin/create3/' + goal_id + '/';
+                            location.href = '/weixin/create3/' + goal_id + '/' + open_id + '/';
 
                         }
                     }

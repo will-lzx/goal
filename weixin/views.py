@@ -65,6 +65,7 @@ def create1(request):
     open_id = get_open_id(request)
 
     context = {
+        'open_id': open_id,
         'goal_type': goal_type
     }
 
@@ -75,8 +76,6 @@ def create1(request):
 def create2(request, goal_type):
     template_name = 'weixin/create2.html'
 
-    open_id = get_open_id(request)
-
     context = {
         'goal_type': goal_type,
         'frequent': frequent
@@ -85,7 +84,7 @@ def create2(request, goal_type):
     return response
 
 
-def create3(request, goal_id):
+def create3(request, goal_id, open_id):
     template_name = 'weixin/create3.html'
     goal = get_goal_by_id(goal_id)[0]
     images_dir = os.path.join(STATIC_ROOT, 'images')
@@ -101,10 +100,6 @@ def create3(request, goal_id):
         low_img = os.path.join(images_dir, 'zanqian.jpg')
     elif goal[2] == 'other':
         low_img = os.path.join(images_dir, 'qita.jpg')
-
-    open_id = get_open_id(request)
-
-    print('create3 open id', open_id)
 
     user_base_info = get_user_base_info(open_id)
 
@@ -136,7 +131,7 @@ def save_goal(request):
     period = request.POST.get('period')
     goal_content = request.POST.get('goal_content')
 
-    open_id = get_open_id(request)
+    open_id = request.POST.get('open_id')
 
     user_base_info = get_user_base_info(open_id)
     author = user_base_info['nickname']
@@ -150,7 +145,11 @@ def save_goal(request):
 
 def createsuccess(request):
     template_name = 'weixin/createsuccess.html'
-    author = 'temple'
+
+    open_id = get_open_id(request)
+
+    user_base_info = get_user_base_info(open_id)
+    author = user_base_info['nickname']
     goals = get_goals(author)
     context = {
         'goals': goals
