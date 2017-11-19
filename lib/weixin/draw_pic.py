@@ -1,8 +1,11 @@
 #*- coding: utf-8*-
+import io
+
 import PIL
 from PIL import ImageFont
 from PIL import Image
 from PIL import ImageDraw
+from urllib.request import urlopen
 
 
 def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty, two_dimension, save_img):
@@ -12,7 +15,12 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
 
     width, height = im1.size
 
-    im2 = Image.open(headimg)
+    image_bytes = urlopen(headimg).read()
+
+    data_stream = io.BytesIO(image_bytes)
+
+    im2 = Image.open(data_stream)
+
     im2 = im2.resize((80, 80), PIL.Image.ANTIALIAS)
 
     im2_width, im2_height = im2.size
