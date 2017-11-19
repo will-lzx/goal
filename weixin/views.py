@@ -136,7 +136,11 @@ def save_goal(request):
     period = request.POST.get('period')
     goal_content = request.POST.get('goal_content')
 
-    author = 'temple'
+    open_id = get_open_id(request)
+
+    user_base_info = get_user_base_info(open_id)
+    author = user_base_info['nickname']
+
     status = 0
     goal_id = savegoal(author, goaltype, penalty, int(period), goal_content, status)
     result = 'True&' + str(goal_id)
