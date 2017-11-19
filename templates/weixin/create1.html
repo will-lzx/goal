@@ -25,6 +25,7 @@
             csrfmiddlewaretoken: '{{ csrf_token }}'
         }});
 
+        var open_id = '{{ open_id }}';
 
         function goto_next(goal_type) {
             location.href = '/weixin/create2/' + goal_type + '/' + open_id + '/';
