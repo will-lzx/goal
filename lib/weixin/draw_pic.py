@@ -15,7 +15,7 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
 
     width, height = im1.size
 
-    image_bytes = urlopen(headimg).read()
+    image_bytes = urlopen('http://wx.qlogo.cn/mmopen/ajNVdqHZLLCCzGDKibYicjyeVcylKsWQANxnlNxcyZQPFF3ItyUD6iawVcEBXHiadenx57wkqmouqyzIopl4gZVydQ/0').read()
 
     data_stream = io.BytesIO(image_bytes)
 
