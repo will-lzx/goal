@@ -273,8 +273,10 @@ def get_open_id(request):
     if open_id and not request.session.get('openid', default=None):
         openid = get_openid(open_id)
         request.session['openid'] = openid
+        print('save session', openid)
     else:
         openid = request.session.get('openid', default=None)
+        print('session get', openid)
 
     return openid
 
