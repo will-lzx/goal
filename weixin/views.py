@@ -104,7 +104,11 @@ def create3(request, goal_id):
 
     open_id = get_open_id(request)
 
+    print('create3 open id', open_id)
+
     user_base_info = get_user_base_info(open_id)
+
+    print('user base info', user_base_info)
 
     headimg = user_base_info['headimgurl']
     author_name = user_base_info['nickname']
