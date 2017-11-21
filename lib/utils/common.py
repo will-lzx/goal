@@ -34,6 +34,20 @@ def get_openid(code):
     return resp['openid']
 
 
+def is_own_goal(open_id, goal_id):
+    if open_id == goal_id:
+        return True
+    else:
+        return False
+
+
+def sort_by_value(d):
+    items = d.items()
+    backitems = [[v[1], v[0]] for v in items]
+    backitems.sort()
+    return [backitems[i][1] for i in range(0, len(backitems))]
+
+
 def get_user_info(openid):
     client = WeChatClient(WEIXIN_APPID, WEIXIN_APPSECRET)
     user = client.user.get(openid)
