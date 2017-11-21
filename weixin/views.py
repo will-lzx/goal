@@ -238,9 +238,12 @@ def others(request):
 def ranking(request):
     template_name = 'weixin/ranking.html'
 
+    open_id = get_open_id(request)
+
     goal_rank_dict, sort_values = get_goals_rank()
 
     context = {
+        'open_id': open_id,
         'goal_rank_dict': goal_rank_dict,
         'sort_values': sort_values
     }
