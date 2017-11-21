@@ -162,7 +162,8 @@ def history(request):
 
     author = user_base_info['nickname']
 
-    goals = get_goals(author)
+    goals = get_goals(open_id)
+
     context = {
         'goals': goals
     }
