@@ -11,9 +11,9 @@ from wechatpy.events import SubscribeEvent
 from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 
-from lib.utils.common import create_timestamp, get_openid, get_user_info, get_user_base_info
+from lib.utils.common import create_timestamp, get_openid, get_user_base_info, is_own_goal
 from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id, get_audience, \
-    get_goal_history, save_goal_history, get_history_images, update_goal
+    get_goal_history, save_goal_history, get_history_images, update_goal, get_goals_rank
 from lib.weixin.draw_pic import *
 from goal.settings import *
 
@@ -104,12 +104,8 @@ def create3(request, goal_id, open_id):
 
     user_base_info = get_user_base_info(open_id)
 
-    print('user base info', user_base_info)
-
     headimg = user_base_info['headimgurl']
-    headimg = 'http://wx.qlogo.cn/mmopen/ajNVdqHZLLCCzGDKibYicjyeVcylKsWQANxnlNxcyZQPFF3ItyUD6iawVcEBXHiadenx57wkqmouqyzIopl4gZVydQ/0'
     author_name = user_base_info['nickname']
-    author_name = '刘志祥'
 
     random_str = str(time.time())
 
@@ -136,10 +132,8 @@ def save_goal(request):
 
     user_base_info = get_user_base_info(open_id)
     print('save_goal', user_base_info, open_id)
-    author = user_base_info['nickname']
-
     status = 0
-    goal_id = savegoal(author, goaltype, penalty, int(period), goal_content, status)
+    goal_id = savegoal(open_id, goaltype, penalty, int(period), goal_content, status)
     result = 'True&' + str(goal_id)
 
     return HttpResponse(result)
@@ -164,9 +158,6 @@ def history(request):
     template_name = 'weixin/history.html'
 
     open_id = get_open_id(request)
-
-    print('open id is, ', open_id)
-
     user_base_info = get_user_base_info(open_id)
 
     author = user_base_info['nickname']
@@ -198,7 +189,9 @@ def save_history(request):
 def goaldetail(request, goal_id):
     template_name = 'weixin/goaldetail.html'
 
-    is_own = True
+    open_id = get_open_id(request)
+
+    is_own = is_own_goal(open_id, goal_id)
 
     goal = get_goal_by_id(goal_id)
 
@@ -244,7 +237,15 @@ def others(request):
 
 def ranking(request):
     template_name = 'weixin/ranking.html'
-    response = render(request, template_name)
+
+    goal_rank_dict, sort_values = get_goals_rank()
+
+    context = {
+        'goal_rank_dict': goal_rank_dict,
+        'sort_values': sort_values
+    }
+
+    response = render(request, template_name, context)
     return response
 
 

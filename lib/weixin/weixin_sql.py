@@ -2,6 +2,7 @@ import datetime
 
 from wechatpy import WeChatClient
 
+from lib.utils.common import sort_by_value
 from lib.utils.sql_help import MySQL
 from goal.settings import *
 
@@ -50,6 +51,20 @@ def get_goals(openid):
     results = mysql.exec_query('select * from goal_list where author="{0}"'.format(openid))
 
     return results
+
+
+def get_goals_rank():
+    mysql = MySQL(db='goal')
+
+    results = mysql.exec_query('select author from goal_list')
+    author_count_dict = {}
+
+    for result in results:
+        if author_count_dict.keys().__contains__(result[0]):
+            author_count_dict[result[0]] = author_count_dict[result[0]] + 1
+        else:
+            author_count_dict[result[0]] = 1
+    return author_count_dict, sort_by_value(author_count_dict)
 
 
 def get_goal_id():
@@ -121,6 +136,9 @@ def update_goal(goal_id, action):
     except:
         print('Goal {0} status update fail'.format(goal_id))
         return False
+
+
+
 
 
 

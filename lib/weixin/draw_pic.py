@@ -1,6 +1,7 @@
 #*- coding: utf-8*-
 import io
 import urllib
+from filecmp import cmp
 from io import StringIO
 
 import PIL
@@ -102,6 +103,10 @@ def remove_img_file(src):
 
 
 if __name__ == '__main__':
+    value_dict = {'1': 1, '2': 3, '3': 2}
+
+    print(sort_by_value(value_dict))
+
     low_img = '/Users/zhixiangliu/Documents/code/goal/static/images/dushu.jpg'
     headimg = 'http://wx.qlogo.cn/mmopen/ajNVdqHZLLCCzGDKibYicjyeVcylKsWQANxnlNxcyZQPFF3ItyUD6iawVcEBXHiadenx57wkqmouqyzIopl4gZVydQ/0'
     author_name = '刘志祥'
