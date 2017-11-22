@@ -1,6 +1,5 @@
 import time
 
-import requests
 from wechatpy import WeChatClient
 
 from lib.utils.url_request import *
@@ -15,9 +14,8 @@ def get_user_base_info(openid):
     url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}&lang=zh_CN'.format(
         access_token, openid)
 
-    #url_req = UrlRequest()
-    #resp = url_req.url_request(url)
-    resp = requests.get(url)
+    url_req = UrlRequest()
+    resp = url_req.url_request(url)
     return resp
 
 
