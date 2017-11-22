@@ -199,6 +199,7 @@ def goaldetail(request, goal_id):
     audience_list = get_audience(goal_id)
 
     audience_headimgurl = {}
+
     for audience in audience_list:
         audience_headimgurl[audience] = ''
 
@@ -218,8 +219,6 @@ def goaldetail(request, goal_id):
     context = {
         'goal': goal,
         'is_own': is_own,
-        'headimg_url': '',
-        'author_name': '',
         'audience_headimgurl': audience_headimgurl,
         'audience_count': len(audience_list),
         'goal_histories': goal_histories,

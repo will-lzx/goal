@@ -11,8 +11,8 @@
 
     {% if not is_own %}
         <div>
-            <img src="{{ headimg_url }}"><br>
-            <span>{{ author_name }}的小目标</span>
+            <img src="{{ goal.1 | get_headimg }}"><br>
+            <span>{{ goal.1 | get_author_name }}的小目标</span>
         </div>
     {% endif %}
     <div class="mb_con">
