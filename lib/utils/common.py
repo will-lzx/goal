@@ -13,6 +13,8 @@ def get_user_base_info(openid):
     access_token = get_access_token()
     url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}&lang=zh_CN'.format(
         access_token, openid)
+    
+    print('url is,', url)
 
     url_req = UrlRequest()
     resp = url_req.url_request(url)
