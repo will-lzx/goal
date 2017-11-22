@@ -27,7 +27,7 @@
 
     {% for v in sort_values %}
         <div class="ph_l_con">
-            <div class="ph_l_n">1</div>
+            <div class="ph_l_n">{{ v | get_rank }}</div>
             <div class="zz_l_tx"><img class="img_zz_tx" src="{{ v | get_headimg }}" alt="头像"></div>
             <div class="ph_l_m">{{ v | get_author_name }}</div>
             <div class="ph_l_f">{{ v | get_rank }}</div>
