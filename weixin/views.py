@@ -203,6 +203,9 @@ def goaldetail(request, goal_id):
 
         is_own = is_own_goal(open_id, goal[1])
 
+
+
+
     audience_list = get_audience(goal_id)
 
     audience_headimgurl = {}
@@ -210,6 +213,12 @@ def goaldetail(request, goal_id):
     for audience in audience_list:
         print('audience', audience)
         audience_headimgurl[audience[0]] = get_headimg(audience[0])
+
+    is_audience = False
+
+    if not is_own:
+        if audience_headimgurl.keys().__contains__(open_id):
+            is_audience = True
 
     goal_histories = get_goal_history(goal_id)
 
@@ -226,6 +235,7 @@ def goaldetail(request, goal_id):
         'open_id': open_id,
         'goal': goal,
         'is_own': is_own,
+        'is_audience': is_audience,
         'audience_headimgurl': audience_headimgurl,
         'audience_count': len(audience_list),
         'goal_histories': goal_histories,

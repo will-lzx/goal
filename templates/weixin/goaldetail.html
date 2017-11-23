@@ -22,7 +22,7 @@
     <div class="mb_zt_con">
         <div class="mb_zt_li mb_zt_left"><b class="mb_zxz">{{ goal.6 | get_goal_status }}</b><br>创建：{{ goal.7 | convert_time }}</div>
         <div class="mb_zt_li"><b>{{ audience_count }}</b><br>监督</div>
-        <div class="mb_zt_li"><b>68</b><br>围观</div>
+{#        <div class="mb_zt_li"><b>68</b><br>围观</div>#}
     </div>
     <div class="fg_line"></div>
     <div class="mb_xq">
@@ -83,7 +83,8 @@
         {% else %}
             <div class="mb_cz_left2"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="/weixin/create1/" id="create">我也定个小目标</a></div>
             {% ifequal goal.6 0 %}
-                <div class="mb_cz_right2"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="audience_goal" onclick="audience()">监督此目标</a></div>
+                <div class="mb_cz_right2"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="audience_goal" onclick="audience()">
+                    {% if is_audience %}取消监督{% else %}监督此目标{% endif %}</a></div>
             {% endifequal %}
         {% endif %}
     
@@ -91,7 +92,7 @@
 
 
     <div id="hidden" style="display: none;">
-        <input type="checkbox" checked id="audience_hidden">
+        <input type="checkbox" {% if is_audience %}{% else %}checked{% endif %} id="audience_hidden">
     </div>
 
     <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
