@@ -17,6 +17,7 @@ from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get
     get_audience_goals
 from lib.weixin.draw_pic import *
 from goal.settings import *
+from weixin.templatetags.own_tag import get_headimg
 
 
 @csrf_exempt
@@ -207,7 +208,7 @@ def goaldetail(request, goal_id):
     audience_headimgurl = {}
 
     for audience in audience_list:
-        audience_headimgurl[audience] = ''
+        audience_headimgurl[audience] = get_headimg(audience)
 
     goal_histories = get_goal_history(goal_id)
 
