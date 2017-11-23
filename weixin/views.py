@@ -209,7 +209,7 @@ def goaldetail(request, goal_id):
 
     for audience in audience_list:
         print('audience', audience)
-        audience_headimgurl[audience] = get_headimg(audience)
+        audience_headimgurl[audience[0]] = get_headimg(audience[0])
 
     goal_histories = get_goal_history(goal_id)
 
