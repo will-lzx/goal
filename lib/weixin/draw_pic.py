@@ -45,7 +45,7 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
 
     w, h = content_font.getsize(goal_content)
 
-    if len(goal_content) > 6:
+    if len(goal_content) > 7:
         goal_content1 = goal_content[0: int(len(goal_content)/2)]
         goal_content2 = goal_content[int(len(goal_content) / 2):]
         w1, h1 = content_font.getsize(goal_content1)
@@ -57,12 +57,12 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
     else:
         draw_handle.text((width/2 - w/2, 200), goal_content, (0, 0, 0), content_font)
 
-    w, h = content_font.getsize(penalty)
-
     if len(penalty) > 6:
         content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 60)
     else:
         content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 80)
+
+    w, h = content_font.getsize(penalty)
 
     draw_handle.text((width/2 - w/2, 600), penalty, (0, 0, 0), content_font)
 
