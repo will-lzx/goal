@@ -99,7 +99,7 @@ def create3(request, goal_id, open_id):
         low_img = os.path.join(images_dir, 'tuodan.jpg')
     elif goal[2] == 'money':
         low_img = os.path.join(images_dir, 'zanqian.jpg')
-    elif goal[2] == 'other':
+    elif goal[2] == 'work':
         low_img = os.path.join(images_dir, 'qita.jpg')
 
     user_base_info = get_user_base_info(open_id)
@@ -192,9 +192,11 @@ def goaldetail(request, goal_id):
 
     open_id = get_open_id(request)
 
-    is_own = is_own_goal(open_id, goal_id)
+    print('open id and goal id', open_id, goal_id)
 
     goal = get_goal_by_id(goal_id)
+
+    is_own = is_own_goal(open_id, goal[0][1])
 
     audience_list = get_audience(goal_id)
 
