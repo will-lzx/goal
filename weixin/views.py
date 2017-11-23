@@ -320,9 +320,11 @@ def operate_audience(request):
     except Exception as ex:
         return HttpResponse('False&' + str(ex))
     if status:
-        audience_imgs = ''
+        audience_imgs = '<h4>监督好友（' + str(audience_count) + '）</h4><div class="jd_con">'
         for k, v in audience_headimgurl.items():
             audience_imgs = audience_imgs + '<img class="img_jd" src="' + v + '" alt="监督好友">'
+
+        audience_imgs = audience_imgs + '</div>'
         result = 'True&' + str(audience_count) + '&' + audience_imgs
     else:
         result = 'False&'
