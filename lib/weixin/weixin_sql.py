@@ -154,6 +154,13 @@ def modify_audience(goal_id, open_id, action):
         return False
 
 
+def get_audience_goals(open_id):
+    mysql = MySQL(db='goal')
+
+    audience_goals = mysql.exec_query('select * from goal_audience_relation where audience="{0}" order by create_time DESC'.format(open_id))
+    return audience_goals
+
+
 if __name__ == '__main__':
     goal = get_goal_id()
     print(goal)

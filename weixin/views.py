@@ -13,7 +13,8 @@ from wechatpy.utils import check_signature
 
 from lib.utils.common import create_timestamp, get_openid, get_user_base_info, is_own_goal
 from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id, get_audience, \
-    get_goal_history, save_goal_history, get_history_images, update_goal, get_goals_rank, modify_audience
+    get_goal_history, save_goal_history, get_history_images, update_goal, get_goals_rank, modify_audience, \
+    get_audience_goals
 from lib.weixin.draw_pic import *
 from goal.settings import *
 
@@ -235,7 +236,16 @@ def goaldetail(request, goal_id):
 
 def others(request):
     template_name = 'weixin/others.html'
-    response = render(request, template_name)
+
+    open_id = get_open_id(request)
+
+    audience_goals = get_audience_goals(open_id)
+
+    context = {
+        'audience_goals': audience_goals
+    }
+
+    response = render(request, template_name, context)
     return response
 
 
