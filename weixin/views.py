@@ -194,9 +194,9 @@ def goaldetail(request, goal_id):
 
     print('open id and goal id', open_id, goal_id)
 
-    is_own = is_own_goal(open_id, goal_id)
-
     goal = get_goal_by_id(goal_id)
+
+    is_own = is_own_goal(open_id, goal[1])
 
     audience_list = get_audience(goal_id)
 
