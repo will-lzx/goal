@@ -119,6 +119,7 @@
                         if(res === 'True')
                         {
                             $('#audience_goal').text('取消监督');
+                            $('.mb_zt_li').html('<b>' + result.split('&')[1] + '</b><br>监督');
                         }
                         else
                         {
@@ -140,6 +141,7 @@
                         if(res === 'True')
                         {
                             $('#audience_goal').text('监督此目标');
+                            $('.mb_zt_li').html('<b>' + result.split('&')[1] + '</b><br>监督');
                         }
                         else
                         {

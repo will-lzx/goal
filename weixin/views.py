@@ -311,10 +311,11 @@ def operate_audience(request):
     open_id = request.POST.get('open_id')
     try:
         status = modify_audience(goal_id, open_id, action)
+        audience_count = len(get_audience(goal_id))
     except Exception as ex:
         return HttpResponse('False&' + str(ex))
     if status:
-        result = 'True&'
+        result = 'True&' + str(audience_count)
     else:
         result = 'False&'
 
