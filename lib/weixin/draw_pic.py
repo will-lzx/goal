@@ -74,7 +74,7 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
     im1.save(save_img)
 
 
-def create_two_dimension(save_img):
+def create_two_dimension(save_img, goal_id):
     import qrcode
     qr = qrcode.QRCode(
         version=1,
@@ -82,7 +82,7 @@ def create_two_dimension(save_img):
         box_size=5,
         border=1,
     )
-    qr.add_data("http://182.61.21.208/weixin/create1/")
+    qr.add_data("http://mgoal.cn/weixin/goaldetail/{0}".format(goal_id))
     qr.make(fit=True)
 
     img = qr.make_image()
