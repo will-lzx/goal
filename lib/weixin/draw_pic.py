@@ -45,7 +45,18 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
     #content_font = ImageFont.truetype('/Users/zhixiangliu/Documents/code/goal/static/images/SourceHanSansCN-Bold.otf', 80)
 
     w, h = content_font.getsize(goal_content)
-    draw_handle.text((width/2 - w/2, 200), goal_content, (0, 0, 0), content_font)
+
+    if len(goal_content) > 6:
+        goal_content1 = goal_content[0, len(goal_content)/2]
+        goal_content2 = goal_content[len(goal_content) / 2:]
+        w1, h1 = content_font.getsize(goal_content1)
+        w2, h2 = content_font.getsize(goal_content2)
+
+        draw_handle.text((width / 2 - w1 / 2, 200), goal_content1, (0, 0, 0), content_font)
+        draw_handle.text((width / 2 - w2 / 2, 250), goal_content2, (0, 0, 0), content_font)
+
+    else:
+        draw_handle.text((width/2 - w/2, 200), goal_content, (0, 0, 0), content_font)
 
     w, h = content_font.getsize(penalty)
     draw_handle.text((width/2 - w/2, 600), penalty, (0, 0, 0), content_font)

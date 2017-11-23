@@ -99,7 +99,7 @@ def create3(request, goal_id, open_id):
     elif goal[2] == 'tuodan':
         low_img = os.path.join(images_dir, 'tuodan.jpg')
     elif goal[2] == 'money':
-        low_img = os.path.join(images_dir, 'zanqian.jpg')
+        low_img = os.path.join(images_dir, 'cunqian.jpg')
     elif goal[2] == 'work':
         low_img = os.path.join(images_dir, 'qita.jpg')
 
