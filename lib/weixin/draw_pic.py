@@ -34,7 +34,7 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
 
     # 在图片上添加文字 1
     draw_handle = ImageDraw.Draw(im1)
-    draw_handle.bitmap((26, 24), im2, (255, 255, 255))
+    draw_handle.bitmap((30, 25), im2, (102, 102, 102))
 
     draw_handle.text((130, 38), author_name + '定下小目标', (100, 100, 100), font)
 
@@ -49,7 +49,7 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
     w, h = content_font.getsize(penalty)
     draw_handle.text((width/2 - w/2, 600), penalty, (0, 0, 0), content_font)
 
-    draw_handle.bitmap((48, height-145), im3, (0, 0, 0))
+    draw_handle.bitmap((46, height-144), im3, (51, 51, 51))
 
     draw_handle = ImageDraw.Draw(im1)
 
