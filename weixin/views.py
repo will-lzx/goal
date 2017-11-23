@@ -194,9 +194,12 @@ def goaldetail(request, goal_id):
 
     print('open id and goal id', open_id, goal_id)
 
-    goal = get_goal_by_id(goal_id)
+    original_goal = get_goal_by_id(goal_id)
 
-    is_own = is_own_goal(open_id, goal[0][1])
+    if len(original_goal) > 0:
+        goal = original_goal[0]
+
+        is_own = is_own_goal(open_id, goal[1])
 
     audience_list = get_audience(goal_id)
 
@@ -216,8 +219,6 @@ def goaldetail(request, goal_id):
 
         history_image_list[goal_history[0]] = images_list
 
-    if len(goal) > 0:
-        goal = goal[0]
     context = {
         'goal': goal,
         'is_own': is_own,
