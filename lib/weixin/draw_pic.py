@@ -60,9 +60,9 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
     w, h = content_font.getsize(penalty)
 
     if len(penalty) > 6:
-        content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 80)
-    else:
         content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 60)
+    else:
+        content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 80)
 
     draw_handle.text((width/2 - w/2, 600), penalty, (0, 0, 0), content_font)
 
