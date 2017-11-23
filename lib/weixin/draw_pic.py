@@ -13,7 +13,7 @@ from urllib.request import urlopen
 import os
 
 
-def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty, two_dimension, save_img):
+def draw(low_img, headimg, goal_id, author_name, goal_create_time, goal_content, penalty, two_dimension, save_img):
 
     font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 24)
     #font = ImageFont.truetype('/Users/zhixiangliu/Documents/code/goal/static/images/SourceHanSansCN-Bold.otf', 24)
@@ -29,7 +29,7 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
 
     #new_png = transparent('/Users/zhixiangliu/Documents/code/goal/static/images/getqrcode.png', '/Users/zhixiangliu/Documents/code/goal/static/images/getqrcode2.png')
 
-    new_png = create_two_dimension(two_dimension)
+    new_png = create_two_dimension(two_dimension, goal_id)
     im3 = Image.open(new_png)
 
     # 在图片上添加文字 1
