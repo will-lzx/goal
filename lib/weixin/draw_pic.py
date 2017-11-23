@@ -34,11 +34,11 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
 
     # 在图片上添加文字 1
     draw_handle = ImageDraw.Draw(im1)
-    draw_handle.bitmap((30, 25), im2, (102, 102, 102))
+    draw_handle.bitmap((46, 30), im2, (102, 102, 102))
 
-    draw_handle.text((130, 38), author_name + '定下小目标', (100, 100, 100), font)
+    draw_handle.text((140, 40), author_name + '定下小目标', (100, 100, 100), font)
 
-    draw_handle.text((130, 75),  str(goal_create_time), (100, 100, 100), font)
+    draw_handle.text((140, 78),  str(goal_create_time), (100, 100, 100), font)
 
     content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 74)
     #content_font = ImageFont.truetype('/Users/zhixiangliu/Documents/code/goal/static/images/SourceHanSansCN-Bold.otf', 80)
