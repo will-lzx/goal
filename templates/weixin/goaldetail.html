@@ -83,7 +83,7 @@
         {% else %}
             <div class="mb_cz_left2"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="/weixin/create1/" id="create">我也定个小目标</a></div>
             {% ifequal goal.6 0 %}
-                <div class="mb_cz_right2"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="audience" onclick="audience()">监督此目标</a></div>
+                <div class="mb_cz_right2"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="audience_goal" onclick="audience()">监督此目标</a></div>
             {% endifequal %}
         {% endif %}
     
@@ -117,7 +117,7 @@
                         var res = result.split('&')[0];
                         if(res === 'True')
                         {
-                            $('#audience').text('取消监督');
+                            $('#audience_goal').text('取消监督');
                         }
                         else
                         {
@@ -138,7 +138,7 @@
                         var res = result.split('&')[0];
                         if(res === 'True')
                         {
-                            $('#audience').text('监督此目标');
+                            $('#audience_goal').text('监督此目标');
                         }
                         else
                         {
