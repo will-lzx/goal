@@ -230,7 +230,7 @@ def goaldetail(request, goal_id):
         'history_count': len(goal_histories),
         'history_image_list': history_image_list
     }
-    
+
     print('context,', context)
     response = render(request, template_name, context)
     return response
@@ -319,6 +319,9 @@ def get_open_id(request):
     else:
         openid = request.session.get('openid', default=None)
         print('session get', openid)
+
+
+    print('i want openid', openid)
 
     return openid
 
