@@ -230,6 +230,8 @@ def goaldetail(request, goal_id):
         'history_count': len(goal_histories),
         'history_image_list': history_image_list
     }
+    
+    print('context,', context)
     response = render(request, template_name, context)
     return response
 
