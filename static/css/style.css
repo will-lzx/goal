@@ -381,6 +381,8 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .mb_cz{height:65px; position:fixed; bottom:0;z-index:200;background-color:rgba(255,255,255,0.9);width: 100%;border-top: 1px solid #eeeeee;}
 .mb_cz_left{width: 38%;float: left;padding: 10px 0;}
 .mb_cz_right{width: 26%;float: left;padding: 10px 0;margin-left: 10px;}
+.mb_cz_left2{width: 45%;float: left;padding: 10px 0;}
+.mb_cz_right2{width: 45%;float: left;padding: 10px 0;margin-left: 10px;}
 .cz_an_s_l{font-size: 16px; line-height: 46px;font-weight: 400;padding:0 5px;margin-left: 15px;}
 .cz_an_s_m{font-size: 16px; line-height: 46px;font-weight: 400;padding:0 5px;}
 .cz_an_s_r{font-size: 16px; line-height: 46px;font-weight: 400;padding:0 5px;}
@@ -424,6 +426,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .zz_l_tx{width:40px;height: 40px;float: left;}
 .zz_l_tx1{width:60px;height: 60px;float: left;}
 .img_zz_tx1{width: 60px;height: auto;border-radius:60px; border: none;}
+.img_zz_tx2{width: 60px;height: auto;border-radius:60px; border: none;margin: 20px auto;}
 .img_zz_tx{width: 40px;height: auto;border-radius:40px; border: none;}
 .zz_l_nc{margin-left: 80px;line-height: 30px;text-align: left;font-size: 16px;font-weight: 400;  }
 .zz_l_ph{margin-left: 80px;height: 20px;color: #666666;}
