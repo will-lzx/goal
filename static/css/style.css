@@ -531,3 +531,8 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 }
 .sc_t{width: 72px;height: 72px;border: none;overflow: hidden;}
 .sc_top{margin-top: -1px;}
+
+
+/*-------监督目标------------*/
+.wk_ti{margin: 50px auto;padding: 0 15px;text-align: center;line-height: 30px;}
+.wk_til{font-weight: 400;}
