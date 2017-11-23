@@ -208,6 +208,7 @@ def goaldetail(request, goal_id):
     audience_headimgurl = {}
 
     for audience in audience_list:
+        print('audience', audience)
         audience_headimgurl[audience] = get_headimg(audience)
 
     goal_histories = get_goal_history(goal_id)
