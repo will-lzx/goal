@@ -21,13 +21,13 @@
     </div>
     <div class="mb_zt_con">
         <div class="mb_zt_li mb_zt_left"><b class="mb_zxz">{{ goal.6 | get_goal_status }}</b><br>创建：{{ goal.7 | convert_time }}</div>
-        <div class="mb_zt_li"><b>{{ audience_count }}</b><br>监督</div>
+        <div class="mb_zt_li" id="jiandu"><b>{{ audience_count }}</b><br>监督</div>
 {#        <div class="mb_zt_li"><b>68</b><br>围观</div>#}
     </div>
     <div class="fg_line"></div>
     <div class="mb_xq">
         <h4>监督好友（{{ audience_count }}）</h4>
-        <div class="jd_con">
+        <div class="jd_con" id="jiandu_friend">
             {% for k, v in audience_headimgurl.items %}
                 <img class="img_jd" src="{{ v }}" alt="监督好友">
             {% endfor %}
@@ -119,7 +119,9 @@
                         if(res === 'True')
                         {
                             $('#audience_goal').text('取消监督');
-                            $('.mb_zt_li').html('<b>' + result.split('&')[1] + '</b><br>监督');
+                            $('#jiandu').html('<b>' + result.split('&')[1] + '</b><br>监督');
+                            $('#jiandu_friend').html('<b>' + result.split('&')[1] + '</b><br>监督');
+
                         }
                         else
                         {
@@ -141,7 +143,8 @@
                         if(res === 'True')
                         {
                             $('#audience_goal').text('监督此目标');
-                            $('.mb_zt_li').html('<b>' + result.split('&')[1] + '</b><br>监督');
+                            $('#jiandu').html('<b>' + result.split('&')[1] + '</b><br>监督');
+                            $('#jiandu_friend').html(result.split('&')[2]);
                         }
                         else
                         {

@@ -203,9 +203,6 @@ def goaldetail(request, goal_id):
 
         is_own = is_own_goal(open_id, goal[1])
 
-
-
-
     audience_list = get_audience(goal_id)
 
     audience_headimgurl = {}
@@ -312,10 +309,21 @@ def operate_audience(request):
     try:
         status = modify_audience(goal_id, open_id, action)
         audience_count = len(get_audience(goal_id))
+
+        audience_list = get_audience(goal_id)
+
+        audience_headimgurl = {}
+
+        for audience in audience_list:
+            audience_headimgurl[audience[0]] = get_headimg(audience[0])
+
     except Exception as ex:
         return HttpResponse('False&' + str(ex))
     if status:
-        result = 'True&' + str(audience_count)
+        audience_imgs = ''
+        for k, v in audience_headimgurl.items():
+            audience_imgs = audience_imgs + '<img class="img_jd" src="' + v + '" alt="监督好友">'
+        result = 'True&' + str(audience_count) + '&' + audience_imgs
     else:
         result = 'False&'
 
