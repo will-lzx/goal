@@ -52,7 +52,7 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
         w2, h2 = content_font.getsize(goal_content2)
 
         draw_handle.text((width / 2 - w1 / 2, 200), goal_content1, (0, 0, 0), content_font)
-        draw_handle.text((width / 2 - w2 / 2, 250), goal_content2, (0, 0, 0), content_font)
+        draw_handle.text((width / 2 - w2 / 2, 300), goal_content2, (0, 0, 0), content_font)
 
     else:
         draw_handle.text((width/2 - w/2, 200), goal_content, (0, 0, 0), content_font)
