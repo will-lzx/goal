@@ -2,7 +2,7 @@ import datetime
 from django import template
 from goal.settings import goal_status, goal_type
 from lib.utils.common import get_user_base_info
-from lib.weixin.weixin_sql import get_goals_rank
+from lib.weixin.weixin_sql import get_goals_rank, get_goal_by_id, get_audience
 from lib.utils.sql_help import MySQL
 
 register = template.Library()
@@ -15,6 +15,24 @@ def convert_time(old_time):
 
 def get_goal_status(key):
     return goal_status[key]
+
+
+def get_goal_content(goal_id):
+
+    goal = get_goal_by_id(goal_id)
+    return goal[0][3]
+
+
+def get_goal_audience_count(goal_id):
+
+    audiences = get_audience(goal_id)
+    return len(audiences)
+
+
+def get_goal_create_time(goal_id):
+
+    goal = get_goal_by_id(goal_id)
+    return (goal[0][7] + datetime.timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S")
 
 
 def get_goal_type(key):
@@ -83,6 +101,12 @@ register.filter('get_goal_complete', get_goal_complete)
 register.filter('get_goal_giveup', get_goal_giveup)
 
 register.filter('get_goal_count', get_goal_count)
+
+register.filter('get_goal_content', get_goal_content)
+
+register.filter('get_goal_audience_count', get_goal_audience_count)
+
+register.filter('get_goal_create_time', get_goal_create_time)
 
 
 

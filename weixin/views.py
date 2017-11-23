@@ -13,7 +13,8 @@ from wechatpy.utils import check_signature
 
 from lib.utils.common import create_timestamp, get_openid, get_user_base_info, is_own_goal
 from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id, get_audience, \
-    get_goal_history, save_goal_history, get_history_images, update_goal, get_goals_rank
+    get_goal_history, save_goal_history, get_history_images, update_goal, get_goals_rank, modify_audience, \
+    get_audience_goals
 from lib.weixin.draw_pic import *
 from goal.settings import *
 
@@ -194,9 +195,12 @@ def goaldetail(request, goal_id):
 
     print('open id and goal id', open_id, goal_id)
 
-    goal = get_goal_by_id(goal_id)
+    original_goal = get_goal_by_id(goal_id)
 
-    is_own = is_own_goal(open_id, goal[0][1])
+    if len(original_goal) > 0:
+        goal = original_goal[0]
+
+        is_own = is_own_goal(open_id, goal[1])
 
     audience_list = get_audience(goal_id)
 
@@ -216,9 +220,8 @@ def goaldetail(request, goal_id):
 
         history_image_list[goal_history[0]] = images_list
 
-    if len(goal) > 0:
-        goal = goal[0]
     context = {
+        'open_id': open_id,
         'goal': goal,
         'is_own': is_own,
         'audience_headimgurl': audience_headimgurl,
@@ -233,7 +236,16 @@ def goaldetail(request, goal_id):
 
 def others(request):
     template_name = 'weixin/others.html'
-    response = render(request, template_name)
+
+    open_id = get_open_id(request)
+
+    audience_goals = get_audience_goals(open_id)
+
+    context = {
+        'audience_goals': audience_goals
+    }
+
+    response = render(request, template_name, context)
     return response
 
 
@@ -274,6 +286,23 @@ def goal_action(request):
         return HttpResponse('False&' + str(ex))
 
     result = 'True&'
+
+    return HttpResponse(result)
+
+
+@csrf_exempt
+def operate_audience(request):
+    goal_id = request.POST.get('goal_id')
+    action = request.POST.get('action')
+    open_id = request.POST.get('open_id')
+    try:
+        status = modify_audience(goal_id, open_id, action)
+    except Exception as ex:
+        return HttpResponse('False&' + str(ex))
+    if status:
+        result = 'True&'
+    else:
+        result = 'False&'
 
     return HttpResponse(result)
 

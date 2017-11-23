@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load own_tag %}
 {% block title %}监督目标{% endblock %}
 {% block head %}
 
@@ -9,39 +10,27 @@
 {% block content %}
 
     <div class="pg_bg">
-        <div class="li_con li_zxz">
-            <div class="li_con_l"><img class="img_l" src="{% static '/images/tx_test.jpg' %}" alt="头像"></div>
-            <div class="li_con_r">
-                 <a href="goaldetail.html"><div class="r_til">[执行中]每天跑步3公里知道马拉松结束，要不要一起来呢</div></a>
-                <div class="r_sm2">8月9日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督19</div>
-            </div>
-        </div>
-        <div class="li_con li_wc">
-            <div class="li_con_l"><img class="img_l" src="{% static '/images/tx_test.jpg' %}" alt="头像"></div>
-            <div class="li_con_r">
-                <a href="goaldetail.html"><div class="r_til">[完成]每天跑步3公里知道马拉松结束</div></a>
-                <div class="r_sm2">8月6日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督19</div>
-            </div>
-        </div>
-        <div class="li_con li_fq">
-            <div class="li_con_l"><img class="img_l" src="{% static '/images/tx_test.jpg' %}" alt="头像"></div>
-            <div class="li_con_r">
-                <a href="goaldetail.html"><div class="r_til">[放弃]每天喝一杯牛奶</div></a>
-                <div class="r_sm2">8月6日&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;围观68&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督19</div>
-            </div>
-        </div>
 
-
-
-
-    <div id="others">
-        {% if histories %}
-            {% for history in histories %}
-
+        {% if audience_goals %}
+            {% for goal in audience_goals %}
+                {% ifequal goal.0 0 %}
+                    <div class="li_con li_zxz">
+                {% endifequal %}
+                {% ifequal goal.0 1 %}
+                    <div class="li_con li_wc">
+                {% endifequal %}
+                {% ifequal goal.0 2 %}
+                    <div class="li_con li_fq">
+                {% endifequal %}
+                    <div class="li_con_l"><img class="img_l" src="{{ goal.0 | get_headimg }}" alt="头像"></div>
+                    <div class="li_con_r">
+                         <a href="goaldetail.html"><div class="r_til">[{{ goal.0 | get_goal_status }}]{{ goal.0 | get_goal_content }}</div></a>
+                        <div class="r_sm2">{{ goal.0 | get_goal_create_time }}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督{{ goal.0 | get_goal_audience_count }}</div>
+                    </div>
+                </div>
             {% endfor %}
         {% else %}
             <span>暂时还没有监督目标</span>
         {% endif %}
-    </div>
 
 {% endblock %}

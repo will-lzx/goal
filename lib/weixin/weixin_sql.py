@@ -138,8 +138,27 @@ def update_goal(goal_id, action):
         return False
 
 
+def modify_audience(goal_id, open_id, action):
+    mysql = MySQL(db='goal')
+    create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    if action == 'create':
+        sql = 'insert into goal_audience_relation (goal_id, audience, create_time) values("{0}", "{1}", "{2}")'.format(goal_id, open_id, create_time)
+    elif action == 'remove':
+        sql = 'delete from goal_audience_relation where goal_id="{0}" and audience="{1}"'.format(goal_id, open_id)
+
+    try:
+        mysql.exec_none_query(sql)
+        return True
+    except:
+        print('Goal {0} status update fail'.format(goal_id))
+        return False
 
 
+def get_audience_goals(open_id):
+    mysql = MySQL(db='goal')
+
+    audience_goals = mysql.exec_query('select * from goal_audience_relation where audience="{0}" order by create_time DESC'.format(open_id))
+    return audience_goals
 
 
 if __name__ == '__main__':
