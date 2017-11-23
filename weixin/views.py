@@ -13,7 +13,7 @@ from wechatpy.utils import check_signature
 
 from lib.utils.common import create_timestamp, get_openid, get_user_base_info, is_own_goal
 from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id, get_audience, \
-    get_goal_history, save_goal_history, get_history_images, update_goal, get_goals_rank
+    get_goal_history, save_goal_history, get_history_images, update_goal, get_goals_rank, modify_audience
 from lib.weixin.draw_pic import *
 from goal.settings import *
 
@@ -220,6 +220,7 @@ def goaldetail(request, goal_id):
         history_image_list[goal_history[0]] = images_list
 
     context = {
+        'open_id': open_id,
         'goal': goal,
         'is_own': is_own,
         'audience_headimgurl': audience_headimgurl,
@@ -275,6 +276,23 @@ def goal_action(request):
         return HttpResponse('False&' + str(ex))
 
     result = 'True&'
+
+    return HttpResponse(result)
+
+
+@csrf_exempt
+def operate_audience(request):
+    goal_id = request.POST.get('goal_id')
+    action = request.POST.get('action')
+    open_id = request.POST.get('open_id')
+    try:
+        status = modify_audience(goal_id, open_id, action)
+    except Exception as ex:
+        return HttpResponse('False&' + str(ex))
+    if status:
+        result = 'True&'
+    else:
+        result = 'False&'
 
     return HttpResponse(result)
 
