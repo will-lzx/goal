@@ -28,7 +28,7 @@
     <div class="mb_xq">
         <h4>监督好友（{{ audience_count }}）</h4>
         <div class="jd_con">
-            {% for k, v in audience_headimgurl %}
+            {% for k, v in audience_headimgurl.items %}
                 <img class="img_jd" src="{{ v }}" alt="监督好友">
             {% endfor %}
 
