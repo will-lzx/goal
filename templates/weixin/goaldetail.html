@@ -9,14 +9,13 @@
 
 {% block content %}
 
-
-    <div class="mb_con">
     {% if not is_own %}
         <div>
-            <img class="img_zz_tx1" src="{{ headimg_url }}"><br>
-            <span>{{ author_name }}的小目标</span>
+            <img src="{{ goal.1 | get_headimg }}"><br>
+            <span>{{ goal.1 | get_author_name }}的小目标</span>
         </div>
     {% endif %}
+    <div class="mb_con">
        <div class="mb_nr">{{ goal.3 }}<br><span class="fz_nr">如不完成则自罚</span> <br>{{ goal.4 }}</div>
     </div>
     <div class="mb_zt_con">

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load own_tag %}
+
 {% block title %}执行排行{% endblock %}
 {% block head %}
 
@@ -10,43 +12,27 @@
 
     <div class="ph_zz">
         <div class="ph_zz_l">
-            <div class="zz_l_tx1"><img class="img_zz_tx1" src="{% static '/images/tx_test.jpg' %}" alt="头像"></div>
-            <div class="zz_l_nc">刘志祥</div>
-            <div class="zz_l_ph">第5名</div>
+            <div class="zz_l_tx1"><img class="img_zz_tx1" src="{{ open_id | get_headimg }}" alt="头像"></div>
+            <div class="zz_l_nc">{{ open_id | get_author_name }}</div>
+            <div class="zz_l_ph">第{{ open_id | get_rank }}名</div>
         </div>
-        <div class="ph_zz_r">5</div>
+        <div class="ph_zz_r">{{ open_id | get_rank }}</div>
         <div class="zz_sj">
-            <div class="zz_sj_l zz_sj_b">创建：12</div>
-            <div class="zz_sj_l">完成：4</div>
-            <div class="zz_sj_l">放弃：5</div>
-            <div class="zz_sj_l">执行中：3</div>
+            <div class="zz_sj_l zz_sj_b">创建：{{ open_id | get_goal_count }}</div>
+            <div class="zz_sj_l">完成：{{ open_id | get_goal_complete }}</div>
+            <div class="zz_sj_l">放弃：{{ open_id | get_goal_giveup }}</div>
+            <div class="zz_sj_l">执行中：{{ open_id | get_goal_onging }}</div>
         </div>
     </div>
 
-    <div class="ph_l_con">
-        <div class="ph_l_n">1</div>
-        <div class="zz_l_tx"><img class="img_zz_tx" src="{% static '/images/tx_test.jpg' %}" alt="头像"></div>
-        <div class="ph_l_m">刘志祥</div>
-        <div class="ph_l_f">79</div>
-    </div>
-    <div class="ph_l_con">
-        <div class="ph_l_n">2</div>
-        <div class="zz_l_tx"><img class="img_zz_tx" src="{% static '/images/tx_test.jpg' %}" alt="头像"></div>
-        <div class="ph_l_m">Reakyzhou</div>
-        <div class="ph_l_f">69</div>
-    </div>
-    <div class="ph_l_con">
-        <div class="ph_l_n">3</div>
-        <div class="zz_l_tx"><img class="img_zz_tx" src="{% static '/images/tx_test.jpg' %}" alt="头像"></div>
-        <div class="ph_l_m">杨建伟</div>
-        <div class="ph_l_f">65</div>
-    </div>
-    <div class="ph_l_con">
-        <div class="ph_l_n">4</div>
-        <div class="zz_l_tx"><img class="img_zz_tx" src="{% static '/images/tx_test.jpg' %}" alt="头像"></div>
-        <div class="ph_l_m">张大大</div>
-        <div class="ph_l_f">52</div>
-    </div>
+    {% for v in sort_values %}
+        <div class="ph_l_con">
+            <div class="ph_l_n">{{ v | get_rank }}</div>
+            <div class="zz_l_tx"><img class="img_zz_tx" src="{{ v | get_headimg }}" alt="头像"></div>
+            <div class="ph_l_m">{{ v | get_author_name }}</div>
+            <div class="ph_l_f">{{ v | get_rank }}</div>
+        </div>
+    {% endfor %}
 
 
 {% endblock %}

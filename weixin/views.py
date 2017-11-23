@@ -162,7 +162,8 @@ def history(request):
 
     author = user_base_info['nickname']
 
-    goals = get_goals(author)
+    goals = get_goals(open_id)
+
     context = {
         'goals': goals
     }
@@ -198,6 +199,7 @@ def goaldetail(request, goal_id):
     audience_list = get_audience(goal_id)
 
     audience_headimgurl = {}
+
     for audience in audience_list:
         audience_headimgurl[audience] = ''
 
@@ -217,8 +219,6 @@ def goaldetail(request, goal_id):
     context = {
         'goal': goal,
         'is_own': is_own,
-        'headimg_url': '',
-        'author_name': '',
         'audience_headimgurl': audience_headimgurl,
         'audience_count': len(audience_list),
         'goal_histories': goal_histories,
@@ -238,9 +238,12 @@ def others(request):
 def ranking(request):
     template_name = 'weixin/ranking.html'
 
+    open_id = get_open_id(request)
+
     goal_rank_dict, sort_values = get_goals_rank()
 
     context = {
+        'open_id': open_id,
         'goal_rank_dict': goal_rank_dict,
         'sort_values': sort_values
     }
