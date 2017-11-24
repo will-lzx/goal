@@ -17,6 +17,7 @@ from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get
     get_audience_goals
 from lib.weixin.draw_pic import *
 from goal.settings import *
+from weixin.templatetags.own_tag import get_headimg, get_goal_status, get_goal_current_status
 
 
 @csrf_exempt
@@ -113,7 +114,7 @@ def create3(request, goal_id, open_id):
     two_dimension = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
     random_str = str(time.time())
     save_img = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
-    draw(low_img, headimg, author_name, (goal[7] + datetime.timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S"), goal[3], goal[4], two_dimension, save_img)
+    draw(low_img, headimg, goal[0], author_name, (goal[7] + datetime.timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S"), goal[3], goal[4], two_dimension, save_img)
     context = {
         'goal': goal,
         'img_url': '/static/save_images/' + random_str + '.jpg'
@@ -207,7 +208,14 @@ def goaldetail(request, goal_id):
     audience_headimgurl = {}
 
     for audience in audience_list:
-        audience_headimgurl[audience] = ''
+        print('audience', audience)
+        audience_headimgurl[audience[0]] = get_headimg(audience[0])
+
+    is_audience = False
+
+    if not is_own:
+        if audience_headimgurl.keys().__contains__(open_id):
+            is_audience = True
 
     goal_histories = get_goal_history(goal_id)
 
@@ -224,12 +232,15 @@ def goaldetail(request, goal_id):
         'open_id': open_id,
         'goal': goal,
         'is_own': is_own,
+        'is_audience': is_audience,
         'audience_headimgurl': audience_headimgurl,
         'audience_count': len(audience_list),
         'goal_histories': goal_histories,
         'history_count': len(goal_histories),
         'history_image_list': history_image_list
     }
+
+    print('context,', context)
     response = render(request, template_name, context)
     return response
 
@@ -239,10 +250,16 @@ def others(request):
 
     open_id = get_open_id(request)
 
+    goal_id_status_dict = {}
+
     audience_goals = get_audience_goals(open_id)
 
+    for audience in audience_goals:
+        goal_id_status_dict[audience[0]] = get_goal_current_status(audience[0])
+
     context = {
-        'audience_goals': audience_goals
+        'audience_goals': audience_goals,
+        'goal_id_status_dict': goal_id_status_dict
     }
 
     response = render(request, template_name, context)
@@ -297,10 +314,24 @@ def operate_audience(request):
     open_id = request.POST.get('open_id')
     try:
         status = modify_audience(goal_id, open_id, action)
+        audience_count = len(get_audience(goal_id))
+
+        audience_list = get_audience(goal_id)
+
+        audience_headimgurl = {}
+
+        for audience in audience_list:
+            audience_headimgurl[audience[0]] = get_headimg(audience[0])
+
     except Exception as ex:
         return HttpResponse('False&' + str(ex))
     if status:
-        result = 'True&'
+        audience_imgs = '<h4>监督好友（' + str(audience_count) + '）</h4><div class="jd_con">'
+        for k, v in audience_headimgurl.items():
+            audience_imgs = audience_imgs + '<img class="img_jd" src="' + v + '" alt="监督好友">'
+
+        audience_imgs = audience_imgs + '</div>'
+        result = 'True&' + str(audience_count) + '&' + audience_imgs
     else:
         result = 'False&'
 
@@ -317,6 +348,9 @@ def get_open_id(request):
     else:
         openid = request.session.get('openid', default=None)
         print('session get', openid)
+
+
+    print('i want openid', openid)
 
     return openid
 

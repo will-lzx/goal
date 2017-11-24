@@ -13,7 +13,7 @@ from urllib.request import urlopen
 import os
 
 
-def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty, two_dimension, save_img):
+def draw(low_img, headimg, goal_id, author_name, goal_create_time, goal_content, penalty, two_dimension, save_img):
 
     font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 24)
     #font = ImageFont.truetype('/Users/zhixiangliu/Documents/code/goal/static/images/SourceHanSansCN-Bold.otf', 24)
@@ -29,7 +29,7 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
 
     #new_png = transparent('/Users/zhixiangliu/Documents/code/goal/static/images/getqrcode.png', '/Users/zhixiangliu/Documents/code/goal/static/images/getqrcode2.png')
 
-    new_png = create_two_dimension(two_dimension)
+    new_png = create_two_dimension(two_dimension, goal_id)
     im3 = Image.open(new_png)
 
     # 在图片上添加文字 1
@@ -45,7 +45,7 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
 
     w, h = content_font.getsize(goal_content)
 
-    if len(goal_content) > 6:
+    if len(goal_content) > 7:
         goal_content1 = goal_content[0: int(len(goal_content)/2)]
         goal_content2 = goal_content[int(len(goal_content) / 2):]
         w1, h1 = content_font.getsize(goal_content1)
@@ -57,12 +57,12 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
     else:
         draw_handle.text((width/2 - w/2, 200), goal_content, (0, 0, 0), content_font)
 
-    w, h = content_font.getsize(penalty)
-
     if len(penalty) > 6:
         content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 60)
     else:
         content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 80)
+
+    w, h = content_font.getsize(penalty)
 
     draw_handle.text((width/2 - w/2, 600), penalty, (0, 0, 0), content_font)
 
@@ -74,7 +74,7 @@ def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty,
     im1.save(save_img)
 
 
-def create_two_dimension(save_img):
+def create_two_dimension(save_img, goal_id):
     import qrcode
     qr = qrcode.QRCode(
         version=1,
@@ -82,7 +82,7 @@ def create_two_dimension(save_img):
         box_size=5,
         border=1,
     )
-    qr.add_data("http://182.61.21.208/weixin/create1/")
+    qr.add_data("http://mgoal.cn/weixin/goaldetail/{0}".format(goal_id))
     qr.make(fit=True)
 
     img = qr.make_image()

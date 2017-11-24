@@ -17,8 +17,17 @@ def get_goal_status(key):
     return goal_status[key]
 
 
-def get_goal_content(goal_id):
+def get_goal_owner(goal_id):
+    goal = get_goal_by_id(goal_id)
+    return goal[0][1]
 
+
+def get_goal_current_status(goal_id):
+    goal = get_goal_by_id(goal_id)
+    return goal_status[goal[0][6]]
+
+
+def get_goal_content(goal_id):
     goal = get_goal_by_id(goal_id)
     return goal[0][3]
 
@@ -107,6 +116,11 @@ register.filter('get_goal_content', get_goal_content)
 register.filter('get_goal_audience_count', get_goal_audience_count)
 
 register.filter('get_goal_create_time', get_goal_create_time)
+
+register.filter('get_goal_current_status', get_goal_current_status)
+
+register.filter('get_goal_owner', get_goal_owner)
+
 
 
 
