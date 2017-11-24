@@ -17,7 +17,7 @@ from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get
     get_audience_goals
 from lib.weixin.draw_pic import *
 from goal.settings import *
-from weixin.templatetags.own_tag import get_headimg
+from weixin.templatetags.own_tag import get_headimg, get_goal_status, get_goal_current_status
 
 
 @csrf_exempt
@@ -250,10 +250,16 @@ def others(request):
 
     open_id = get_open_id(request)
 
+    goal_id_status_dict = {}
+
     audience_goals = get_audience_goals(open_id)
 
+    for audience in audience_goals:
+        goal_id_status_dict[audience[0]] = get_goal_current_status(audience[0])
+
     context = {
-        'audience_goals': audience_goals
+        'audience_goals': audience_goals,
+        'goal_id_status_dict': goal_id_status_dict
     }
 
     response = render(request, template_name, context)

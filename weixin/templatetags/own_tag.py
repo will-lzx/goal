@@ -17,8 +17,12 @@ def get_goal_status(key):
     return goal_status[key]
 
 
-def get_goal_content(goal_id):
+def get_goal_current_status(goal_id):
+    goal = get_goal_by_id(goal_id)
+    return goal_status[goal[0][6]]
 
+
+def get_goal_content(goal_id):
     goal = get_goal_by_id(goal_id)
     return goal[0][3]
 
@@ -45,9 +49,7 @@ def get_author_name(open_id):
 
 
 def get_headimg(open_id):
-    print('open is is ', open_id)
     user_info = get_user_base_info(open_id)
-    print('verify imgurl', user_info)
     return user_info['headimgurl']
 
 
@@ -109,6 +111,8 @@ register.filter('get_goal_content', get_goal_content)
 register.filter('get_goal_audience_count', get_goal_audience_count)
 
 register.filter('get_goal_create_time', get_goal_create_time)
+
+register.filter('get_goal_current_status', get_goal_current_status)
 
 
 
