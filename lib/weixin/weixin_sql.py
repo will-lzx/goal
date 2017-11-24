@@ -1,4 +1,5 @@
 import datetime
+from urllib.request import urlopen
 
 from wechatpy import WeChatClient
 
@@ -101,16 +102,28 @@ def save_goal_history(goal_id, content, image_url):
     history_id = mysql.exec_query(sql)[0][0]
 
     image_urls = image_url.split(';')
+    index = 1
     for url in image_urls:
         if url:
-            save_history_image(history_id, url)
+            save_history_image(history_id, url, index)
+            index += 1
 
 
-def save_history_image(history_id, image_url):
+def save_history_image(history_id, image_url, index):
     mysql = MySQL(db='goal')
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    mysql.exec_none_query('insert into history_image_url (history_id, image_url, create_time) values({0}, "{1}", "{2}")'.format(history_id, image_url, create_time))
+    data = urlopen(image_url).read()
+
+    mysql.exec_none_query('insert into history_image_url (history_id, data, index, create_time) values({0}, "{1}",{2}, "{2}")'.format(history_id, data, index, create_time))
+
+
+def get_history_image(history_id, index):
+    mysql = MySQL(db='goal')
+
+    data = mysql.exec_query('select data from history_image_url where history_id={0} and index={1}'.format(history_id, index))
+
+    return data[0][0]
 
 
 def get_goal_history(goal_id):

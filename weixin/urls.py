@@ -39,4 +39,6 @@ urlpatterns = [
     url(r'^goal_action/$', goal_action, name='goal_action'),
     url(r'^save_history/$', save_history, name='save_history'),
 
+    url(r'^image/(?P<history_id>.+)/(?P<index>.+)/$', pil_image, name="image"),
+
 ]

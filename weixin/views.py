@@ -14,7 +14,7 @@ from wechatpy.utils import check_signature
 from lib.utils.common import create_timestamp, get_openid, get_user_base_info, is_own_goal
 from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id, get_audience, \
     get_goal_history, save_goal_history, get_history_images, update_goal, get_goals_rank, modify_audience, \
-    get_audience_goals
+    get_audience_goals, get_history_image
 from lib.weixin.draw_pic import *
 from goal.settings import *
 from weixin.templatetags.own_tag import get_headimg, get_goal_status, get_goal_current_status
@@ -224,7 +224,7 @@ def goaldetail(request, goal_id):
         history_images = get_history_images(goal_history[0])
         images_list = []
         for image in history_images:
-            images_list.append(image[1])
+            images_list.append(image[2])
 
         history_image_list[goal_history[0]] = images_list
 
@@ -349,10 +349,18 @@ def get_open_id(request):
         openid = request.session.get('openid', default=None)
         print('session get', openid)
 
-
-    print('i want openid', openid)
-
     return openid
+
+
+def pil_image(request, history_id, index):
+    data = get_history_image(history_id, index)
+    data_stream = io.BytesIO(data)
+
+    im = Image.open(data_stream)
+    response = HttpResponse(mimetype="image/png")
+    im.save(response, 'PNG')
+    return response
+
 
 
 
