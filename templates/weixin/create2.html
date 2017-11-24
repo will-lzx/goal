@@ -13,7 +13,7 @@
     <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="目标描述" rows="2" id="abc"></textarea>
+                    <textarea class="weui-textarea" placeholder="目标描述" rows="2" id="goal_content"></textarea>
                     <div class="weui-textarea-counter"><span id="wordCountShow"></span></div>
                     </textarea>
                 </div>
@@ -72,26 +72,17 @@
                 curLength = $(self).val().length;
                 var leaveCount = maxLength - curLength;
                 wordWrapper.text(leaveCount + "/" + maxLength);
+                if(leaveCount === 0)
+                {
+                    $('#wordCountShow').css({color:"red"});
+                }
+
               }
             }
           });
           $(function () {
-            $("#abc").wordCount(10, $("#wordCountShow"));
+            $("#goal_content").wordCount(16, $("#wordCountShow"));
           });
-
-        function LimitTextArea(field){
-            var maxlimit = 16;
-
-            if (field.value.length > maxlimit)
-            {
-                field.value = field.value.substring(0, maxlimit);
-                $('#c_count').text('16');
-            }
-            else
-            {
-                $('#c_count').text(field.value.length);
-            }
-        }
 
         function save_goal(save_type) {
             var goal_type = '{{ goal_type }}';
