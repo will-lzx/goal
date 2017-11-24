@@ -13,8 +13,9 @@
     <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="目标描述" rows="2" id="goal_content"></textarea>
-                    <div class="weui-textarea-counter"><span>0</span>/15</div>
+{#                    <textarea class="weui-textarea" placeholder="目标描述" rows="2" id="goal_content"></textarea>#}
+{#                    <div class="weui-textarea-counter"><span>0</span>/15</div>#}
+                    <textarea title="The textarea width must less than 16 characters." cols=50 rows=10 name="comment" id="commentarea" onKeyDown="LimitTextArea(this)" onKeyUp="LimitTextArea(this)" onkeypress="LimitTextArea(this)" ></textarea>
                 </div>
             </div>
         </div>
@@ -60,6 +61,13 @@
         $.ajaxSetup({data: {
             csrfmiddlewaretoken: '{{ csrf_token }}'
         }});
+
+        function LimitTextArea(field){
+            var maxlimit=16;
+            if (field.value.length > maxlimit)
+             field.value = field.value.substring(0, maxlimit);
+
+        }
 
         function save_goal(save_type) {
             var goal_type = '{{ goal_type }}';
