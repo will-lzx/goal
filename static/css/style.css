@@ -394,7 +394,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .wj_cz{width: 100%;text-align: center;margin-top: 10px;border-top: 1px solid #eeeeee;overflow: hidden; }
 .wj_cz_l{width: 49%;border-right: 1px solid #eeeeee;float: left;text-decoration: none;line-height: 48px;color: #000000;}
 .wj_cz_r{border-right: none;color: #179B16;font-weight: 400;}
-.mb_clsoe_con{width: 48px;height: 48px;position: relative;margin-left: 180px;margin-top: -40px;}
+.mb_clsoe_con{width: 48px;height: 48px;position: relative;margin-left: 90%;margin-top: -30px;border-radius:48px;border: 2px solid #e5e5e5;}
 .close_img{width: 48px; height: auto;border: none;}
 
 
