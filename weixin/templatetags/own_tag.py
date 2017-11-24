@@ -46,6 +46,7 @@ def get_author_name(open_id):
 
 def get_headimg(open_id):
     user_info = get_user_base_info(open_id)
+    print('verify imgurl', user_info)
     return user_info['headimgurl']
 
 
