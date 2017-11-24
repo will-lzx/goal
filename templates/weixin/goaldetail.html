@@ -85,10 +85,10 @@
             <div class="mb_cz_left2"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="/weixin/create1/" id="create">我也定个小目标</a></div>
             {% ifequal goal.6 0 %}
                 {% if is_audience %}
-                    <div class="mb_cz_right2"><a  href="#" id="audience_goal" onclick="audience()" id="yijiandu">
+                    <div class="mb_cz_right2"><a  class="weui-btn weui-btn_primary2 cz_an_s_m" href="#" id="audience_goal" onclick="audience()">
                     已加入监督</a></div>
                 {% else %}
-                    <div class="mb_cz_right2"><a  href="#" id="audience_goal" onclick="audience()" id="jianduci">
+                    <div class="mb_cz_right2"><a  class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="audience_goal" onclick="audience()">
                     监督此目标</a></div>
                 {% endif %}
 
@@ -126,7 +126,7 @@
                         if(res === 'True')
                         {
                             $('#audience_goal').text('取消监督');
-                            $('#yijiandu').attr('class', 'weui-btn weui-btn_primary2 cz_an_s_m');
+                            $('#audience_goal').attr('class', 'weui-btn weui-btn_primary2 cz_an_s_m');
                             $('#jiandu').html('<b>' + result.split('&')[1] + '</b><br>监督');
                             $('#jiandu_friend').html(result.split('&')[2]);
 
@@ -151,7 +151,7 @@
                         if(res === 'True')
                         {
                             $('#audience_goal').text('监督此目标');
-                            $('#yijianduci').attr('class', 'weui-btn weui-btn_primary cz_an_s_m');
+                            $('#audience_goal').attr('class', 'weui-btn weui-btn_primary cz_an_s_m');
                             $('#oilink').attr('href','http://oier.cc');
                             $('#jiandu').html('<b>' + result.split('&')[1] + '</b><br>监督');
                             $('#jiandu_friend').html(result.split('&')[2]);
