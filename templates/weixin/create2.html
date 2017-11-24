@@ -13,11 +13,8 @@
     <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-{#                    <textarea class="weui-textarea" placeholder="目标描述" rows="2" id="goal_content"></textarea>#}
-{#                    <div class="weui-textarea-counter"><span>0</span>/15</div>#}
-                    <textarea title="The textarea width must less than 16 characters." class="weui-textarea" placeholder="目标描述" id="goal_content"
-                              rows="2" onKeyDown="LimitTextArea(this)" onKeyUp="LimitTextArea(this)" onkeypress="LimitTextArea(this)" >
-
+                    <textarea class="weui-textarea" placeholder="目标描述" rows="2" id="goal_content"onKeyDown="LimitTextArea(this)" onKeyUp="LimitTextArea(this)" onkeypress="LimitTextArea(this)"></textarea>
+                    <div class="weui-textarea-counter"><span>0</span>/15</div>
                     </textarea>
                 </div>
             </div>
