@@ -15,9 +15,10 @@
                 <div class="weui-cell__bd">
                     <textarea class="weui-textarea" placeholder="目标描述" rows="2" id="goal_content" onKeyDown="LimitTextArea(this)"
                               onKeyUp="LimitTextArea(this)"
-                              onkeypress="LimitTextArea(this)" onPropertyChange="LimitTextArea(this)"></textarea>
+                              onkeypress="LimitTextArea(this)" ></textarea>
                     <div class="weui-textarea-counter"><span id="c_count">0</span>/16</div>
                     </textarea>
+                    <input id="abc" value="脚本之家"><span id="wordCountShow"></span>
                 </div>
             </div>
         </div>
@@ -63,6 +64,23 @@
         $.ajaxSetup({data: {
             csrfmiddlewaretoken: '{{ csrf_token }}'
         }});
+
+        $.fn.extend({
+            wordCount: function (maxLength, wordWrapper) {
+              var self = this;
+              $(self).attr("maxlength", maxLength);
+              showWordCount();
+              $(this).on("input propertychange", showWordCount);
+              function showWordCount() {
+                curLength = $(self).val().length;
+                var leaveCount = maxLength - curLength;
+                wordWrapper.text(leaveCount + "/" + maxLength);
+              }
+            }
+          });
+          $(function () {
+            $("#abc").wordCount(10, $("#wordCountShow"));
+          });
 
         function LimitTextArea(field){
             var maxlimit = 16;
