@@ -88,14 +88,16 @@
             var goal_type = '{{ goal_type }}';
 
             var penalty = $("#penalty").find("option:selected").text();
-            if(penalty === '自罚方式')
+            var penalty_selectIndex = $("#penalty").get(0).selectedIndex;
+            if(penalty_selectIndex === 0)
             {
                 alert('请选择一个自罚方式');
                 return;
             }
 
             var period = $("#period").find("option:selected").val();
-            if(period === '目标时间')
+            var period_selectIndex = $("#period").get(0).selectedIndex;
+            if(period_selectIndex === 0)
             {
                 alert('请选择一个目标时间');
                 return;
