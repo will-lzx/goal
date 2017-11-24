@@ -73,7 +73,7 @@
     <div class="mb_cz">
         {% if is_own %}
             {% ifequal goal.6 0 %}
-                <div class="mb_cz_left"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="/weixin/create3/{{ goal.0 }}/" id="share">邀请好友监督</a></div>
+                <div class="mb_cz_left"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="/weixin/create3/{{ goal.0 }}/{{ open_id }}/" id="share">邀请好友监督</a></div>
 
                 <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="close_goal" onclick="close_goal()">目标完结</a></div>
                 <div class="mb_cz_right"><a class="weui-btn weui-btn_primary cz_an_s_r" href="/weixin/goinglog/{{ goal.0 }}/">打卡记录</a></div>
