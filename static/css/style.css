@@ -394,6 +394,8 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
 .wj_cz{width: 100%;text-align: center;margin-top: 10px;border-top: 1px solid #eeeeee;overflow: hidden; }
 .wj_cz_l{width: 49%;border-right: 1px solid #eeeeee;float: left;text-decoration: none;line-height: 48px;color: #000000;}
 .wj_cz_r{border-right: none;color: #179B16;font-weight: 400;}
+.mb_clsoe_con{width: 48px;height: 48px;position: relative;margin-right: 20px;margin-top: -20px;background-color: #990066;}
+.close_img{width: 48px; height: auto;border: none;}
 
 
 /*-------我的历史目标------------*/
