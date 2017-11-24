@@ -105,6 +105,7 @@ def save_goal_history(goal_id, content, image_url):
     index = 1
     for url in image_urls:
         if url:
+            print('index', index)
             save_history_image(history_id, url, index)
             index += 1
 
@@ -114,6 +115,7 @@ def save_history_image(history_id, image_url, index):
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     data = urlopen(image_url).read()
+    print('data', data)
 
     mysql.exec_none_query('insert into history_image_url (history_id, data, index, create_time) values({0}, "{1}",{2}, "{3}")'.format(history_id, data, index, create_time))
 
