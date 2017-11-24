@@ -180,6 +180,7 @@ def save_history(request):
     history_content = request.POST.get('history_content')
 
     try:
+        print('goal id, imga_rul', image_url, goal_id)
         save_goal_history(goal_id, history_content, image_url)
     except Exception as ex:
         return HttpResponse('False&' + str(ex))

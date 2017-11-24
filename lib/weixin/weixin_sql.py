@@ -115,7 +115,7 @@ def save_history_image(history_id, image_url, index):
 
     data = urlopen(image_url).read()
 
-    mysql.exec_none_query('insert into history_image_url (history_id, data, index, create_time) values({0}, "{1}",{2}, "{2}")'.format(history_id, data, index, create_time))
+    mysql.exec_none_query('insert into history_image_url (history_id, data, index, create_time) values({0}, "{1}",{2}, "{3}")'.format(history_id, data, index, create_time))
 
 
 def get_history_image(history_id, index):
