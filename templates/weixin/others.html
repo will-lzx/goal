@@ -27,7 +27,7 @@
                     {% endifequal %}
                 {% endfor %}
 
-                    <div class="li_con_l"><img class="img_l" src="{{ goal.1 | get_headimg }}" alt="头像"></div>
+                    <div class="li_con_l"><img class="img_l" src="{{ goal.0 | get_goal_owner | get_headimg }}" alt="头像"></div>
                     <div class="li_con_r">
                          <a href="/weixin/goaldetail/{{ goal.0 }}/"><div class="r_til">[{{ goal.0 | get_goal_current_status }}]{{ goal.0 | get_goal_content }}</div></a>
                         <div class="r_sm2">{{ goal.0 | get_goal_create_time }}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督{{ goal.0 | get_goal_audience_count }}</div>
