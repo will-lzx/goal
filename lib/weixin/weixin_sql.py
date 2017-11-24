@@ -7,6 +7,9 @@ from lib.utils.common import sort_by_value
 from lib.utils.sql_help import MySQL
 from goal.settings import *
 
+import pymysql
+pymysql.install_as_MySQLdb()
+
 
 def subcribe_save_openid(openid):
     is_usr_exist = is_weixin_usr_exist(openid)
@@ -112,9 +115,10 @@ def save_goal_history(goal_id, content, image_url):
 
 def save_history_image(history_id, image_url, index):
     mysql = MySQL(db='goal')
+
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    data = urlopen(image_url).read()
+    data = pymysql.escape_string(urlopen(image_url).read())
     print('data', data)
 
     mysql.exec_none_query('insert into history_image_url (history_id, data, index, create_time) values({0}, "{1}",{2}, "{3}")'.format(history_id, data, index, create_time))
