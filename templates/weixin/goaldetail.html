@@ -84,7 +84,7 @@
             <div class="mb_cz_left2"><a class="weui-btn3 weui-btn_default cz_an_s_l" href="/weixin/create1/" id="create">我也定个小目标</a></div>
             {% ifequal goal.6 0 %}
                 <div class="mb_cz_right2"><a class="weui-btn weui-btn_primary cz_an_s_m" href="#" id="audience_goal" onclick="audience()">
-                    {% if is_audience %}取消监督{% else %}监督此目标{% endif %}</a></div>
+                    {% if is_audience %}<span class="wk_til">已加入监督</span>{% else %}监督此目标{% endif %}</a></div>
             {% endifequal %}
         {% endif %}
     
