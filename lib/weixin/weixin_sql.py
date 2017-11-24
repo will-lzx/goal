@@ -106,7 +106,7 @@ def save_goal_history(goal_id, content, image_url):
     for url in image_urls:
         if url:
             print('index', index)
-            save_history_image(history_id, url, index)
+            save_history_image(history_id, 'http://mgoal.cn/static/images/kanshu.jpg', index)
             index += 1
 
 
