@@ -11,7 +11,8 @@
     <div class="weui-cells weui-cells_form sc_top">
         <div class="weui-cell">
             <div class="weui-cell__bd">
-                <textarea class="weui-textarea" placeholder="写下过程，打卡记录" rows="3"></textarea>
+                <textarea class="weui-textarea" placeholder="写下过程，打卡记录" rows="3" id="goal_log"></textarea>
+                <div class="weui-textarea-counter"><span id="wordCountShow"></span></div>
                 <div class="weui-uploader__bd" id="preview_wrapper">
 
                         <ul class="weui-uploader__files" id="uploaderFiles">
@@ -45,6 +46,29 @@
         $.ajaxSetup({data: {
             csrfmiddlewaretoken: '{{ csrf_token }}'
         }});
+
+        $.fn.extend({
+            wordCount: function (maxLength, wordWrapper) {
+              var self = this;
+              $(self).attr("maxlength", maxLength);
+              showWordCount();
+              $(this).on("input propertychange", showWordCount);
+              function showWordCount() {
+                curLength = $(self).val().length;
+                var leaveCount = maxLength - curLength;
+                wordWrapper.text(leaveCount + "/" + maxLength);
+                if(leaveCount === 0)
+                {
+                    $('#wordCountShow').css({color:"red"});
+                }
+
+              }
+            }
+          });
+          $(function () {
+            $("#goal_log").wordCount(140, $("#wordCountShow"));
+          });
+
 
         function onUploadImgChange(sender)
         {
