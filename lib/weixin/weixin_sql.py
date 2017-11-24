@@ -48,7 +48,7 @@ def savegoal(author, goal_type, penalty, period, goal_content, status):
 def get_goals(openid):
     mysql = MySQL(db='goal')
 
-    results = mysql.exec_query('select * from goal_list where author="{0}" DESC '.format(openid))
+    results = mysql.exec_query('select * from goal_list where author="{0}" order by create_time DESC'.format(openid))
 
     return results
 
