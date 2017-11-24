@@ -24,7 +24,7 @@
                 <div class="li_con_l"><div class="img_l ks">{{ goal.2 | get_goal_type }}</div></div>
                 <div class="li_con_r">
                      <div class="r_til">
-                         <span class="col_zxz">【{{ goal.6|get_goal_status }}】</span>{{ goal.3 }}
+                         <span class="col_zxz">[{{ goal.6|get_goal_status }}]</span>{{ goal.3 }}
                      </div>
                     <div class="r_sm">{{ goal.0 | get_goal_create_time }}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;监督{{ goal.0 | get_goal_audience_count }}</div>
                 </div>
@@ -33,7 +33,9 @@
 
             {% endfor %}
         {% else %}
-            <span>暂时还没有目标，快去创建一个目标吧</span><a href="#" id="create" class="create-btn">创建目标</a>
+            <div class="wk_con"><span class="wk_til">您还没定目标，快去创建一个吧</span><br>
+              <a href="#" id="create" class="create-btn">创建目标</a>
+            </div>
         {% endif %}
     </div>
 
