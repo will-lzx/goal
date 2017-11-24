@@ -15,7 +15,10 @@
                 <div class="weui-cell__bd">
 {#                    <textarea class="weui-textarea" placeholder="目标描述" rows="2" id="goal_content"></textarea>#}
 {#                    <div class="weui-textarea-counter"><span>0</span>/15</div>#}
-                    <textarea title="The textarea width must less than 16 characters." cols=50 rows=10 name="comment" id="commentarea" onKeyDown="LimitTextArea(this)" onKeyUp="LimitTextArea(this)" onkeypress="LimitTextArea(this)" ></textarea>
+                    <textarea title="The textarea width must less than 16 characters." class="weui-textarea" placeholder="目标描述" id="goal_content"
+                              rows="2" onKeyDown="LimitTextArea(this)" onKeyUp="LimitTextArea(this)" onkeypress="LimitTextArea(this)" >
+
+                    </textarea>
                 </div>
             </div>
         </div>
@@ -63,7 +66,7 @@
         }});
 
         function LimitTextArea(field){
-            var maxlimit=16;
+            var maxlimit = 16;
             if (field.value.length > maxlimit)
              field.value = field.value.substring(0, maxlimit);
 
@@ -90,12 +93,6 @@
             if(goal_content === '')
             {
                 alert('请输入目标的内容');
-                return;
-            }
-
-            if(goal_content.length > 15)
-            {
-                alert("输入的目标内容不能超过15个汉字或者30个字母");
                 return;
             }
 
