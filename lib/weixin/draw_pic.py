@@ -36,9 +36,9 @@ def draw(low_img, headimg, goal_id, author_name, goal_create_time, goal_content,
     draw_handle = ImageDraw.Draw(im1)
     im1.paste(im2, (34, 26))
 
-    draw_handle.text((140, 38), author_name + '定下小目标', (100, 100, 100), font)
+    draw_handle.text((140, 36), author_name + '定下小目标', (100, 100, 100), font)
 
-    draw_handle.text((140, 76),  str(goal_create_time), (100, 100, 100), font)
+    draw_handle.text((140, 75),  str(goal_create_time), (100, 100, 100), font)
 
     content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 74)
     #content_font = ImageFont.truetype('/Users/zhixiangliu/Documents/code/goal/static/images/SourceHanSansCN-Bold.otf', 80)
@@ -58,7 +58,7 @@ def draw(low_img, headimg, goal_id, author_name, goal_create_time, goal_content,
         draw_handle.text((width/2 - w/2, 200), goal_content, (0, 0, 0), content_font)
 
     if len(penalty) > 6:
-        content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 60)
+        content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 58)
     else:
         content_font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 80)
 
