@@ -13,15 +13,20 @@
 
         {% if audience_goals %}
             {% for goal in audience_goals %}
-                {% ifequal goal.0 | get_goal_current_status  '进行中' %}
-                    <div class="li_con li_zxz">
-                {% endifequal %}
-                {% ifequal goal.0 | get_goal_current_status '完成' %}
-                    <div class="li_con li_wc">
-                {% endifequal %}
-                {% ifequal goal.0 | get_goal_current_status '放弃' %}
-                    <div class="li_con li_fq">
-                {% endifequal %}
+                {% for k, v in goal_id_status_dict.items %}
+                    {% ifequal k goal.0 %}
+                        {% ifequal v '进行中' %}
+                            <div class="li_con li_zxz">
+                        {% endifequal %}
+                        {% ifequal v '完成' %}
+                            <div class="li_con li_wc">
+                        {% endifequal %}
+                        {% ifequal v '放弃' %}
+                            <div class="li_con li_fq">
+                        {% endifequal %}
+                    {% endifequal %}
+                {% endfor %}
+
                     <div class="li_con_l"><img class="img_l" src="{{ goal.1 | get_headimg }}" alt="头像"></div>
                     <div class="li_con_r">
                          <a href="goaldetail.html"><div class="r_til">[{{ goal.0 | get_goal_current_status }}]{{ goal.0 | get_goal_content }}</div></a>
