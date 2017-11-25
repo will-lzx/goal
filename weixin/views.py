@@ -190,7 +190,7 @@ def save_history(request):
 
     try:
         print('goal id, imga_rul', image_url, goal_id)
-        save_goal_history(goal_id, history_content, request.FILES)
+        save_goal_history(goal_id, history_content, request.FILES['file'])
     except Exception as ex:
         return HttpResponse('False&' + str(ex))
 
