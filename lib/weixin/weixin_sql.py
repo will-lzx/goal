@@ -107,6 +107,7 @@ def save_goal_history(goal_id, content, image_url):
     mysql = MySQL(db='goal')
     history_id = mysql.exec_query(sql)[0][0]
 
+    print('ewewewre')
     image_urls = image_url.split(';')
     index = 1
     for url in image_urls:
