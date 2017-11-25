@@ -123,17 +123,17 @@ def save_history_image(history_id, image_url, index):
 
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    try:
-        data = urlopen(image_url).read()
-    except Exception as ex:
-        print('image_url', image_url)
-        print(ex)
+    # try:
+    #     data = urlopen(image_url).read()
+    # except Exception as ex:
+    #     print('image_url', image_url)
+    #     print(ex)
 
     #data_stream = io.BytesIO(image_bytes)
 
-    # fin = open('/Users/zhixiangliu/Documents/code/goal/static/images/cunqian.jpg', 'rb')
-    # data = fin.read()
-    # fin.close()
+    fin = open(image_url, 'rb')
+    data = fin.read()
+    fin.close()
     #data = data_stream
     #print('data', data)
 
