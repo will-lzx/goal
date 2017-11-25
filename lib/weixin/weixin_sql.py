@@ -131,9 +131,12 @@ def save_history_image(history_id, image_url, index):
 
     #data_stream = io.BytesIO(image_bytes)
 
-    fin = open(image_url, 'rb')
-    data = fin.read()
-    fin.close()
+    try:
+        fin = open(image_url, 'rb')
+        data = fin.read()
+        fin.close()
+    except Exception as ex:
+        print(ex)
     #data = data_stream
     #print('data', data)
 
