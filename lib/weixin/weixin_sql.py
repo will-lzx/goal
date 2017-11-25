@@ -107,11 +107,10 @@ def save_goal_history(goal_id, content, image_url):
     mysql = MySQL(db='goal')
     history_id = mysql.exec_query(sql)[0][0]
 
-    print('ewewewre')
-    image_urls = image_url.split(';')
     index = 1
-    for url in image_urls:
+    for url in image_url:
         if url:
+            print('ur;', url)
             print('index', index)
             save_history_image(history_id, url, index)
             index += 1
@@ -122,20 +121,20 @@ def save_history_image(history_id, image_url, index):
 
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    try:
-        data = urlopen(image_url).read()
-    except Exception as ex:
-        print('image_url', image_url)
-        print(ex)
+    # try:
+    #     data = urlopen(image_url).read()
+    # except Exception as ex:
+    #     print('image_url', image_url)
+    #     print(ex)
 
     #data_stream = io.BytesIO(image_bytes)
 
-    # try:
-    #     fin = open(image_url, 'rb')
-    #     data = fin.read()
-    #     fin.close()
-    # except Exception as ex:
-    #     print(ex)
+    try:
+        fin = open(image_url, 'rb')
+        data = fin.read()
+        fin.close()
+    except Exception as ex:
+        print(ex)
     #data = data_stream
     #print('data', data)
 
