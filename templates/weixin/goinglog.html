@@ -87,6 +87,7 @@
         }
 
         function save_history() {
+            alert($('#uploaderInput').val());
             var goal_id = '{{ goal_id }}';
             var history_content = $('.weui-textarea').val();
             var image_urls = document.getElementsByClassName('sc_t');
