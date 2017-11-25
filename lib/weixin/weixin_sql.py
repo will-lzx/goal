@@ -108,7 +108,8 @@ def save_goal_history(goal_id, content, image_url):
     history_id = mysql.exec_query(sql)[0][0]
 
     index = 1
-    for url in image_url:
+    image_urls = image_url.split(';')
+    for url in image_urls:
         if url:
             print('ur;', url)
             print('index', index)
