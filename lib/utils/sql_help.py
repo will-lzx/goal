@@ -26,9 +26,9 @@ class MySQL:
         self.conn.close()
         return rows
 
-    def exec_none_query(self, sql):
+    def exec_none_query(self, sql, args=None):
         try:
-            self.cursor.execute(sql)
+            self.cursor.execute(sql, args)
             self.conn.commit()
         except Exception as ex:
             print('Mysql exception {0}'.format(ex))

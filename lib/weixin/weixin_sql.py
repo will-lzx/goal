@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
+
 import datetime
+import io
 from urllib.request import urlopen
 
 from wechatpy import WeChatClient
@@ -9,6 +12,8 @@ from goal.settings import *
 
 import pymysql
 pymysql.install_as_MySQLdb()
+
+import MySQLdb as mdb
 
 
 def subcribe_save_openid(openid):
@@ -109,7 +114,7 @@ def save_goal_history(goal_id, content, image_url):
     for url in image_urls:
         if url:
             print('index', index)
-            save_history_image(history_id, 'http://mgoal.cn/static/images/kanshu.jpg', index)
+            save_history_image(history_id, url, index)
             index += 1
 
 
@@ -118,10 +123,20 @@ def save_history_image(history_id, image_url, index):
 
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    data = pymysql.escape_string(urlopen(image_url).read())
-    print('data', data)
+    data = urlopen(image_url).read()
 
-    mysql.exec_none_query('insert into history_image_url (history_id, data, index, create_time) values({0}, "{1}",{2}, "{3}")'.format(history_id, data, index, create_time))
+    #data_stream = io.BytesIO(image_bytes)
+
+    # fin = open('/Users/zhixiangliu/Documents/code/goal/static/images/cunqian.jpg', 'rb')
+    # data = fin.read()
+    # fin.close()
+    #data = data_stream
+    #print('data', data)
+
+    sql = 'insert into history_image_url (history_id, data, image_index, create_time) values(%s, %s, %s, %s)'
+    arg = (history_id, data, index, create_time)
+
+    mysql.exec_none_query(sql, arg)
 
 
 def get_history_image(history_id, index):
@@ -181,5 +196,6 @@ def get_audience_goals(open_id):
 
 
 if __name__ == '__main__':
-    goal = get_goal_id()
-    print(goal)
+    save_history_image(1, 'http://mgoal.cn/static/images/kanshu.jpg', 1)
+
+    print('')
