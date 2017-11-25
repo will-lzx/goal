@@ -135,7 +135,7 @@ def save_history_image(history_id, image_url, index):
 
     sql = 'insert into history_image_url (history_id, data, image_index, create_time) values(%s, %s, %s, %s)'
     arg = (history_id, data, index, create_time)
-
+    print('sql', sql)
     mysql.exec_none_query(sql, arg)
 
 
