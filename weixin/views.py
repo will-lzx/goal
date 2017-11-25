@@ -176,22 +176,13 @@ def history(request):
 
 @csrf_exempt
 def save_history(request):
-    print('reqyest get', request.GET)
-    print('request post', request.POST)
-    if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
-        print('files', request.FILES['file'])
-
-        if form.is_valid():
-            print('for is valid')
-
     image_url = request.POST.get('image_url')
     goal_id = request.POST.get('goal_id')
     history_content = request.POST.get('history_content')
 
     try:
         print('goal id, imga_rul', image_url, goal_id)
-        save_goal_history(goal_id, history_content, request.FILES['file'])
+        save_goal_history(goal_id, history_content, image_url)
     except Exception as ex:
         return HttpResponse('False&' + str(ex))
 
