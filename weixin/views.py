@@ -177,6 +177,8 @@ def history(request):
 @csrf_exempt
 def save_history(request):
 
+    print('request get', request.GET)
+    print('request post', request.POST)
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         print('files', request.FILES['file'])
