@@ -17,6 +17,7 @@ from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get
     get_audience_goals, get_history_image
 from lib.weixin.draw_pic import *
 from goal.settings import *
+from weixin.models import UploadFileForm
 from weixin.templatetags.own_tag import get_headimg, get_goal_status, get_goal_current_status
 
 
@@ -175,6 +176,14 @@ def history(request):
 
 @csrf_exempt
 def save_history(request):
+
+    if request.method == 'POST':
+        print('files', request.FILES)
+        form = UploadFileForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            print('for is valid')
+
     image_url = request.POST.get('image_url')
     goal_id = request.POST.get('goal_id')
     history_content = request.POST.get('history_content')

@@ -13,8 +13,6 @@ from goal.settings import *
 import pymysql
 pymysql.install_as_MySQLdb()
 
-import MySQLdb as mdb
-
 
 def subcribe_save_openid(openid):
     is_usr_exist = is_weixin_usr_exist(openid)
@@ -123,20 +121,20 @@ def save_history_image(history_id, image_url, index):
 
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    # try:
-    #     data = urlopen(image_url).read()
-    # except Exception as ex:
-    #     print('image_url', image_url)
-    #     print(ex)
+    try:
+        data = urlopen(image_url).read()
+    except Exception as ex:
+        print('image_url', image_url)
+        print(ex)
 
     #data_stream = io.BytesIO(image_bytes)
 
-    try:
-        fin = open(image_url, 'rb')
-        data = fin.read()
-        fin.close()
-    except Exception as ex:
-        print(ex)
+    # try:
+    #     fin = open(image_url, 'rb')
+    #     data = fin.read()
+    #     fin.close()
+    # except Exception as ex:
+    #     print(ex)
     #data = data_stream
     #print('data', data)
 
