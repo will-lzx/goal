@@ -123,7 +123,11 @@ def save_history_image(history_id, image_url, index):
 
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    data = urlopen(image_url).read()
+    try:
+        data = urlopen(image_url).read()
+    except Exception as ex:
+        print('image_url', image_url)
+        print(ex)
 
     #data_stream = io.BytesIO(image_bytes)
 
