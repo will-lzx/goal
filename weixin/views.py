@@ -293,6 +293,7 @@ def ranking(request):
     return response
 
 
+@csrf_exempt
 def goinglog(request, goal_id):
     template_name = 'weixin/goinglog.html'
 
