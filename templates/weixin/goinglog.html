@@ -107,7 +107,7 @@
             $.ajax({
                 type:"post",
                 url:"/weixin/save_history/",//自己填写请求地址
-                data:{goal_id: goal_id, history_content: history_content, image_url: image_url},
+                data:{goal_id: goal_id, history_content: history_content},
                 success:function(result){
                     var res = result.split('&')[0];
                     if(res === 'True')
