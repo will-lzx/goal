@@ -178,7 +178,7 @@ def history(request):
 def save_history(request):
 
     if request.method == 'POST':
-        print('files', request.FILES)
+        print('files', request.FILES['file'])
         form = UploadFileForm(request.POST, request.FILES)
 
         if form.is_valid():
