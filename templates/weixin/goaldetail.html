@@ -56,6 +56,7 @@
                          {% if v %}
                              {% ifequal k history.0 %}
                                  {% for image_url in v %}
+                                     {{ v }}
                                     <img class="img_tp" src="{{ v }}" alt="进度打卡">
                                  {% endfor %}
                              {% endifequal %}
