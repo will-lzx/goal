@@ -111,16 +111,14 @@
               mimeType: "multipart/form-data",
               contentType: false,
               cache: false,
-              processData: false
-            }).success(function () {
-              //成功提交
-                alert('123');
-                location.href = '/weixin/goaldetail/' + goal_id + '/';
-            }).fail(function (jqXHR, textStatus, errorThrown) {
-              //错误信息
-                alert('some wrong！');
-            });
+              processData: false,
+              success:function (result) {
+                    //成功提交
 
+                    alert('123');
+                    location.href = '/weixin/goaldetail/' + goal_id + '/';
+                }
+            });
         });
 
         function save_history() {
