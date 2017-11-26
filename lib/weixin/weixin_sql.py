@@ -146,9 +146,6 @@ def save_history_image(history_id, image_url, index):
         print('image_url', image_url)
         print(ex)
 
-    #data = data_stream
-    #print('data', data)
-
     sql = 'insert into history_image_url (history_id, data, image_index, create_time) values(%s, %s, %s, %s)'
     arg = (history_id, data, index, create_time)
     print('sql', sql)

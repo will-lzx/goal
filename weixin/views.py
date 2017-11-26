@@ -186,12 +186,11 @@ def save_history(request):
     print('request post', request.POST)
 
     history_content = request.POST.get("goal_log", None)
-
-    goal_id = 1
+    goal_id = request.POST.get('goal_id', None)
 
     print('request post', request.POST)
 
-    print('history_content', history_content)
+    print('history_content, goal_id', history_content, goal_id)
 
     try:
         print('goal id, imga_rul', files, goal_id)
@@ -199,9 +198,7 @@ def save_history(request):
     except Exception as ex:
         return HttpResponse('False&' + str(ex))
 
-    result = 'True&'
-
-    return HttpResponse(result)
+    return goaldetail(request, goal_id)
 
 
 def goaldetail(request, goal_id):
