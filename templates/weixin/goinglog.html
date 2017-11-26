@@ -7,35 +7,38 @@
 {% endblock %}
 
 {% block content %}
-    <div class="weui-cells weui-cells_form sc_top">
-        <div class="weui-cell">
-            <div class="weui-cell__bd">
-                <textarea class="weui-textarea" placeholder="写下过程，打卡记录" rows="3" id="goal_log"></textarea>
-                <div class="weui-textarea-counter"><span id="wordCountShow"></span></div>
-                <div class="weui-uploader__bd" id="preview_wrapper">
+    <form enctype="multipart/form-data" action="/weixin/save_history/" method="post">
+        <div class="weui-cells weui-cells_form sc_top">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="写下过程，打卡记录" rows="3" id="goal_log"></textarea>
+                    <div class="weui-textarea-counter"><span id="wordCountShow"></span></div>
+                    <div class="weui-uploader__bd" id="preview_wrapper">
 
-                        <ul class="weui-uploader__files" id="uploaderFiles">
-{#                            <li class="weui-uploader__file "><img class="sc_t" src="{% static '/images/tx_test.jpg' %}" alt="过程记录图"></li>#}
-{#                            <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(/static/images/tx_test.jpg)">#}
-{#                                  <div class="weui-uploader__file-content">50%</div>#}
-{#                            </li>#}
-{#                            <div id="images">#}
-{##}
-{#                            </div>#}
-                         </ul>
+                            <ul class="weui-uploader__files" id="uploaderFiles">
+    {#                            <li class="weui-uploader__file "><img class="sc_t" src="{% static '/images/tx_test.jpg' %}" alt="过程记录图"></li>#}
+    {#                            <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(/static/images/tx_test.jpg)">#}
+    {#                                  <div class="weui-uploader__file-content">50%</div>#}
+    {#                            </li>#}
+    {#                            <div id="images">#}
+    {##}
+    {#                            </div>#}
+                             </ul>
 
 
-                   <div class="weui-uploader__input-box">
-                       <input id="uploaderInput" class="weui-uploader__input" name="photo[]" type="file" accept="image/*" multiple onchange="onUploadImgChange(this)"/>
-                   </div>
+                       <div class="weui-uploader__input-box">
+                           <input id="uploaderInput" class="weui-uploader__input" name="photo" type="file" accept="image/*" multiple onchange="onUploadImgChange(this)"/>
+                       </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="weui-btn-area">
-            <a class="weui-btn weui-btn_primary" href="#" id="publish" onclick="save_history()" type="submit">发布记录</a>
-    </div>
+        <div class="weui-btn-area">
+{#                <a class="weui-btn weui-btn_primary" href="#" id="publish" onclick="save_history()" type="submit">发布记录</a>#}
+            <input type="submit" value="upload"/>
+        </div>
+    </form>
     <div id="errormsg" class="fk_tip"></div>
 
     <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
@@ -67,25 +70,6 @@
           $(function () {
             $("#goal_log").wordCount(140, $("#wordCountShow"));
           });
-
-
-{#        function onUploadImgChange(sender)#}
-{#        {#}
-{#            if( !sender.value.match( /.jpg|.gif|.png|.jpeg|.bmp/i ) ){#}
-{#                alert('图片格式无效！');#}
-{#                return false;#}
-{#            }#}
-{#            alert(sender.files[0]);#}
-{##}
-{#            for(var i=0; i< sender.files.length; i++)#}
-{#            {#}
-{#                var image_path =  window.URL.createObjectURL(sender.files[i]);#}
-{#                var content = '<li class="weui-uploader__file "><img class="sc_t" id="upload_files" src="' + image_path + '" alt="过程记录图"></li>\n';#}
-{#                $("#images").append(content);#}
-{##}
-{#            }#}
-{##}
-{#        }#}
 
         var tmpl = '<li class="weui-uploader__file" ><img class="sc_t" src="#url#" alt="过程记录图"></li>';
 
