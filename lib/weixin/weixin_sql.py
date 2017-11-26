@@ -109,8 +109,8 @@ def save_goal_history(goal_id, content, image_url):
     history_id = mysql.exec_query(sql)[0][0]
 
     index = 1
-    image_urls = image_url.split(';')
-    for url in image_urls:
+    #image_urls = image_url.split(';')
+    for url in image_url:
         if url:
             print('ur;', url)
             print('index', index)
@@ -131,19 +131,13 @@ def save_history_image(history_id, image_url, index):
 
     #data_stream = io.BytesIO(image_bytes)
 
-    # try:
-    #     fin = open(image_url, 'rb')
-    #     data = fin.read()
-    #     fin.close()
-    # except Exception as ex:
-    #     print(ex)
-
     try:
-        r = request.Request(image_url)
-        f = request.urlopen(r)
-        data = f.read()
+        fin = open(image_url, 'rb')
+        data = fin.read()
+        fin.close()
     except Exception as ex:
-        print('ex', ex)
+        print(ex)
+
     #data = data_stream
     #print('data', data)
 
