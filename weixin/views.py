@@ -206,6 +206,8 @@ def goaldetail(request, goal_id):
 
         is_own = is_own_goal(open_id, goal[1])
 
+    print('he1')
+
     audience_list = get_audience(goal_id)
 
     audience_headimgurl = {}
