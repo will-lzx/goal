@@ -163,7 +163,7 @@ def get_history_image(history_id, index):
 def get_goal_history(goal_id):
     mysql = MySQL(db='goal')
 
-    goal_history = mysql.exec_query('select * from goal_history where goal_id={0}'.format(goal_id))
+    goal_history = mysql.exec_query('select * from goal_history where goal_id={0} order by create_time desc'.format(goal_id))
     return goal_history
 
 

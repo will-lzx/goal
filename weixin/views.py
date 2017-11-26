@@ -366,6 +366,8 @@ def get_open_id(request):
 
 
 def pil_image(request, history_id, index):
+
+    print('heere i comming')
     data = get_history_image(history_id, index)
     data_stream = io.BytesIO(data)
 

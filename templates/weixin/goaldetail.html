@@ -56,7 +56,7 @@
                          {% if v %}
                              {% ifequal k history.0 %}
                                  {% for image_index in v %}
-                                    <img class="img_tp" src="{% url 'image' history.0 image_index %}" alt="进度打卡">
+                                    <img class="img_tp" src="{% url 'show:image' history.0 image_index %}" alt="进度打卡">
                                  {% endfor %}
                              {% endifequal %}
                          {% endif %}
