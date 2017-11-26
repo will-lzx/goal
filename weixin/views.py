@@ -188,6 +188,8 @@ def save_history(request):
     goal_id = 1
     history_content = '2'
 
+    print('request post', request.POST)
+
     try:
         print('goal id, imga_rul', myFile, goal_id)
         save_goal_history(goal_id, history_content, myFile)
