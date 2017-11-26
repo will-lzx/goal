@@ -180,10 +180,13 @@ def save_history(request):
 
     myFile = request.FILES.get("photo", None)
 
-    goal_id = request.POST.get('goal_id')
-    history_content = request.POST.get('history_content')
+    # goal_id = request.POST.get('goal_id')
+    # history_content = request.POST.get('history_content')
 
     print('request post', request.POST)
+
+    goal_id = 1
+    history_content = '2'
 
     try:
         print('goal id, imga_rul', myFile, goal_id)
