@@ -26,7 +26,7 @@
 
 
                    <div class="weui-uploader__input-box">
-                       <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple onchange="onUploadImgChange(this)"/>
+                       <input id="uploaderInput" class="weui-uploader__input" name="photo[]" type="file" accept="image/*" multiple onchange="onUploadImgChange(this)"/>
                    </div>
                 </div>
             </div>
@@ -75,6 +75,7 @@
                 alert('图片格式无效！');
                 return false;
             }
+            alert(e.target.result);
 
             for(var i=0; i< sender.files.length; i++)
             {
