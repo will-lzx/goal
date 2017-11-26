@@ -99,7 +99,7 @@ def get_audience(goal_id):
     return goal_audience_list
 
 
-def save_goal_history(goal_id, content, image_url):
+def save_goal_history(goal_id, content, image_files):
     mysql = MySQL(db='goal')
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
@@ -111,7 +111,10 @@ def save_goal_history(goal_id, content, image_url):
     history_id = mysql.exec_query(sql)[0][0]
 
     index = 1
-    save_history_image(history_id, image_url, index)
+    for f in image_files:
+        save_history_image(history_id, f, index)
+        index += 1
+
     #image_urls = image_url.split(';')
     # for url in image_urls:
     #     if url:
