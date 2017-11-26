@@ -68,7 +68,7 @@
 
         $(function() {
             $("#uploadDiv").on("click",function(){
-                var uploadFile = '<input name="files" id="uploaderInput1" class="weui-uploader__input" type="file" accept="image/*" multiple/>';
+                var uploadFile = '<input id="uploaderInput1" name="photo" class="weui-uploader__input" type="file" accept="image/*" multiple/>';
      $("#fileDiv").append($(uploadFile));
      $("#uploaderInput1").bind("change",function(e){
                               //可以做一些其他的事，比如图片预览
