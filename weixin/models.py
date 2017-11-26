@@ -10,8 +10,3 @@ class Images(models.Model):
     create_time = models.DateField()
 
 
-class UploadFileForm(forms.Form):
-    index = forms.IntegerField()
-    file = forms.FileField()
-
-
