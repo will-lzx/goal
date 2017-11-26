@@ -194,7 +194,7 @@ def save_history(request):
     except Exception as ex:
         return HttpResponse('False&' + str(ex))
 
-    return goaldetail(request, goal_id)
+    return HttpResponse('True&')
 
 
 def goaldetail(request, goal_id):
@@ -236,7 +236,7 @@ def goaldetail(request, goal_id):
         history_images = get_history_images(goal_history[0])
         images_list = []
         for image in history_images:
-            images_list.append(image[1])
+            images_list.append(image[2])
 
         history_image_list[goal_history[0]] = images_list
 
