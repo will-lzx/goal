@@ -45,6 +45,14 @@
         </div>
     <div id="errormsg" class="fk_tip"></div>
 
+
+    <div id="uploadDiv" class="weui-uploader__input-box"></div>
+
+    <div id="fileDiv" style="display: none"></div>
+
+
+
+
     <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
 
     <script>
@@ -54,7 +62,19 @@
 
         function login(){
            $("#submit_form").submit() ;
-       }
+        }
+
+        $(function() {
+            $("#uploadDiv").on("click",function(){
+                var uploadFile = '<input name="files" id="uploaderInput1" class="weui-uploader__input" type="file" accept="image/*" multiple/>';
+     $("#fileDiv").append($(uploadFile));
+     $("#uploaderInput1").bind("change",function(e){
+                              //可以做一些其他的事，比如图片预览
+                             $(this).removeAttr("id");
+            });
+            $("#uploaderInput1").click();
+         });
+        });
 
 
         $.fn.extend({
@@ -117,8 +137,6 @@
         $('#submit_form').submit(function(event)
         {
             event.preventDefault();
-            $('#publish').attr('href', '');
-            $('#publish').unbind('click');
             var form = $(this);
             var formData = new FormData(this);
             var goal_id = '{{ goal_id }}';
