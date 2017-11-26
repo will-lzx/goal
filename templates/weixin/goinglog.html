@@ -39,7 +39,7 @@
     </form>
 
     <div class="weui-btn-area">
-                <a class="weui-btn weui-btn_primary" href="javascript:document:submit_form.submit();" id="publish" type="submit" >发布记录</a>
+                <a class="weui-btn weui-btn_primary" href="#" id="publish" type="submit" onclick="login()">发布记录</a>
 {#            <input class="weui-btn weui-btn_primary" type="submit" value="发布记录" id="publish"/>#}
 
         </div>
@@ -51,6 +51,10 @@
         $.ajaxSetup({data: {
             csrfmiddlewaretoken: '{{ csrf_token }}'
         }});
+
+        function login(){
+           $("#submit_form").submit() ;
+       }
 
 
         $.fn.extend({
