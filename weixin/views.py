@@ -188,10 +188,6 @@ def save_history(request):
     history_content = request.POST.get("goal_log", None)
     goal_id = request.POST.get('goal_id', None)
 
-    print('request post', request.POST)
-
-    print('history_content, goal_id', history_content, goal_id)
-
     try:
         print('goal id, imga_rul', files, goal_id)
         save_goal_history(goal_id, history_content, files)
