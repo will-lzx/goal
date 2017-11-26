@@ -187,7 +187,8 @@ def save_history(request):
 
     history_content = request.POST.get("goal_log", None)
     goal_id = request.POST.get('goal_id', None)
-
+    for f in files:
+        print('file name is ', f)
     try:
         print('goal id, imga_rul', files, goal_id)
         save_goal_history(goal_id, history_content, files)
@@ -366,9 +367,6 @@ def get_open_id(request):
 
 
 def pil_image(request, history_id, index):
-
-    print('heere i comming')
-
     data = get_history_image(history_id, index)
     data_stream = io.BytesIO(data)
 
