@@ -26,17 +26,18 @@
                              </ul>
 
 
-                       <div class="weui-uploader__input-box">
-                           <input id="uploaderInput" class="weui-uploader__input" name="photo" type="file" accept="image/*" multiple onchange="onUploadImgChange(this)"/>
-                       </div>
+{#                       <div class="weui-uploader__input-box">#}
+{#                           <input id="uploaderInput" class="weui-uploader__input" name="photo" type="file" accept="image/*" multiple onchange="onUploadImgChange(this)"/>#}
+{#                       </div>#}
+                        <div id="uploadDiv" class="weui-uploader__input-box"></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="uploadDiv" class="weui-uploader__input-box"></div>
 
-    <div id="fileDiv" style="display: none"></div>
+
+        <div id="fileDiv" style="display: none"></div>
 
 
         <input name="goal_id" value="{{ goal_id }}" type="hidden">
@@ -71,7 +72,7 @@
                 var uploadFile = '<input id="uploaderInput1" name="photo" class="weui-uploader__input" type="file" accept="image/*" multiple/>';
      $("#fileDiv").append($(uploadFile));
      $("#uploaderInput1").bind("change",function(e){
-         $(this).removeAttr("id");  
+         $(this).removeAttr("id");
                               //可以做一些其他的事，比如图片预览
                              var src, url = window.URL || window.webkitURL || window.mozURL,
             files = e.target.files;
