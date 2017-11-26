@@ -177,6 +177,8 @@ def history(request):
 def save_history(request):
     files = request.FILES.getlist("photo", None)
 
+    print('files count', len(files))
+
     history_content = request.POST.get("goal_log", None)
     goal_id = request.POST.get('goal_id', None)
 
