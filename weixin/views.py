@@ -183,7 +183,7 @@ def save_history(request):
     # goal_id = request.POST.get('goal_id')
     # history_content = request.POST.get('history_content')
 
-    print('request post', request.POST)
+    print('request post, request, get', request.POST, request.GET('goal_id'))
 
     history_content = request.POST.get("goal_log", None)
     goal_id = request.POST.get('goal_id', None)
