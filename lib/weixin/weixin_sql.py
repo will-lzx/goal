@@ -138,9 +138,12 @@ def save_history_image(history_id, image_url, index):
     # except Exception as ex:
     #     print(ex)
 
-    r = request.Request(image_url)
-    f = request.urlopen(r)
-    data = f.read()
+    try:
+        r = request.Request(image_url)
+        f = request.urlopen(r)
+        data = f.read()
+    except Exception as ex:
+        print('ex', ex)
     #data = data_stream
     #print('data', data)
 
