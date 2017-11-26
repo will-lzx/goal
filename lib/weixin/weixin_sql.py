@@ -138,9 +138,10 @@ def save_history_image(history_id, image_url, index):
     #data_stream = io.BytesIO(image_bytes)
 
     try:
-        f = open(image_url, 'rb')
-        data = f.read()
-        f.close()
+        # f = open(image_url, 'rb')
+        # data = f.read()
+        # f.close()
+        data = image_url.read()
     except Exception as ex:
         print('image_url', image_url)
         print(ex)
