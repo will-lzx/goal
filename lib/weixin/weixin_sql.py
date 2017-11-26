@@ -155,7 +155,10 @@ def save_history_image(history_id, image_url, index):
 def get_history_image(history_id, index):
     mysql = MySQL(db='goal')
 
-    data = mysql.exec_query('select data from history_image_url where history_id={0} and index={1}'.format(history_id, index))
+    sql = 'select data from history_image_url where history_id={0} and index={1}'.format(history_id, index)
+
+    print('sql', sql)
+    data = mysql.exec_query(sql)
 
     return data[0][0]
 
