@@ -17,8 +17,7 @@ from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get
     get_audience_goals, get_history_image
 from lib.weixin.draw_pic import *
 from goal.settings import *
-from weixin.models import UploadFileForm
-from weixin.templatetags.own_tag import get_headimg, get_goal_status, get_goal_current_status
+from weixin.templatetags.own_tag import get_headimg, get_goal_current_status
 
 
 @csrf_exempt
