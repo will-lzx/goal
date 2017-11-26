@@ -84,6 +84,8 @@ def get_goal_id():
 
 
 def get_goal_by_id(goal_id):
+
+    print('verify goal id ', goal_id)
     mysql = MySQL(db='goal')
 
     goal = mysql.exec_query('select * from goal_list where id={0}'.format(goal_id))
