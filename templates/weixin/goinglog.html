@@ -34,6 +34,10 @@
             </div>
         </div>
 
+        <div id="uploadDiv" class="weui-uploader__input-box"></div>
+
+    <div id="fileDiv" style="display: none"></div>
+
 
         <input name="goal_id" value="{{ goal_id }}" type="hidden">
     </form>
@@ -46,9 +50,7 @@
     <div id="errormsg" class="fk_tip"></div>
 
 
-    <div id="uploadDiv" class="weui-uploader__input-box"></div>
 
-    <div id="fileDiv" style="display: none"></div>
 
 
 
@@ -70,7 +72,28 @@
      $("#fileDiv").append($(uploadFile));
      $("#uploaderInput1").bind("change",function(e){
                               //可以做一些其他的事，比如图片预览
-                             $(this).removeAttr("id");
+                             var src, url = window.URL || window.webkitURL || window.mozURL,
+            files = e.target.files;
+          for(var i = 0, len = files.length; i < len; ++i) {
+            var file = files[i];
+            file_list[i] = file;
+            if(url) {
+              src = url.createObjectURL(file);
+            } else {
+              src = e.target.result;
+            }
+
+            if(files.length > maxCount)
+            {
+                alert('最多只能上传' + maxCount + '张图片');
+                return;
+            }
+            else
+            {
+                $uploaderFiles.append($(tmpl.replace('#url#', src)));
+            }
+          }
+
             });
             $("#uploaderInput1").click();
          });
