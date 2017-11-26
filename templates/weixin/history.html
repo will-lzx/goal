@@ -13,6 +13,7 @@
             {% for goal in goals %}
                 {% ifequal goal.6 0 %}
                     <a href="/weixin/goaldetail/{{ goal.0 }}/"><div class="li_con li_zxz">
+                    <span>test2</span>
                 {% endifequal %}
                 {% ifequal goal.6 1 %}
                     <a href="/weixin/goaldetail/{{ goal.0 }}/"><div class="li_con li_wc">
@@ -20,8 +21,6 @@
                 {% ifequal goal.6 2 %}
                     <a href="/weixin/goaldetail/{{ goal.0 }}/"><div class="li_con li_fq">
                 {% endifequal %}
-
-                <span>test</span>
 
                 <div class="li_con_l"><div class="img_l ks">{{ goal.2 | get_goal_type }}</div></div>
                 <div class="li_con_r">
