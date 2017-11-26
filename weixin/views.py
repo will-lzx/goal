@@ -373,7 +373,7 @@ def pil_image(request, history_id, index):
     data_stream = io.BytesIO(data)
 
     im = Image.open(data_stream)
-    response = HttpResponse(mimetype="image/png")
+    response = HttpResponse(content_type="image/png")
     im.save(response, 'PNG')
     return response
 
