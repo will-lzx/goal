@@ -71,6 +71,7 @@
                 var uploadFile = '<input id="uploaderInput1" name="photo" class="weui-uploader__input" type="file" accept="image/*" multiple/>';
      $("#fileDiv").append($(uploadFile));
      $("#uploaderInput1").bind("change",function(e){
+         $(this).removeAttr("id");  
                               //可以做一些其他的事，比如图片预览
                              var src, url = window.URL || window.webkitURL || window.mozURL,
             files = e.target.files;
