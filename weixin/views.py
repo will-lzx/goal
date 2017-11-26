@@ -175,9 +175,6 @@ def history(request):
 
 @csrf_exempt
 def save_history(request):
-    if request.method == "POST":
-        print('is post')
-
     files = request.FILES.getlist("photo", None)
 
     history_content = request.POST.get("goal_log", None)

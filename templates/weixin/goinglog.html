@@ -35,8 +35,8 @@
         </div>
 
         <div class="weui-btn-area">
-{#                <a class="weui-btn weui-btn_primary" href="#" id="publish" onclick="save_history()" type="submit">发布记录</a>#}
-            <input type="submit" value="upload"/>
+                <a class="weui-btn weui-btn_primary" href="#" id="publish" type="submit">发布记录</a>
+{#            <input type="submit" value="upload"/>#}
 
         </div>
         <input name="goal_id" value="{{ goal_id }}" type="hidden">
@@ -109,6 +109,7 @@
 
         $('form').submit(function(event)
         {
+            $('#publish').disabled = true;
             event.preventDefault();
             var form = $(this);
             var formData = new FormData(this);
@@ -136,6 +137,7 @@
                     else
                     {
                         alert('服务器故障，请稍后再试');
+                        $('#publish').disabled = false;
                     }
 
                 }
