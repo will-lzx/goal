@@ -179,7 +179,8 @@ def save_history(request):
         print('is post')
 
     myFile = request.FILES.get("photo", None)
-    print('myfile', myfile)
+    print('myfile', myFile)
+    print('requets files', request.FIles)
     image_url = request.POST.get('image_url')
     goal_id = request.POST.get('goal_id')
     history_content = request.POST.get('history_content')
