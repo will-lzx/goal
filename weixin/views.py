@@ -179,17 +179,15 @@ def save_history(request):
         print('is post')
 
     myFile = request.FILES.get("photo", None)
-    print('myfile', myFile)
-    print('requets files', request.FIles)
-    image_url = request.POST.get('image_url')
+
     goal_id = request.POST.get('goal_id')
     history_content = request.POST.get('history_content')
 
     print('request post', request.POST)
 
     try:
-        print('goal id, imga_rul', image_url, goal_id)
-        save_goal_history(goal_id, history_content, image_url)
+        print('goal id, imga_rul', myFile, goal_id)
+        save_goal_history(goal_id, history_content, myFile)
     except Exception as ex:
         return HttpResponse('False&' + str(ex))
 

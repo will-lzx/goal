@@ -111,13 +111,14 @@ def save_goal_history(goal_id, content, image_url):
     history_id = mysql.exec_query(sql)[0][0]
 
     index = 1
-    image_urls = image_url.split(';')
-    for url in image_urls:
-        if url:
-            print('ur;', url)
-            print('index', index)
-            save_history_image(history_id, url, index)
-            index += 1
+    save_history_image(history_id, image_url, index)
+    #image_urls = image_url.split(';')
+    # for url in image_urls:
+    #     if url:
+    #         print('ur;', url)
+    #         print('index', index)
+    #         save_history_image(history_id, url, index)
+    #         index += 1
 
 
 def save_history_image(history_id, image_url, index):
@@ -133,13 +134,19 @@ def save_history_image(history_id, image_url, index):
 
     #data_stream = io.BytesIO(image_bytes)
 
-
+    try:
+        f = open(image_url, 'rb')
+        data = f.read()
+        f.close()
+    except Exception as ex:
+        print('image_url', image_url)
+        print(ex)
 
     #data = data_stream
     #print('data', data)
 
-    sql = 'insert into history_image_url (history_id, image_url, image_index, create_time) values(%s, %s, %s, %s)'
-    arg = (history_id, image_url, index, create_time)
+    sql = 'insert into history_image_url (history_id, data, image_index, create_time) values(%s, %s, %s, %s)'
+    arg = (history_id, data, index, create_time)
     print('sql', sql)
     mysql.exec_none_query(sql, arg)
 
