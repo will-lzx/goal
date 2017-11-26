@@ -196,6 +196,8 @@ def goaldetail(request, goal_id):
     template_name = 'weixin/goaldetail.html'
 
     open_id = get_open_id(request)
+    
+    goal_id = goal_id.split('/')[0]
 
     print('open id and goal id', open_id, goal_id)
 
