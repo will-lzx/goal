@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    <form enctype="multipart/form-data" action="/weixin/save_history/" method="post">
+    <form enctype="multipart/form-data" action="/weixin/save_history/" method="post" id="submit_form">
         <div class="weui-cells weui-cells_form sc_top">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
@@ -35,7 +35,7 @@
         </div>
 
         <div class="weui-btn-area">
-                <a class="weui-btn weui-btn_primary" href="#" id="publish" type="submit">发布记录</a>
+                <a class="weui-btn weui-btn_primary" href="#" id="publish" type="submit" onclick="document:submit_form.submit();">发布记录</a>
 {#            <input type="submit" value="upload"/>#}
 
         </div>
