@@ -180,17 +180,10 @@ def save_history(request):
 
     files = request.FILES.getlist("photo", None)
 
-    # goal_id = request.POST.get('goal_id')
-    # history_content = request.POST.get('history_content')
-
-    print('request post, request, get', request.POST, request.GET)
-
     history_content = request.POST.get("goal_log", None)
     goal_id = request.POST.get('goal_id', None)
-    for f in files:
-        print('file name is ', f)
+
     try:
-        print('goal id, imga_rul', files, goal_id)
         save_goal_history(goal_id, history_content, files)
     except Exception as ex:
         return HttpResponse('False&' + str(ex))
@@ -205,8 +198,6 @@ def goaldetail(request, goal_id):
 
     goal_id = goal_id.split('/')[0]
 
-    print('open id and goal id', open_id, goal_id)
-
     original_goal = get_goal_by_id(goal_id)
 
     if len(original_goal) > 0:
@@ -214,14 +205,11 @@ def goaldetail(request, goal_id):
 
         is_own = is_own_goal(open_id, goal[1])
 
-    print('he1')
-
     audience_list = get_audience(goal_id)
 
     audience_headimgurl = {}
 
     for audience in audience_list:
-        print('audience', audience)
         audience_headimgurl[audience[0]] = get_headimg(audience[0])
 
     is_audience = False
