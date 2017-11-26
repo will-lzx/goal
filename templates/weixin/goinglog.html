@@ -98,7 +98,6 @@
 
         $('form').submit(function(event)
         {
-            alert('lailema');
             event.preventDefault();
             var form = $(this);
             var formData = new FormData(this);
@@ -113,9 +112,6 @@
               cache: false,
               processData: false,
               success:function (result) {
-                    //成功提交
-
-                    alert('123');
                     location.href = '/weixin/goaldetail/' + goal_id + '/';
                 }
             });

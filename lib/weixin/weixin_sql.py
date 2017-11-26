@@ -115,40 +115,19 @@ def save_goal_history(goal_id, content, image_files):
         save_history_image(history_id, f, index)
         index += 1
 
-    #image_urls = image_url.split(';')
-    # for url in image_urls:
-    #     if url:
-    #         print('ur;', url)
-    #         print('index', index)
-    #         save_history_image(history_id, url, index)
-    #         index += 1
-
 
 def save_history_image(history_id, image_url, index):
     mysql = MySQL(db='goal')
 
     create_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    # try:
-    #     data = urlopen(image_url).read()
-    # except Exception as ex:
-    #     print('image_url', image_url)
-    #     print(ex)
-
-    #data_stream = io.BytesIO(image_bytes)
-
     try:
-        # f = open(image_url, 'rb')
-        # data = f.read()
-        # f.close()
         data = image_url.read()
     except Exception as ex:
-        print('image_url', image_url)
         print(ex)
 
     sql = 'insert into history_image_url (history_id, data, image_index, create_time) values(%s, %s, %s, %s)'
     arg = (history_id, data, index, create_time)
-    print('sql', sql)
     mysql.exec_none_query(sql, arg)
 
 
@@ -157,7 +136,6 @@ def get_history_image(history_id, index):
 
     sql = 'select data from history_image_url where history_id={0} and image_index={1}'.format(history_id, index)
 
-    print('sql', sql)
     data = mysql.exec_query(sql)
 
     return data[0][0]
