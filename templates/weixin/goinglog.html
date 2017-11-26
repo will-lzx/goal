@@ -100,7 +100,7 @@
               src = e.target.result;
             }
 
-            if(files.length >=maxCount)
+            if(files.length > maxCount)
             {
                 alert('最多只能上传' + maxCount + '张图片');
                 return;
@@ -116,13 +116,9 @@
 
         $('#submit_form').submit(function(event)
         {
-            if(!can_click)
-            {
-                return;
-            }
-            can_click = false;
-
             event.preventDefault();
+            $('#publish').attr('href', '');
+            $('#publish').unbind('click');
             var form = $(this);
             var formData = new FormData(this);
             var goal_id = '{{ goal_id }}';
