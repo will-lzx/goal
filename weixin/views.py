@@ -11,7 +11,7 @@ from wechatpy.events import SubscribeEvent
 from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 
-from lib.utils.common import create_timestamp, get_openid, get_user_base_info, is_own_goal
+from lib.utils.common import create_timestamp, get_openid, get_user_base_info, is_own_goal, is_subscribe
 from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get_goal_by_id, get_audience, \
     get_goal_history, save_goal_history, get_history_images, update_goal, get_goals_rank, modify_audience, \
     get_audience_goals, get_history_image
@@ -194,6 +194,12 @@ def goaldetail(request, goal_id):
     template_name = 'weixin/goaldetail.html'
 
     open_id = get_open_id(request)
+
+    is_subscribed = is_subscribe(open_id)
+
+    if not is_subscribed:
+        redirect_link = 'https://mp.weixin.qq.com/mp/profile_ext?action=http://mgoal.cn/weixin/goaldetail/{0}/&__biz=MzI4NjkxMDg5Mw==&scene=124#wechat_redirect'.format(goal_id)
+        return HttpResponse(redirect_link)
 
     goal_id = goal_id.split('/')[0]
 

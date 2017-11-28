@@ -82,7 +82,8 @@ def create_two_dimension(save_img, goal_id):
         box_size=5,
         border=1,
     )
-    qr.add_data("http://mgoal.cn/weixin/goaldetail/{0}".format(goal_id))
+    help_link = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fgoaldetail%2F{0}%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect'.format(goal_id)
+    qr.add_data(help_link)
     qr.make(fit=True)
 
     img = qr.make_image()

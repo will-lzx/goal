@@ -21,6 +21,14 @@ def get_user_base_info(openid):
     return resp
 
 
+def is_subscribe(openid):
+    resp = get_user_base_info(openid)
+
+    if resp['subscribe'] == 0:
+        return False
+    return True
+
+
 def get_access_token():
     mysql = MySQL(db='goal')
     access_token = mysql.exec_query('select token from access_token WHERE id=1')[0][0]
@@ -48,9 +56,3 @@ def sort_by_value(d):
     backitems = [[v[1], v[0]] for v in items]
     backitems.sort()
     return [backitems[i][1] for i in range(0, len(backitems))]
-
-
-def get_user_info(openid):
-    client = WeChatClient(WEIXIN_APPID, WEIXIN_APPSECRET)
-    user = client.user.get(openid)
-    return user
