@@ -1,8 +1,8 @@
-#*- coding: utf-8*-
+# *- coding: utf-8*-
+
 import io
-import urllib
-from filecmp import cmp
-from io import StringIO
+
+import qrcode
 
 import PIL
 import time
@@ -12,8 +12,10 @@ from PIL import ImageDraw
 from urllib.request import urlopen
 import os
 
+from goal.settings import STATIC_ROOT
 
-def draw(low_img, headimg, goal_id, author_name, goal_create_time, goal_content, penalty, two_dimension, save_img):
+
+def draw(low_img, headimg, goal_id, author_name, goal_create_time, goal_content, penalty, two_dimension_link, save_img):
 
     font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 24)
     #font = ImageFont.truetype('/Users/zhixiangliu/Documents/code/goal/static/images/SourceHanSansCN-Bold.otf', 24)
@@ -22,15 +24,14 @@ def draw(low_img, headimg, goal_id, author_name, goal_create_time, goal_content,
     width, height = im1.size
 
     tmp_img = os.path.join('/var/www/goal/static/tmp/', str(time.time()) + '.jpg')
+    #tmp_img = os.path.join('/Users/zhixiangliu/Documents/code/goal/static/images', str(time.time()) + '.jpg')
 
     im2 = convert_img(headimg, tmp_img)
 
     remove_img_file(tmp_img)
 
-    #new_png = transparent('/Users/zhixiangliu/Documents/code/goal/static/images/getqrcode.png', '/Users/zhixiangliu/Documents/code/goal/static/images/getqrcode2.png')
-
-    new_png = create_two_dimension(two_dimension, goal_id)
-    im3 = Image.open(new_png)
+    im3 = create_two_dimension(two_dimension_link)
+    #im3 = Image.open(new_png)
 
     # 在图片上添加文字 1
     draw_handle = ImageDraw.Draw(im1)
@@ -74,25 +75,42 @@ def draw(low_img, headimg, goal_id, author_name, goal_create_time, goal_content,
     im1.save(save_img)
 
 
-def create_two_dimension(save_img, goal_id):
-    import qrcode
+def draw_xuanyao(low_img, save_img, two_dimension_link):
+    im1 = Image.open(low_img)
+
+    width, height = im1.size
+
+    im2 = create_two_dimension(two_dimension_link)
+
+    draw_handle = ImageDraw.Draw(im1)
+
+    draw_handle.bitmap((52, height - 144), im2, (255, 255, 255))
+
+    im1.save(save_img)
+
+
+def create_two_dimension(two_dimension_link):
+
+    random_str = str(time.time())
+
+    tmp_img = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
+    #tmp_img = os.path.join('/Users/zhixiangliu/Documents/code/goal/static/images', str(time.time()) + '.jpg')
+
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
         box_size=5,
         border=1,
     )
-    help_link = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fgoaldetail%2F{0}%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect'.format(goal_id)
-    qr.add_data(help_link)
+    qr.add_data(two_dimension_link)
     qr.make(fit=True)
 
     img = qr.make_image()
-    img.save(save_img)
-    face_image = PIL.Image.open(save_img)
+    img.save(tmp_img)
+    face_image = PIL.Image.open(tmp_img)
     face_image = face_image.resize((115, 115), PIL.Image.ANTIALIAS)
-    face_image.save(save_img)
 
-    return save_img
+    return face_image
 
 
 def convert_img(headimg, save_img):
@@ -123,6 +141,14 @@ def remove_img_file(src):
 if __name__ == '__main__':
     value_dict = {'1': 1, '2': 3, '3': 2}
 
+    low_img = '/Users/zhixiangliu/Documents/code/goal/static/images/done_dushu.jpg'
+
+    save_img = '/Users/zhixiangliu/Documents/code/goal/static/images/rand.jpg'
+
+    two_dimension_link = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI4NjkxMDg5Mw==&scene=124#wechat_redirect'
+
+    draw_xuanyao(low_img, save_img, two_dimension_link)
+
     low_img = '/Users/zhixiangliu/Documents/code/goal/static/images/dushu.jpg'
     headimg = 'http://wx.qlogo.cn/mmopen/ajNVdqHZLLCCzGDKibYicjyeVcylKsWQANxnlNxcyZQPFF3ItyUD6iawVcEBXHiadenx57wkqmouqyzIopl4gZVydQ/0'
     author_name = '刘志祥'
@@ -131,5 +157,6 @@ if __name__ == '__main__':
     two_dim = '/Users/zhixiangliu/Documents/code/goal/static/images/qrcode.jpg'
     save_img = '/Users/zhixiangliu/Documents/code/goal/static/images/rand.jpg'
     goal_create_time = '2016-10-23 10:00:00'
-    goal = draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty, two_dim, save_img)
+    goal_id = 214
+    goal = draw(low_img, headimg, goal_id, author_name, goal_create_time, goal_content, penalty, two_dim, save_img)
     print('')

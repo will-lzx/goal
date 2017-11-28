@@ -91,33 +91,73 @@ def create3(request, goal_id, open_id):
     template_name = 'weixin/create3.html'
     goal = get_goal_by_id(goal_id)[0]
     images_dir = os.path.join(STATIC_ROOT, 'images')
+
+    image_name = ''
     if goal[2] == 'study':
-        low_img = os.path.join(images_dir, 'dushu.jpg')
+        image_name = 'dushu.jpg'
     elif goal[2] == 'activity':
-        low_img = os.path.join(images_dir, 'yundong.jpg')
+        image_name = 'yundong.jpg'
     elif goal[2] == 'health':
-        low_img = os.path.join(images_dir, 'jiankang.jpg')
+        image_name = 'jiankang.jpg'
     elif goal[2] == 'tuodan':
-        low_img = os.path.join(images_dir, 'tuodan.jpg')
+        image_name = 'tuodan.jpg'
     elif goal[2] == 'money':
-        low_img = os.path.join(images_dir, 'cunqian.jpg')
+        image_name = 'cunqian.jpg'
     elif goal[2] == 'work':
-        low_img = os.path.join(images_dir, 'qita.jpg')
+        image_name = 'work.jpg'
+
+    low_img = os.path.join(images_dir, image_name)
 
     user_base_info = get_user_base_info(open_id)
 
     headimg = user_base_info['headimgurl']
     author_name = user_base_info['nickname']
 
-    random_str = str(time.time())
-
-    two_dimension = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
+    two_dimension_link = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fgoaldetail%2F{0}%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect'.format(goal_id)
     random_str = str(time.time())
     save_img = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
-    draw(low_img, headimg, goal[0], author_name, (goal[7] + datetime.timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S"), goal[3], goal[4], two_dimension, save_img)
+    draw(low_img, headimg, goal[0], author_name, (goal[7] + datetime.timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S"), goal[3], goal[4], two_dimension_link, save_img)
     context = {
         'goal': goal,
         'img_url': '/static/save_images/' + random_str + '.jpg'
+    }
+    response = render(request, template_name, context)
+    return response
+
+
+def xuanyao(request, goal_id):
+    template_name = 'weixin/xuanyao.html'
+
+    goal = get_goal_by_id(goal_id)[0]
+
+    images_dir = os.path.join(STATIC_ROOT, 'images')
+
+    image_name = ''
+    if goal[2] == 'study':
+        image_name = 'done_dushu.jpg'
+    elif goal[2] == 'activity':
+        image_name = 'done_yundong.jpg'
+    elif goal[2] == 'health':
+        image_name = 'done_jiankang.jpg'
+    elif goal[2] == 'tuodan':
+        image_name = 'done_tuodan.jpg'
+    elif goal[2] == 'money':
+        image_name = 'done_cunqian.jpg'
+    elif goal[2] == 'work':
+        image_name = 'done_work.jpg'
+
+    low_img = os.path.join(images_dir, image_name)
+
+    random_str = str(time.time())
+
+    save_img = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
+
+    two_dimension_link = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI4NjkxMDg5Mw==&scene=124#wechat_redirect'
+
+    draw_xuanyao(low_img, save_img, two_dimension_link)
+
+    context = {
+        'image_url': '/static/save_images/' + random_str + '.jpg'
     }
     response = render(request, template_name, context)
     return response
@@ -198,7 +238,7 @@ def goaldetail(request, goal_id):
     is_subscribed = is_subscribe(open_id)
 
     if not is_subscribed:
-        redirect_link = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fcreate1%2F&__biz=MzI4NjkxMDg5Mw==&scene=124#wechat_redirect'.format(goal_id)
+        redirect_link = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI4NjkxMDg5Mw==&scene=124#wechat_redirect'
         return HttpResponseRedirect(redirect_link)
 
     goal_id = goal_id.split('/')[0]

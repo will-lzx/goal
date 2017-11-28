@@ -1,6 +1,5 @@
 import time
 
-from wechatpy import WeChatClient
 
 from lib.utils.url_request import *
 

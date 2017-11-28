@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^create2/(?P<goal_type>.+)/(?P<open_id>.+)/$', create2, name='create2'),
     url(r'^create3/(?P<goal_id>.+)/(?P<open_id>.+)/$', create3, name='create3'),
 
+    url(r'^xuanyao/(?P<goal_id>.+)/$', xuanyao, name='xuanyao'),
+
     url(r'^createsuccess/$', createsuccess, name='createsuccess'),
 
 
