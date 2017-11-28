@@ -1,7 +1,7 @@
 import time
 
 import datetime
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
 from django.shortcuts import render
@@ -199,7 +199,7 @@ def goaldetail(request, goal_id):
 
     if not is_subscribed:
         redirect_link = 'https://mp.weixin.qq.com/mp/profile_ext?action=http://mgoal.cn/weixin/goaldetail/{0}/&__biz=MzI4NjkxMDg5Mw==&scene=124#wechat_redirect'.format(goal_id)
-        return HttpResponse(redirect_link)
+        return HttpResponseRedirect(redirect_link)
 
     goal_id = goal_id.split('/')[0]
 
