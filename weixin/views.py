@@ -116,7 +116,7 @@ def create3(request, goal_id, open_id):
     two_dimension_link = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fgoaldetail%2F{0}%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect'.format(goal_id)
     random_str = str(time.time())
     save_img = os.path.join(STATIC_ROOT, 'save_images', random_str + '.jpg')
-    draw(low_img, headimg, goal[0], author_name, (goal[7] + datetime.timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S"), goal[3], goal[4], two_dimension_link, save_img)
+    draw(low_img, headimg, author_name, (goal[7] + datetime.timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S"), goal[3], goal[4], two_dimension_link, save_img)
     context = {
         'goal': goal,
         'img_url': '/static/save_images/' + random_str + '.jpg'

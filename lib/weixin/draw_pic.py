@@ -15,7 +15,7 @@ import os
 from goal.settings import STATIC_ROOT
 
 
-def draw(low_img, headimg, goal_id, author_name, goal_create_time, goal_content, penalty, two_dimension_link, save_img):
+def draw(low_img, headimg, author_name, goal_create_time, goal_content, penalty, two_dimension_link, save_img):
 
     font = ImageFont.truetype('/var/www/goal/static/images/SourceHanSansCN-Bold.otf', 24)
     #font = ImageFont.truetype('/Users/zhixiangliu/Documents/code/goal/static/images/SourceHanSansCN-Bold.otf', 24)
