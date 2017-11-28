@@ -198,7 +198,7 @@ def goaldetail(request, goal_id):
     is_subscribed = is_subscribe(open_id)
 
     if not is_subscribed:
-        redirect_link = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI4NjkxMDg5Mw==&scene=124#wechat_redirect'.format(goal_id)
+        redirect_link = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fcreate1%2F&__biz=MzI4NjkxMDg5Mw==&scene=124#wechat_redirect'.format(goal_id)
         return HttpResponseRedirect(redirect_link)
 
     goal_id = goal_id.split('/')[0]
