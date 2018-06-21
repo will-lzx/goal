@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}发起目标{% endblock %}
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="pg_bg">
+    <h2>我的小目标</h2>
+    <div class="tip">世界会向那些有目标和远见的人让路</div>
+
+    <div class="weui-cells">
+        <div class="weui-cell weui-cell_select">
+            <div class="weui-cell__bd">
+                <select class="weui-select" name="direction" id="direction" onchange="get_frequent()">
+                    <option selected="" value="0" style="color: #999999" >目标方向...</option>
+                    {% for k, v in goal_type.items %}
+                        <option value="{{ k }}">{{ v }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-cells">
+        <div class="weui-cell weui-cell_select">
+            <div class="weui-cell__bd">
+                <select class="weui-select" name="frequence" id="frequence">
+                    <option selected="" value='0' style="color: #999999" >目标频次...</option>
+                    {% for k, v in frequent.items %}
+                        <option value="{{ k }}">{{ v }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-cells">
+        <div class="weui-cell weui-cell_select">
+            <div class="weui-cell__bd">
+                <select class="weui-select" name="frequent-value" id="frequent-value">
+                    <option selected="" value="0" style="color: #999999" >单次量...</option>
+                    {% for k, v in frequent_value.items %}
+                        <option value="{{ k }}">{{ v }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="weui-cells">
+        <div class="weui-cell weui-cell_select">
+            <div class="weui-cell__bd">
+                <select class="weui-select" name="period" id="period">
+                    <option selected="" value="0" style="color: #999999">时长(坚持几周)...</option>
+                    {% for k, v in period.items %}
+                       <option value="{{ k }}">{{ v }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-cells">
+        <label for="goal-value">目标值</label>
+        <input class="weui-input" type="number" required id="goal-value" placeholder="请输入目标值" oninput="if(value.length>11)value=value.slice(0,11)">
+    </div>
+
+
+
+
+    <div class="weui-btn-area">
+        <a class="weui-btn weui-btn_primary" href="#" id="save" onclick="save_goal()">下一步</a>
+    </div>
+    </div>
+
+    <script>
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+        
+        function get_frequent() {
+            var s_value = $('#direction').val();
+            $.ajax({
+                type:"post",
+                url:"/weixin/get_frequent/",//自己填写请求地址
+                data:{index:s_value},
+                success:function(result){
+
+                    $('#frequent-value').html('');
+
+                    $('#frequent-value').append("<option value='0'>单次量...</option>");
+                    for(var i=0; i< result.length; i++)
+                    {
+                        $('#frequent-value').append("<option value=\'"+result[i].index+"\'>"+result[i].value+"</option>");
+                    }
+                }
+            });
+
+
+        }
+
+        function save_goal() {
+            var direction = $('#direction').val();
+            var frequence = $('#frequence').val();
+            var frequent_value = $('#frequent-value').val();
+            var period = $('#period').val();
+            var goal_value = $('#goal-value').val();
+
+
+            if(direction === '0')
+            {
+                alert('请选择一个目标方向');
+                return;
+            }
+
+            if(frequence === '0')
+            {
+                alert('请选择一个目标频次');
+                return;
+            }
+
+            if(frequent_value === '0')
+            {
+                alert('请输入目标的单次量');
+                return;
+            }
+
+            if(period === '0')
+            {
+                alert('请输入目标时长');
+                return;
+            }
+
+            if(goal_value === '')
+            {
+                alert('请输入目标值');
+                return;
+            }
+
+            var open_id = '{{ open_id }}';
+
+            $.ajax({
+                type:"post",
+                url:"/weixin/save_goal/",//自己填写请求地址
+                data:{direction: direction, frequent: frequence, frequent_value: frequent_value, period: period, goal_value: goal_value},
+                success:function(result){
+                    var res_list = result.split('&');
+                    if(res_list[0] === 'success')
+                    {
+                        location.href = '/weixin/createsuccess/' + res_list[1] + '/';
+                    }
+                    else{
+                        alert(res_list[1]);
+                    }
+                }
+            });
+        }
+
+
+
+
+    </script>
+
+
+
+{% endblock %}

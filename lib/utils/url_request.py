@@ -35,29 +35,29 @@ class UrlRequest:
                 {
                     "type": "view",
                     "name": "发起目标",
-                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fcreate1%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect"
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fcreate%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect"
                     #"url": "http://182.61.21.208/weixin/create1/"
                 },
                 {
                     "type": "view",
-                    "name": "历史目标",
-                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fhistory%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect"
-                    #"url": "http://182.61.21.208/weixin/history/"
+                    "name": "目标广场",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fgoal_square%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect"
+                    # "url": "http://182.61.21.208/weixin/history/"
                 },
                 {
                     "name": "更多",
                     "sub_button": [
                         {
                             "type": "view",
-                            "name": "执行排行",
-                            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Franking%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect"
+                            "name": "个人中心",
+                            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fprivatecenter%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect"
                             #"url": "http://182.61.21.208/weixin/ranking/"
                         },
                         {
                             "type": "view",
-                            "name": "监督目标",
-                            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fothers%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect"
-                            #"url": "http://182.61.21.208/weixin/others/"
+                            "name": "目标审核",
+                            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1e0129928b50b3e7&redirect_uri=http%3A%2F%2Fmgoal.cn%2Fweixin%2Fverify%2F&response_type=code&scope=snsapi_base&state=123&connect_redirect=1#wechat_redirect"
+                            # "url": "http://182.61.21.208/weixin/history/"
                         }
                     ]
                 }]

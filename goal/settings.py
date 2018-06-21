@@ -130,13 +130,114 @@ STATICFILES_DIRS = [
     '/var/www/static/',
 ]
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'simple': {
+            'format': '[%(asctime)s] %(levelname)s : %(message)s'
+        },
+        'verbose': {
+            'format': '[%(asctime)s] %(levelname)s %(module)s %(process)d %(thread)d : %(message)s'
+        },
+        'standard': {
+            'format': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(levelname)s]- %(message)s'
+        },
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': True,
+        },
+        'default': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join('logs/', 'debug_default.log'),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'simple',
+        },
+        'request_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join('logs/', 'debug_request.log'),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'standard',
+        },
+        'scprits_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join('logs/', 'debug_scprits.log'),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'standard',
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join('logs/', 'info_console.log'),
+            'formatter': 'simple',
+        },
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'simple',
+            'filename': os.path.join('logs/', 'info_file.log'),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'mode': 'a',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console', 'request_handler', 'scprits_handler'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
 WECHAT_TOKEN = "goal"
 WEIXIN_APPID = 'wx1e0129928b50b3e7'
 WEIXIN_APPSECRET = 'e10762d25f47ce25b55b90a676aa5861'
 
-frequent = {0: '每天', 1: '每周', 2: '3天内', 3: '7天内', 4: '10天内', 5: '30天内',  8: '1年内'}
+FREQUENT = {1: '每天', 2: '每周', 3: '3天内', 4: '7天内', 5: '10天内', 6: '30天内',  7: '1年内'}
 
-goal_status = {0: '进行中', 1: '完成', 2: '放弃'}
+goal_status = {1: '进行中', 2: '完成', 3: '放弃'}
 
-goal_type = {'study': '学习', 'activity': '运动', 'health': '健康', 'tuodan': '脱单', 'money': '存钱', 'work': '工作'}
+GOAL_TYPE = {1: '学习', 2: '运动', 3: '健康', 4: '存钱', 5: '工作'}
+
+PERIOD = {1: '一周', 2: '一个月', 3: '一个季度', 4: '半年', 5: '一年'}
+
+FREQUENT_VALUE = {
+    1: {
+        1: '学习1',
+        2: '学习2',
+        3: '学习3'
+    },
+    2: {
+        1: '运动1',
+        2: '运动2',
+        3: '运动3'
+    },
+    3: {
+        1: '健康1',
+        2: '健康2',
+        3: '健康3'
+    },
+    4:  {
+        1: '存钱1',
+        2: '存钱2',
+        3: '存钱3'
+    },
+    5: {
+        1: '工作1',
+        2: '工作2',
+        3: '工作3'
+    }
+}
+
+
 

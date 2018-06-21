@@ -19,13 +19,15 @@ from weixin.views import *
 
 urlpatterns = [
     url(r'^wx/$', wx, name='wx'),
-    url(r'^create1/$', create1, name='create1'),
-    url(r'^create2/(?P<goal_type>.+)/(?P<open_id>.+)/$', create2, name='create2'),
-    url(r'^create3/(?P<goal_id>.+)/(?P<open_id>.+)/$', create3, name='create3'),
+    url(r'^create/$', create, name='create'),
+    url(r'^get_frequent/$', get_frequent, name='get_frequent'),
+    url(r'^privatecenter/$', privatecenter, name='privatecenter'),
+    url(r'goal_square/$', goal_square, name='goal_square'),
+    url(r'verify/$', verify, name='verify'),
 
     url(r'^xuanyao/(?P<goal_id>.+)/$', xuanyao, name='xuanyao'),
 
-    url(r'^createsuccess/$', createsuccess, name='createsuccess'),
+    url(r'^createsuccess/(?P<goal_id>.+)/$', createsuccess, name='createsuccess'),
 
 
     url(r'^history/$', history, name='history'),

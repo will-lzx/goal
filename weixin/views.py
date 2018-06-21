@@ -1,6 +1,6 @@
-import time
-
 import datetime
+import json
+
 from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
@@ -17,7 +17,11 @@ from lib.weixin.weixin_sql import subcribe_save_openid, savegoal, get_goals, get
     get_audience_goals, get_history_image
 from lib.weixin.draw_pic import *
 from goal.settings import *
+from weixin.models import Goal
 from weixin.templatetags.own_tag import get_headimg, get_goal_current_status
+
+import logging
+log = logging.getLogger('django')
 
 
 @csrf_exempt
@@ -61,30 +65,36 @@ def wx(request):
         print('error')
 
 
-def create1(request):
-    template_name = 'weixin/create1.html'
+def create(request):
+    template_name = 'weixin/create.html'
 
     open_id = get_open_id(request)
 
     context = {
         'open_id': open_id,
-        'goal_type': goal_type
+        'goal_type': GOAL_TYPE,
+        'frequent': FREQUENT,
+        'frequent_value': FREQUENT_VALUE[1],
+        'period': PERIOD
     }
 
     response = render(request, template_name, context)
     return response
 
 
-def create2(request, goal_type, open_id):
-    template_name = 'weixin/create2.html'
+@csrf_exempt
+def get_frequent(request):
+    index = request.POST.get('index', None)
+    if not index:
+        index = 0
 
-    context = {
-        'open_id': open_id,
-        'goal_type': goal_type,
-        'frequent': frequent
-    }
-    response = render(request, template_name, context)
-    return response
+    values = FREQUENT_VALUE[int(index)]
+
+    value_list = []
+    for k, v in values.items():
+        value_list.append({'index': k, 'value': v})
+
+    return HttpResponse(json.dumps(value_list), content_type="application/json")
 
 
 def create3(request, goal_id, open_id):
@@ -121,6 +131,37 @@ def create3(request, goal_id, open_id):
         'goal': goal,
         'img_url': '/static/save_images/' + random_str + '.jpg'
     }
+    response = render(request, template_name, context)
+    return response
+
+
+def privatecenter(request):
+    template_name = 'weixin/privatecenter.html'
+
+    context = {}
+
+    response = render(request, template_name, context)
+    return response
+
+
+def goal_square(request):
+    template_name = 'weixin/goal_square.html'
+
+    open_id = get_open_id(request)
+
+    context = {}
+
+    response = render(request, template_name, context)
+    return response
+
+
+def verify(request):
+    template_name = 'weixin/verify.html'
+
+    open_id = get_open_id(request)
+
+    context = {}
+
     response = render(request, template_name, context)
     return response
 
@@ -165,35 +206,55 @@ def xuanyao(request, goal_id):
 
 @csrf_exempt
 def save_goal(request):
-    goaltype = request.POST.get('goal_type')
-    penalty = request.POST.get('penalty')
-    period = request.POST.get('period')
-    goal_content = request.POST.get('goal_content')
+    open_id = get_open_id(request)
+    if request.method == 'POST':
+        goal_type = request.POST.get('direction', None)
+        frequence = request.POST.get('frequent', None)
+        frequent_value = request.POST.get('frequent_value', None)
+        period = request.POST.get('period', None)
+        goal_value = request.POST.get('goal_value', None)
 
-    open_id = request.POST.get('open_id')
+        goal_dict = {
+            'goal_type': int(goal_type),
+            'frequent': int(frequence),
+            'frequent_value': int(frequent_value),
+            'period': int(period),
+            'goal_value': float(goal_value),
+            'author': open_id,
+            'createtime': datetime.datetime.now()
+        }
 
-    user_base_info = get_user_base_info(open_id)
-    print('save_goal', user_base_info, open_id)
-    status = 0
-    goal_id = savegoal(open_id, goaltype, penalty, int(period), goal_content, status)
-    result = 'True&' + str(goal_id)
+        try:
+            Goal.objects.create(**goal_dict)
+        except Exception as ex:
+            log.info(str(ex))
+            return HttpResponse('fail&create goal fail')
 
-    return HttpResponse(result)
+        goal = Goal.objects.filter(author=open_id).order_by('-createtime').first()
+        return HttpResponse('success&' + str(goal.id))
 
 
-def createsuccess(request):
+def createsuccess(request, goal_id):
     template_name = 'weixin/createsuccess.html'
 
     open_id = get_open_id(request)
 
-    user_base_info = get_user_base_info(open_id)
-    author = user_base_info['nickname']
-    goals = get_goals(author)
-    context = {
-        'goals': goals
-    }
-    response = render(request, template_name, context)
-    return response
+    # user_base_info = get_user_base_info(open_id)
+    # author = user_base_info['nickname']
+    goals = Goal.objects.filter(id=goal_id)
+
+    if goals:
+        goal = goals.first()
+        context = {
+            'open_id': open_id,
+            'goal_type': GOAL_TYPE[goal.goal_type],
+            'frequence': FREQUENT[goal.frequent],
+            'frequent_value': FREQUENT_VALUE[goal.frequent][goal.frequent_value],
+            'period': PERIOD[goal.period],
+            'goal_value': float(goal.goal_value)
+        }
+        response = render(request, template_name, context)
+        return response
 
 
 def history(request):
@@ -396,6 +457,7 @@ def get_open_id(request):
         openid = request.session.get('openid', default=None)
         print('session get', openid)
 
+    openid = '123'
     return openid
 
 

@@ -1,6 +1,6 @@
 import datetime
 from django import template
-from goal.settings import goal_status, goal_type
+from goal.settings import goal_status, GOAL_TYPE
 from lib.utils.common import get_user_base_info
 from lib.weixin.weixin_sql import get_goals_rank, get_goal_by_id, get_audience
 from lib.utils.sql_help import MySQL
@@ -44,7 +44,7 @@ def get_goal_create_time(goal_id):
 
 
 def get_goal_type(key):
-    return goal_type[key]
+    return GOAL_TYPE[key]
 
 
 def get_author_name(open_id):

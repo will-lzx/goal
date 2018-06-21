@@ -1,19 +1,41 @@
 {% extends "base.html" %}
 
 {% load static %}
-{% block title %}目标创建成功{% endblock %}
+{% block title %}分享图片{% endblock %}
 {% block head %}
 
 {% endblock %}
 
 {% block content %}
-
-    <div class="cre_succ"><img class="icon_succ" src="{% static '/images/succ.png' %}" alt="成功"></div>
-    <h3>恭喜您，目标制定成功！</h3>
-    <div class="tip">告诉你使我达到目标的奥秘吧，我惟一的力量就是我的坚持精神。——巴斯德</div>
-
-    <div class="weui-btn-area2">
-         <a class="weui-btn2 weui-btn_default" href="/weixin/history/" id="save">查看历史目标</a>
+    <div >
+        <img class="lxbg ksbg" src="{{ img_url }}" >
     </div>
+
+    <div>
+        <h5>定下{{ goal_type }}目标，目标值{{ goal_value }}元</h5>
+        <h5>{{ frequence }},{{ frequent_value }},{{ period }}</h5>
+    </div>
+
+    <div class="weui-btn-area">
+        <a class="weui-btn weui-btn_primary" href="#" id="share" onclick="share_goal()">查看专属分享卡，邀请好友来监督</a>
+    </div>
+
+    <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
+
+    <script>
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+        
+        function share_goal() {
+            
+        }
+
+
+
+
+    </script>
+
+
 
 {% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}我的{% endblock %}
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="page navbar js_show">
+        <div class="page__bd" style="height: 100%;">
+            <div class="weui-tab">
+                <div class="weui-navbar">
+                    <div class="weui-navbar__item check_1">
+                        <a id="check_1_text" style="color: HSL(168, 45%, 56%)">好友目标</a>
+                    </div>
+                    <div class="weui-navbar__item check_2">
+                        <a id="check_2_text" style="color:black">附近目标</a>
+                    </div>
+                </div>
+                <div class="weui-tab__panel">
+                    <div id="tab1">
+                        {% for goal in friend_goals %}
+                            <span>{{ goal.goal_type }}目标, 目标值:{{ goal.goal_value }}</span>
+                            <span>{{ goal.frequent }},{{ goal.frequent_value }},{{ goal.period }}</span>
+                            <span>{{ goal.createtime }}</span>
+                        {% endfor %}
+                    </div>
+                    <div style="display:none" id="tab2">
+                        {% for goal in nearby_goals %}
+                            <span>{{ goal.goal_type }}目标, 目标值:{{ goal.goal_value }}</span>
+                            <span>{{ goal.frequent }},{{ goal.frequent_value }},{{ goal.period }}</span>
+                            <span>{{ goal.createtime }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+
+        $(".check_1").click(function() {
+            $(".check_1").addClass("weui-bar__item_on");
+            $(".check_2").removeClass("weui-bar__item_on");
+            $("#check_1_text").css("color", "#5DC2AD");
+            $("#check_2_text").css("color", "black");
+            $('#tab1').show();
+            $('#tab2').hide();
+        });
+
+        $(".check_2").click(function() {
+            $(".check_2").addClass("weui-bar__item_on");
+            $(".check_1").removeClass("weui-bar__item_on");
+            $("#check_1_text").css("color", "black");
+            $("#check_2_text").css("color", "#5DC2AD");
+            $('#tab1').hide();
+            $('#tab2').show();
+        });
+
+
+    </script>
+{% endblock %}
