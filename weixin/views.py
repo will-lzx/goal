@@ -250,6 +250,7 @@ def createsuccess(request, goal_id):
     if goals:
         goal = goals.first()
         context = {
+            'goal_id': goal.id,
             'open_id': open_id,
             'goal_type': GOAL_TYPE[goal.goal_type],
             'frequence': FREQUENT[goal.frequent],
