@@ -169,23 +169,27 @@ def verify(request):
 def xuanyao(request, goal_id):
     template_name = 'weixin/xuanyao.html'
 
-    goal = get_goal_by_id(goal_id)[0]
+    goals = Goal.objects.filter(id=goal_id)
+
+    if goals:
+        goal = goals.first()
+    else:
+        return HttpResponse('Goal not exist')
 
     images_dir = os.path.join(STATIC_ROOT, 'images')
 
-    image_name = ''
-    if goal[2] == 'study':
+    if goal.goal_type == 1:
         image_name = 'done_dushu.jpg'
-    elif goal[2] == 'activity':
+    elif goal.goal_type == 2:
         image_name = 'done_yundong.jpg'
-    elif goal[2] == 'health':
-        image_name = 'done_jiankang.jpg'
-    elif goal[2] == 'tuodan':
-        image_name = 'done_tuodan.jpg'
-    elif goal[2] == 'money':
-        image_name = 'done_cunqian.jpg'
-    elif goal[2] == 'work':
-        image_name = 'done_work.jpg'
+    elif goal.goal_type == 3:
+        image_name = 'done_yundong.jpg'
+    elif goal.goal_type == 4:
+        image_name = 'done_yundong.jpg'
+    elif goal.goal_type == 5:
+        image_name = 'done_yundong.jpg'
+    else:
+        image_name = 'done_yundong.jpg'
 
     low_img = os.path.join(images_dir, image_name)
 

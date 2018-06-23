@@ -17,7 +17,7 @@
     </div>
 
     <div class="weui-btn-area">
-        <a class="weui-btn weui-btn_primary" href="#" id="share" onclick="share_goal()">查看专属分享卡，邀请好友来监督</a>
+        <a class="weui-btn weui-btn_primary" href="#" id="share" onclick="share_goal('{{ goal_id }}')">查看专属分享卡，邀请好友来监督</a>
     </div>
 
     <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
@@ -27,13 +27,9 @@
             csrfmiddlewaretoken: '{{ csrf_token }}'
         }});
         
-        function share_goal() {
-            
+        function share_goal(goal_id) {
+            location.href = '/weixin/xuanyao/' + goal_id + '/';
         }
-
-
-
-
     </script>
 
 
