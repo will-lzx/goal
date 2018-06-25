@@ -254,7 +254,7 @@ def createsuccess(request, goal_id):
             'open_id': open_id,
             'goal_type': GOAL_TYPE[goal.goal_type],
             'frequence': FREQUENT[goal.frequent],
-            'frequent_value': FREQUENT_VALUE[goal.frequent][goal.frequent_value],
+            'frequent_value': FREQUENT_VALUE[goal.goal_type][goal.frequent_value],
             'period': PERIOD[goal.period],
             'goal_value': float(goal.goal_value)
         }
