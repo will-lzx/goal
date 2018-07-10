@@ -12,6 +12,9 @@ from lib.utils.sql_help import MySQL
 from goal.settings import *
 
 import pymysql
+
+from weixin.models import Intendance, History
+
 pymysql.install_as_MySQLdb()
 
 
@@ -91,10 +94,8 @@ def get_goal_by_id(goal_id):
 
 
 def get_audience(goal_id):
-    mysql = MySQL(db='goal')
-
-    goal_audience_list = mysql.exec_query('select audience from goal_audience_relation where goal_id={0}'.format(goal_id))
-    return goal_audience_list
+    audiences = Intendance.objects.filter(goal_id=goal_id)
+    return audiences
 
 
 def save_goal_history(goal_id, content, image_files):
@@ -140,9 +141,7 @@ def get_history_image(history_id, index):
 
 
 def get_goal_history(goal_id):
-    mysql = MySQL(db='goal')
-
-    goal_history = mysql.exec_query('select * from goal_history where goal_id={0} order by create_time desc'.format(goal_id))
+    goal_history = History.objects.filter(goal_id=goal_id)
     return goal_history
 
 

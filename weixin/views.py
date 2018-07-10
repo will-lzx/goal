@@ -138,7 +138,12 @@ def create3(request, goal_id, open_id):
 def privatecenter(request):
     template_name = 'weixin/privatecenter.html'
 
-    context = {}
+    open_id = get_open_id(request)
+
+    goals = Goal.objects.filter(author=open_id).order_by('-createtime')
+    context = {
+        'goals': goals
+    }
 
     response = render(request, template_name, context)
     return response
@@ -301,7 +306,8 @@ def goaldetail(request, goal_id):
 
     open_id = get_open_id(request)
 
-    is_subscribed = is_subscribe(open_id)
+    #is_subscribed = is_subscribe(open_id)
+    is_subscribed = True
 
     if not is_subscribed:
         redirect_link = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI4NjkxMDg5Mw==&scene=124#wechat_redirect'
@@ -309,25 +315,27 @@ def goaldetail(request, goal_id):
 
     goal_id = goal_id.split('/')[0]
 
-    original_goal = get_goal_by_id(goal_id)
+    original_goal = Goal.objects.filter(id=int(goal_id))
 
-    if len(original_goal) > 0:
-        goal = original_goal[0]
+    if original_goal:
+        goal = original_goal.first()
 
-        is_own = is_own_goal(open_id, goal[1])
+        is_own = is_own_goal(open_id, goal.author)
+    else:
+        return HttpResponse('goal not exist')
 
     audience_list = get_audience(goal_id)
 
     audience_headimgurl = {}
 
-    for audience in audience_list:
-        audience_headimgurl[audience[0]] = get_headimg(audience[0])
+    # for audience in audience_list:
+    #     audience_headimgurl[audience[0]] = get_headimg(audience[0])
 
-    is_audience = False
-
-    if not is_own:
-        if audience_headimgurl.keys().__contains__(open_id):
-            is_audience = True
+    # is_audience = False
+    #
+    # if not is_own:
+    #     if audience_headimgurl.keys().__contains__(open_id):
+    #         is_audience = True
 
     goal_histories = get_goal_history(goal_id)
 
