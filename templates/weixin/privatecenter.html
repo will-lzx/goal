@@ -36,16 +36,22 @@
                     <div class="weui-tab__panel">
                         <div id="tab1">
                             {% for goal in goals %}
-                                <span>{{ goal.goal_type }}目标, 目标值:{{ goal.goal_value }}</span>
-                                <span>{{ goal.frequent }},{{ goal.frequent_value }},{{ goal.period }}</span>
-                                <span>{{ goal.createtime }}</span>
+                                <a href="/weixin/goaldetail/{{ goal.id }}/">
+                                    <span>{{ goal.goal_type }}目标, 目标值:{{ goal.goal_value }}</span>
+                                    <span>{{ goal.frequent }},{{ goal.frequent_value }},{{ goal.period }}</span>
+                                    <span>{{ goal.createtime }}</span>
+                                </a>
+                                <br>
+
                             {% endfor %}
                         </div>
                         <div style="display:none" id="tab2">
                             {% for goal in intendance_goals %}
-                                <span>{{ goal.goal_type }}目标, 目标值:{{ goal.goal_value }}</span>
-                                <span>{{ goal.frequent }},{{ goal.frequent_value }},{{ goal.period }}</span>
-                                <span>{{ goal.createtime }}</span>
+                                <a href="">
+                                    <span>{{ goal.goal_type }}目标, 目标值:{{ goal.goal_value }}</span>
+                                    <span>{{ goal.frequent }},{{ goal.frequent_value }},{{ goal.period }}</span>
+                                    <span>{{ goal.createtime }}</span>
+                                </a>
                             {% endfor %}
                         </div>
                     </div>

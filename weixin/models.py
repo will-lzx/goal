@@ -35,7 +35,10 @@ class Intendance(models.Model):
 class History(models.Model):
     id = models.IntegerField(primary_key=True, auto_created=True)
     goal_id = models.IntegerField()
-
+    image = models.BinaryField()
+    # 统一为分钟
+    time_long = models.IntegerField()
+    time_quantity = models.CharField(max_length=100)
     createtime = models.DateTimeField(default=datetime.datetime.now())
     updatetime = models.DateTimeField(auto_now=True)
 
