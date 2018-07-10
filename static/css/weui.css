@@ -558,8 +558,8 @@ input.weui-btn_plain-default{
   font-size: 14px;
   font-weight: 200;
   color:#666666;
-  height:40px;
-  line-height:40px;
+  height:30px;
+  line-height:30px;
 }
 .weui-input::-webkit-outer-spin-button,
 .weui-input::-webkit-inner-spin-button{
@@ -793,8 +793,8 @@ button.weui-form-preview__btn{
   outline:0;
   background-color:transparent;
   width:100%;
-  height:40px;
-  line-height:40px;
+  height:30px;
+  line-height:30px;
   position:relative;
   z-index:1;
   padding-left:0;
