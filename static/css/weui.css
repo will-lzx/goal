@@ -797,7 +797,8 @@ button.weui-form-preview__btn{
   position:relative;
   z-index:1;
   padding-left:0;
-  color: #333333;
+  color: #666666;
+  font-weight: 200;
 }
 .weui-cell_select-before{
   padding-right:15px;
@@ -851,6 +852,7 @@ button.weui-form-preview__btn{
 }
 .weui-cell_select-after .weui-select{
   padding-left:0;
+  color: #3d4145;;
 }
 .weui-cell_vcode{
   padding-top:0;
