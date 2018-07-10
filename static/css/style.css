@@ -197,8 +197,6 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
   background-color:transparent;
   width:100%;
   font-size: 14px;
-  height:40px;
-  line-height:40px;
   position:relative;
   z-index:1;
 }
@@ -243,13 +241,13 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
   margin-top:-4px;
 }
 .weui-cell_select-before .weui-cell__bd{
-  padding-left:15px;
+  padding-left:0;
 }
 .weui-cell_select-before .weui-cell__bd:after{
   display:none;
 }
 .weui-cell_select-after{
-  padding-left:0px;
+  padding-left:0;
 }
 .weui-cell_select-after .weui-select{
   padding-left:0;
