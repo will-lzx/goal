@@ -16,7 +16,7 @@
                 <select class="weui-select" name="direction" id="direction" onchange="get_frequent()">
                     <option selected="" value="0" style="color: #999999" >目标方向...</option>
                     {% for k, v in goal_type.items %}
-                        <option value="{{ k }}">{{ v }}</option>
+                        <option style="color: #0d0d0d" value="{{ k }}">{{ v }}</option>
                     {% endfor %}
                 </select>
             </div>
