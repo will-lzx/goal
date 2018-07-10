@@ -528,7 +528,7 @@ input.weui-btn_plain-default{
   display:block;
   content:'\EA08';
   color:#09BB07;
-  font-size:16px;
+  font-size:14px;
 }
 .weui-cells_checkbox .weui-cell__hd{
   padding-right:0.35em;
@@ -669,11 +669,10 @@ input.weui-btn_plain-default{
           transform-origin:0 100%;
   -webkit-transform:scaleY(0.5);
           transform:scaleY(0.5);
-  left:15px;
 }
 .weui-form-preview__hd .weui-form-preview__value{
   font-style:normal;
-  font-size:1.6em;
+  font-size:1.0em;
 }
 .weui-form-preview__bd{
   padding:10px 15px;
