@@ -164,10 +164,9 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
   resize:none;
   width:100%;
   color:inherit;
-  font-size: 16px;
+  font-size: 14px;
   line-height:inherit;
   outline:0;
-  color: #333333;
 }
 
 .weui-cell_select{
@@ -188,8 +187,6 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
           transform:matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
   position:relative;
   top:-2px;
-  position:absolute;
-  top:50%;
   right:15px;
   margin-top:-4px;
 }
@@ -241,8 +238,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
           transform:matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
   position:relative;
   top:-2px;
-  position:absolute;
-  top:50%;
+
   right:15px;
   margin-top:-4px;
 }
