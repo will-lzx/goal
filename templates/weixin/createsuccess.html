@@ -14,10 +14,7 @@
            <h6>{{ frequence }} ，{{ frequent_value }} ，{{ period }}</h6>
     <div class="weui-btn-area">
         <a class="weui-btn weui-btn_primary" href="#" id="share" onclick="share_goal()">查看分享卡，邀请好友监督</a>
-    </div>
-    <div class="nr_con">
-                <a href="/weixin/nearby/" id="nearby" class="weui-btn weui-btn_default weui-btn_primary page__bd_spacing">打卡（14）</a>
-                <div class="sm_cont">
+        <a href="#"  id='withdraw' class="weui-btn weui-btn_primary page__bd_spacing" onclick="withdraw({{ deposit }}, {{ deposit_order_id }})">立即提现{{ deposit }}元</a>
     </div>
 
     <div>
