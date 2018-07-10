@@ -42,14 +42,7 @@ h6{font-size: 16px;color: #333333;font-weight: 200;text-align:center;padding: 0 
 .jdr_tx{width:30px;height:30px;border-radius:30px;margin: 10px 10px 10px 0;border: none;float: left;}
 .jdr_na{float: left;width: 60%;color: #3d4145;}
 .jdr_mon{float: right;width: 20px;color: #ff6600;}
-.weui-cells{
-  margin-top:5px;
-  background-color:#FFFFFF;
-  line-height:28px;
-  overflow:hidden;
-  position:relative;
-  padding: 10px 15px;
-}
+
 .weui-cells:before{
   content:" ";
   position:absolute;
