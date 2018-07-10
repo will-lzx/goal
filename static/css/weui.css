@@ -229,7 +229,8 @@ a{
   background-color:#179B16;
 }
 .weui-btn_warn{
-  background-color:#1AAD19;
+  background-color:#ffffff;
+  color:#1AAD19;
 }
 .weui-btn_warn:not(.weui-btn_disabled):visited{
   color:#1AAD19;
