@@ -849,10 +849,11 @@ button.weui-form-preview__btn{
 }
 .weui-cell_select-after{
   padding-left:15px;
+  color: #3d4145;
 }
 .weui-cell_select-after .weui-select{
   padding-left:0;
-  color: #3d4145;;
+  color: #3d4145;
 }
 .weui-cell_vcode{
   padding-top:0;
