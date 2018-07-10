@@ -347,10 +347,10 @@ input.weui-btn_plain-default{
   margin-right:0;
 }
 .weui-cells{
-  margin-top:1.17647059em;
+  margin-top:1.0em;
   background-color:#FFFFFF;
   line-height:1.47058824;
-  font-size:17px;
+  font-size:14px;
   overflow:hidden;
   position:relative;
 }
