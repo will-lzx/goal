@@ -817,7 +817,7 @@ button.weui-form-preview__btn{
   width:1px;
   bottom:0;
   border-right:1px solid #e5e5e5;
-  color:#e5e5e5;
+  color:#333333;
   -webkit-transform-origin:100% 0;
           transform-origin:100% 0;
   -webkit-transform:scaleX(0.5);
