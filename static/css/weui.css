@@ -805,6 +805,7 @@ button.weui-form-preview__btn{
 }
 .weui-cell_select-before .weui-cell__hd{
   position:relative;
+  color:#9b9b9b;
 }
 .weui-cell_select-before .weui-cell__hd:after{
   content:" ";
