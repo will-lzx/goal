@@ -555,10 +555,11 @@ input.weui-btn_plain-default{
   outline:0;
   -webkit-appearance:none;
   background-color:transparent;
-  font-size:inherit;
-  color:inherit;
-  height:1.47058824em;
-  line-height:1.47058824;
+  font-size: 14px;
+  font-weight: 200;
+  color:#666666;
+  height:40px;
+  line-height:40px;
 }
 .weui-input::-webkit-outer-spin-button,
 .weui-input::-webkit-inner-spin-button{
