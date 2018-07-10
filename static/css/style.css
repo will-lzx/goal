@@ -18,8 +18,8 @@ a{ text-decoration:none}
 h1{font-size: 18px;color: darkgreen;font-weight: 400;line-height: 30px;text-align: center;}
 h2{font-size: 14px;color:#179b16;font-weight: 300;line-height: 60px;text-align: center;margin-top: 30px;}
 h3{font-size: 18px;color: #333333;font-weight: 400;line-height: 30px;text-align: center;}
-h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 15px 0;}
-.tip{padding: 0 15px;color: #333333;text-align: center;font-size: 14px;}
+h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 0 15px;}
+.tip{color: #999999;text-align: left;font-size: 14px; font-weight: 200;}
 .b{font-weight: 400;font-size: 16px;}
 .fk_tip{width: 100%;text-align: center;background-color: rgba(255,255,224,0.9);margin: 0 auto;z-index: 500;position: fixed;left: 0;top: 0;line-height: 30px;}
 
