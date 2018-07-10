@@ -20,7 +20,10 @@ h2{font-size: 14px;color:#179b16;font-weight: 400;line-height: 80px;text-align: 
 h3{font-size: 18px;color: #333333;font-weight: 400;line-height: 30px;text-align: center;}
 h4{font-size: 14px;color: #333333;font-weight: 400;text-align:left;padding: 0 15px;}
 h5{font-size: 14px;color: #333333;font-weight: 400;text-align:left;padding: 0 15px; margin-top: 40px;}
+h6{font-size: 14px;color: #666666;font-weight: 400;text-align:left;padding: 0 15px;}
+
 .tip{color: #999999;text-align: left;font-size: 14px; font-weight: 200;}
+.tc{color: #0bb20c;font-weight: 500;}
 .b{font-weight: 400;font-size: 16px;}
 .fk_tip{width: 100%;text-align: center;background-color: rgba(255,255,224,0.9);margin: 0 auto;z-index: 500;position: fixed;left: 0;top: 0;line-height: 30px;}
 
@@ -32,7 +35,7 @@ h5{font-size: 14px;color: #333333;font-weight: 400;text-align:left;padding: 0 15
 .cry_sty_right{margin-right: 0;}
 .gr_top{width:100%;height: auto;border-bottom: 1px solid #e5e5e5;text-align: center;line-height: 30px;background-color: white;padding-bottom: 30px;color: #999999;}
 .gr_tx{width:100px;height:100px;border-radius:100px;margin: 30px auto;border: none;}
-.gr_nc{font-size: 16px;font-weight: normal;width: 100%;margin-top: -30px;color: #333333;}
+.gr_nc{font-size: 16px;font-weight: normal;width: 100%;margin-top: -25px;color: #333333;}
 
 .weui-btn2{
   position:relative;
