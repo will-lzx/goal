@@ -791,12 +791,10 @@ button.weui-form-preview__btn{
   outline:0;
   background-color:transparent;
   width:100%;
-  font-size:inherit;
   height:45px;
   line-height:45px;
   position:relative;
   z-index:1;
-  padding-left:15px;
 }
 .weui-cell_select-before{
   padding-right:15px;
@@ -834,8 +832,7 @@ button.weui-form-preview__btn{
           transform:matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
   position:relative;
   top:-2px;
-  position:absolute;
-  top:50%;
+
   right:15px;
   margin-top:-4px;
 }
