@@ -7,49 +7,18 @@
 {% endblock %}
 
 {% block content %}
-    <div class="gr_top">
-           <img class="gr_tx" src="{% static '/images/tx_test.jpg' %}" alt="微信头像">
-           <div class="gr_nc"> Reakyzhou</div>
-           <h6>定下 <span class="tc">{{ goal_type }}</span> 目标，目标值 <span class="tc">{{ goal_value }} </span>元</h6>
-           <h6>{{ frequence }} ，{{ frequent_value }} ，{{ period }}</h6>
-    <div class="weui-btn-area">
-        <a class="weui-btn weui-btn_primary" href="#" id="share" onclick="share_goal()">查看分享卡，邀请好友监督</a>
-        <a class="weui-btn weui-btn_warn" href="#" id="share" onclick="share_goal()">查看打卡记录</a>
-    </div>
-    </div>
-    <div class="jdr">
-        <div class="jdr_l">
-            <img class="jdr_tx" src="{% static '/images/tx_test.jpg' %}" alt="微信头像">
-            <div class="jdr_na">刘志祥 加入监督并打赌</div>
-            <div class="jdr_mon">¥32</div>
-        </div>
-        <div class="jdr_l">
-            <img class="jdr_tx" src="{% static '/images/tx_test.jpg' %}" alt="微信头像">
-            <div class="jdr_na">刘志祥 加入监督并打赌</div>
-            <div class="jdr_mon">¥32</div>
-        </div>
-        <div class="jdr_l">
-            <img class="jdr_tx" src="{% static '/images/tx_test.jpg' %}" alt="微信头像">
-            <div class="jdr_na">刘志祥 加入监督并打赌</div>
-            <div class="jdr_mon">¥32</div>
-        </div>
-        <div class="jdr_l">
-            <img class="jdr_tx" src="{% static '/images/tx_test.jpg' %}" alt="微信头像">
-            <div class="jdr_na">刘志祥 加入监督并打赌</div>
-            <div class="jdr_mon">¥32</div>
-        </div>
-        <div class="jdr_l">
-            <img class="jdr_tx" src="{% static '/images/tx_test.jpg' %}" alt="微信头像">
-            <div class="jdr_na">刘志祥 加入监督并打赌</div>
-            <div class="jdr_mon">¥32</div>
-        </div>
-        <div class="jdr_l">
-            <img class="jdr_tx" src="{% static '/images/tx_test.jpg' %}" alt="微信头像">
-            <div class="jdr_na">刘志祥 加入监督并打赌</div>
-            <div class="jdr_mon">¥32</div>
-        </div>
+    <div >
+        <img class="lxbg ksbg" src="{{ img_url }}" >
     </div>
 
+    <div>
+        <h5>定下{{ goal_type }}目标，目标值{{ goal_value }}元</h5>
+        <h5>{{ frequence }},{{ frequent_value }},{{ period }}</h5>
+    </div>
+
+    <div class="weui-btn-area">
+        <a class="weui-btn weui-btn_primary" href="#" id="share" onclick="share_goal()">查看专属分享卡，邀请好友来监督</a>
+    </div>
 
     <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
 
