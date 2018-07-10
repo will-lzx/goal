@@ -799,6 +799,7 @@ button.weui-form-preview__btn{
   padding-left:0;
   color: #9b9b9b;
 }
+.weui-select：-ms-input-placeholder { color: red;}​
 .weui-cell_select-before{
   padding-right:15px;
 }
@@ -817,7 +818,7 @@ button.weui-form-preview__btn{
   width:1px;
   bottom:0;
   border-right:1px solid #e5e5e5;
-  color:#333333;
+  color:#e5e5e5;
   -webkit-transform-origin:100% 0;
           transform-origin:100% 0;
   -webkit-transform:scaleX(0.5);
