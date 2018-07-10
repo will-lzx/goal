@@ -249,7 +249,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
   display:none;
 }
 .weui-cell_select-after{
-  padding-left:15px;
+  padding-left:0px;
 }
 .weui-cell_select-after .weui-select{
   padding-left:0;
@@ -263,7 +263,7 @@ h4{font-size: 14px;color: #666666;font-weight: 400;text-align: center;padding: 1
   padding-left:15px;
   padding-right:15px;
   box-sizing:border-box;
-  font-size:18px;
+  font-size:14px;
   text-align:center;
   text-decoration:none;
   color:#FFFFFF;
