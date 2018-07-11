@@ -9,8 +9,6 @@
 {% block content %}
     <form enctype="multipart/form-data" action="/weixin/save_history/" method="post" id="submit_form">
         <div class="weui-cells weui-cells_form sc_top">
-
-
                 <div class="weui-uploader__bd" id="preview_wrapper">
 
                             <ul class="weui-uploader__files" id="uploaderFiles">
@@ -29,9 +27,42 @@
 {#                       </div>#}
                         <div id="uploadDiv" class="weui-uploader__input-box"></div>
                     </div>
+                <div class="weui-uploader__bd" id="preview_wrapper">
+
+                            <ul class="weui-uploader__files" id="uploaderFiles">
+    {#                            <li class="weui-uploader__file "><img class="sc_t" src="{% static '/images/tx_test.jpg' %}" alt="过程记录图"></li>#}
+    {#                            <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(/static/images/tx_test.jpg)">#}
+    {#                                  <div class="weui-uploader__file-content">50%</div>#}
+    {#                            </li>#}
+    {#                            <div id="images">#}
+    {##}
+    {#                            </div>#}
+                             </ul>
 
 
+{#                       <div class="weui-uploader__input-box">#}
+{#                           <input id="uploaderInput" class="weui-uploader__input" name="photo" type="file" accept="image/*" multiple onchange="onUploadImgChange(this)"/>#}
+{#                       </div>#}
+                        <div id="uploadDiv" class="weui-uploader__input-box"></div>
+                    </div>
+                <div class="weui-uploader__bd" id="preview_wrapper">
 
+                            <ul class="weui-uploader__files" id="uploaderFiles">
+    {#                            <li class="weui-uploader__file "><img class="sc_t" src="{% static '/images/tx_test.jpg' %}" alt="过程记录图"></li>#}
+    {#                            <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(/static/images/tx_test.jpg)">#}
+    {#                                  <div class="weui-uploader__file-content">50%</div>#}
+    {#                            </li>#}
+    {#                            <div id="images">#}
+    {##}
+    {#                            </div>#}
+                             </ul>
+
+
+{#                       <div class="weui-uploader__input-box">#}
+{#                           <input id="uploaderInput" class="weui-uploader__input" name="photo" type="file" accept="image/*" multiple onchange="onUploadImgChange(this)"/>#}
+{#                       </div>#}
+                        <div id="uploadDiv" class="weui-uploader__input-box"></div>
+                    </div>
 
         </div>
 
