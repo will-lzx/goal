@@ -1021,10 +1021,10 @@ button.weui-vcode-btn{
 }
 .weui-uploader__file{
   float:left;
-  margin-right:9px;
-  margin-bottom:9px;
-  width:79px;
-  height:79px;
+  margin-right:15px;
+  margin-bottom:15px;
+  width:100%;
+  height:100px;
   background:no-repeat center center;
   background-size:cover;
 }
