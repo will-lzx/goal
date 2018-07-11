@@ -446,4 +446,4 @@ h6{font-size: 16px;color: #333333;font-weight: 300;text-align:center;padding: 0 
 .wk_til{color: #ff6666;font-weight: bold;}
 
 /*-------打卡------------*/
-.tsc{float: left;width: 100%;height: auto;margin:0; padding:0 15px;text-align: center;}
+.tsc{float: left;width: 100%;height: auto;margin-top:15px; padding:0 15px;text-align: center;}
