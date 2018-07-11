@@ -9,6 +9,12 @@
 {% block content %}
     <div >
         <img class="lxbg ksbg" src="{{ image_url }}" >
+        <div class="gr_xy">
+           <img class="gr_tx" src="{% static '/images/tx_test.jpg' %}" alt="微信头像">
+           <div class="gr_nc"> Reakyzhou</div>
+           <h6>定下 <span class="tc">{{ goal_type }}</span> 目标，目标值 <span class="tc">{{ goal_value }} </span>元</h6>
+           <h6>{{ frequence }} ，{{ frequent_value }} ，{{ period }}</h6>
+        </div>
     </div>
 
     <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
