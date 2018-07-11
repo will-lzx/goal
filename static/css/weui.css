@@ -999,6 +999,7 @@ button.weui-vcode-btn{
   display:-webkit-flex;
   display:flex;
   padding-bottom:10px;
+  padding-top: 10px;
   -webkit-box-align:center;
   -webkit-align-items:center;
           align-items:center;
