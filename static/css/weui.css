@@ -1013,8 +1013,7 @@ button.weui-vcode-btn{
   color:#B2B2B2;
 }
 .weui-uploader__bd{
-  margin-bottom:-4px;
-  margin-right:-9px;
+ float: left;
   overflow:hidden;
 }
 .weui-uploader__files{
