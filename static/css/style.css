@@ -426,40 +426,7 @@ h6{font-size: 16px;color: #333333;font-weight: 300;text-align:center;padding: 0 
 .weui-uploader__file-content .weui-icon-warn{
   display:inline-block;
 }
-.weui-uploader__input-box{
-  float:left;
-  position:relative;
-  margin-right:9px;
-  margin-bottom:9px;
-  width:72px;
-  height:72px;
-  border:1px solid #D9D9D9;
-}
-.weui-uploader__input-box:before,
-.weui-uploader__input-box:after{
-  content:" ";
-  position:absolute;
-  top:50%;
-  left:50%;
-  -webkit-transform:translate(-50%, -50%);
-          transform:translate(-50%, -50%);
-  background-color:#D9D9D9;
-}
-.weui-uploader__input-box:before{
-  width:2px;
-  height:39.5px;
-}
-.weui-uploader__input-box:after{
-  width:39.5px;
-  height:2px;
-}
-.weui-uploader__input-box:active{
-  border-color:#999999;
-}
-.weui-uploader__input-box:active:before,
-.weui-uploader__input-box:active:after{
-  background-color:#999999;
-}
+
 .weui-uploader__input{
   position:absolute;
   z-index:1;
@@ -479,4 +446,4 @@ h6{font-size: 16px;color: #333333;font-weight: 300;text-align:center;padding: 0 
 .wk_til{color: #ff6666;font-weight: bold;}
 
 /*-------打卡------------*/
-.tsc{float: left;width: 100%;height: auto;margin:0; padding:20px 15px;}
+.tsc{float: left;width: 100%;height: auto;margin:0; padding:0 15px;}
